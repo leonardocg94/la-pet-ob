@@ -12,15 +12,15 @@ const Footer = () => {
         </div>
         <div className={styles.usefulLinks}>
           <h3>Enlaces útiles</h3>
-          <a href='#'>Inicio</a>
-          <a href='#'>Catalogo</a>
+          <a href='/'>Inicio</a>
+          <a href='/'>Catalogo</a>
         </div>
         <div className={styles.socials}>
           <h3>Redes Sociales</h3>
-          <a href='#'>Facebook</a>
-          <a href='#'>Instagram</a>
-          <a href='#'>WhatsApp</a>
-          <a href='#'>Tiktok</a>
+          <a href='https://www.facebook.com/LaPetiteObsession/'>Facebook</a>
+          <a href='https://www.instagram.com/la_petite_obsession/'>Instagram</a>
+          <a href="https://api.whatsapp.com/send?phone=525537295707">WhatsApp</a>
+          <a href='https://www.tiktok.com/@la_petite_obsession?lang=en'>Tiktok</a>
         </div>
       </div>
       <div className={styles.payMethods}>
