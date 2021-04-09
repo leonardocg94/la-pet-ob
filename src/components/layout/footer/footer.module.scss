@@ -1,0 +1,99 @@
+@import '../../../scss/variables';
+
+.footer {
+  width: 100%;
+  
+  display: flex;
+  flex-flow: column nowrap;
+  background-color: #3f3f3f;
+  color: white;
+
+  &Info {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    text-align: center;
+
+    .help, .usefulLinks, .socials {
+      font-size: 1.6rem;
+      h3 {
+        font-size: 2rem;
+        margin: 2rem 0;
+      }
+      a {
+        margin-bottom: 0.5rem;
+        display: block;
+        text-decoration: none;
+        color: white;
+      }
+    }
+
+    .help {
+      width: 40%;
+      p {
+        padding: 0 2rem;
+        margin-bottom: 2rem;
+        line-height: 1.7;
+      }
+      .telefono {
+        font-size: 2.3rem;
+        font-weight: 400;
+      }
+    }
+    .usefulLinks {
+      width: 30%;
+    }
+    .socials {
+      width: 30%;
+    }
+  }
+  .payMethods {
+    width: 100%;
+    background-color: #eee;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    img {
+      height: 3rem;
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+
+@media screen and (max-width:1000px) {
+  .footer {
+    &Info {
+      flex-wrap: wrap;
+      padding-bottom: 1rem;
+      .help {
+        width: 100%;
+      }
+      .usefulLinks, .socials{
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .footer {
+    &Info {
+      .usefulLinks, .socials {
+        width: 100%;
+      }
+    }
+    .payMethods {
+      padding: 2rem 0.5rem;
+      img {
+        height: 2rem;
+        &:not(:last-child) {
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
+}
+

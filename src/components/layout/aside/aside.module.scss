@@ -133,6 +133,15 @@
           background-color: #4ac959;
         }
       }
+
+      .tiktok {
+        color: 	#010101;
+
+        &:hover {
+          color: white;
+          background-color: 	#010101;
+        }
+      }
     }
   }
 }

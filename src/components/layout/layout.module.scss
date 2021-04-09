@@ -1,7 +1,7 @@
 .rightContainer {
   width: 80vw;
   float: right;
-
+  
   .mainContent {
     width: 100%;
   }
@@ -11,4 +11,12 @@
   .rightContainer {
     width: 75vw;
   }
+}
+
+@media screen and (max-width: 1000px) {
+  .rightContainer {
+    width: 100vw;
+    float: none;
+    margin-top: 12rem;
+  }  
 }

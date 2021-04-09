@@ -16,8 +16,8 @@ const Aside = () => {
       <div className={styles.topContainer}>
         <h1 className={styles.storeName}>La Petite Obsession</h1>
         <button onClick={showMenu} className={styles.btnMenu}>
-          <span 
-            className={addclass ? `${styles.barsAnimated} ${styles.crossAnimated}`: `${styles.barsAnimated}`}>
+          <span
+            className={addclass ? `${styles.barsAnimated} ${styles.crossAnimated}` : `${styles.barsAnimated}`}>
           </span>
         </button>
       </div>
@@ -32,6 +32,9 @@ const Aside = () => {
           </a>
           <a href='!#' className={`${styles.socialsLink} ${styles.whatsapp}`} >
             <i className="fab fa-whatsapp"></i>
+          </a>
+          <a href='!#' className={`${styles.socialsLink} ${styles.tiktok}`} >
+            <i className="fab fa-tiktok"></i>
           </a>
         </div>
       </div>
