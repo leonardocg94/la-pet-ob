@@ -1,17 +1,18 @@
 import React from 'react'
+import Aside from './aside/Aside'
+import SearchBar from './searchBar/SearchBar'
+import styles from './layout.module.scss'
 
-const Layout = ({children}) => {
+const Layout = ({ children }) => {
   return (
     <>
-      <aside>
-        Este es el aside
-      </aside>
-      <header>
-        Este es el header
-      </header>
-      <main>
-        {children}
-      </main>
+      <Aside/>
+      <div className={styles.rightContainer}>
+        <SearchBar/>
+        <main className={styles.mainContent}>
+          {children}
+        </main>
+      </div>
     </>
   )
 }
