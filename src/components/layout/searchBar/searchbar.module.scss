@@ -2,7 +2,7 @@
 
 .searchBar {
   padding: 2rem 3rem;
-  background-color: $primary-color-light;
+  background-color: $secondary-grey-light;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -13,7 +13,7 @@
 
     .searchIcon {
       font-size: 2.5rem;
-      color: white;
+      color: $secondary-color-purple;
       cursor: pointer;
     }
 
@@ -35,7 +35,7 @@
     .userIcon,
     .shoppingCartIcon {
       font-size: 2.5rem;
-      color: white;
+      color: $secondary-color-purple;
       cursor: pointer;
     }
 
