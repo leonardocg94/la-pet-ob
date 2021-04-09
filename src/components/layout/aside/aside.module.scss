@@ -1,8 +1,84 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
 .navigation {
   width: 20vw;
   height: 100vh;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: cadetblue;
+  bottom: 0;
+  background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+
+  .storeName {
+    font-family: 'Pacifico', cursive;
+    text-align: center;
+    font-size: 3rem;
+    padding: 1rem;
+    color: white;
+    &::after {
+      @include underlineAfter;
+    }
+  }
+  .socials {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 3rem 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+
+    &Link {
+      text-decoration: none;
+      font-size: 3rem;
+      width: 4rem;
+      height: 4rem;
+      transition: all 0.3s ease;
+      background-color: white;
+      position: relative;
+      border-radius: 5px 10px;
+
+      i {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    .facebook {
+      color: #3b5998;
+
+      &:hover {
+        color: white;
+        background-color: #3b5998;
+      }
+    }
+
+    .instagram {
+      color: #F77737;
+
+      &:hover {
+        color: white;
+        background-color: #F77737;
+      }
+    }
+
+    .whatsapp {
+      color: #4AC959;
+
+      &:hover {
+        color: white;
+        background-color: #4AC959;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1358px) {
+  .navigation {
+    width: 25vw;
+  }
 }

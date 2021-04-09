@@ -1,0 +1,16 @@
+@import '../../scss/mixins';
+
+.menu {
+  font-size: 2rem;
+  margin-top: 2rem;
+  text-align: center;
+  &::after {
+    @include underlineAfter;
+  }
+
+  &Item {
+    color: white;
+    text-transform: uppercase;
+    padding: 0.5rem;
+  }
+}
