@@ -24,6 +24,7 @@
       padding: 1rem;
       width: 40rem;
       font-family: inherit;
+      border-radius: 3px;
     }
   }
 
@@ -40,6 +41,38 @@
 
     .userIcon {
       margin-right: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .searchBar {
+    width: 100vw;
+    position: fixed;
+    top: 6rem;
+    right: 0;
+    left: 0;
+    height: 6rem;
+  }
+}
+
+@media screen and (max-width:620px) {
+  .searchBar {
+    padding: 0 1.5rem;
+    .leftSide {
+      .searchIcon {
+        font-size: 2rem;
+      }
+      .searchInput {
+        width: 15rem;
+        padding: 0.5rem;
+        margin-left: 1rem;
+      }
+    }
+    .rightSide {
+      .userIcon, .shoppingCartIcon {
+        font-size: 2rem;
+      }
     }
   }
 }
