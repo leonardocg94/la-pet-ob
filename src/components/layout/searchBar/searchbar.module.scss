@@ -1,0 +1,45 @@
+@import "../../../scss/variables";
+
+.searchBar {
+  padding: 2rem 3rem;
+  background-color: $primary-color-light;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+
+  .leftSide {
+    display: flex;
+    align-items: center;
+
+    .searchIcon {
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .searchInput {
+      border: none;
+      outline: none;
+      margin-left: 2rem;
+      padding: 1rem;
+      width: 40rem;
+      font-family: inherit;
+    }
+  }
+
+  .rightSide {
+    display: flex;
+    align-items: center;
+
+    .userIcon,
+    .shoppingCartIcon {
+      font-size: 2.5rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .userIcon {
+      margin-right: 2rem;
+    }
+  }
+}

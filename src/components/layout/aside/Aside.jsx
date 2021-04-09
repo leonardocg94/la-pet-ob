@@ -9,13 +9,13 @@ const Aside = () => {
       <Menu/>
       <div className={styles.socials}>
         <a href='!#' className={`${styles.socialsLink} ${styles.facebook}`} >
-          <i class="fab fa-facebook-f"></i>
+          <i className="fab fa-facebook-f"></i>
         </a>
         <a href='!#' className={`${styles.socialsLink} ${styles.instagram}`} >
-          <i class="fab fa-instagram"></i>
+          <i className="fab fa-instagram"></i>
         </a>
         <a href='!#' className={`${styles.socialsLink} ${styles.whatsapp}`} >
-          <i class="fab fa-whatsapp"></i>
+          <i className="fab fa-whatsapp"></i>
         </a>
       </div>
     </aside>
