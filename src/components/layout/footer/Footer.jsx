@@ -17,10 +17,10 @@ const Footer = () => {
         </div>
         <div className={styles.socials}>
           <h3>Redes Sociales</h3>
-          <a href='https://www.facebook.com/LaPetiteObsession/'>Facebook</a>
-          <a href='https://www.instagram.com/la_petite_obsession/'>Instagram</a>
-          <a href="https://api.whatsapp.com/send?phone=525537295707">WhatsApp</a>
-          <a href='https://www.tiktok.com/@la_petite_obsession?lang=en'>Tiktok</a>
+          <a rel='noreferrer' target='_blank' href='https://www.facebook.com/LaPetiteObsession/'>Facebook</a>
+          <a rel='noreferrer' target='_blank' href='https://www.instagram.com/la_petite_obsession/'>Instagram</a>
+          <a rel='noreferrer' target='_blank' href="https://api.whatsapp.com/send?phone=525537295707">WhatsApp</a>
+          <a rel='noreferrer' target='_blank' href='https://www.tiktok.com/@la_petite_obsession'>Tiktok</a>
         </div>
       </div>
       <div className={styles.payMethods}>

@@ -24,16 +24,36 @@ const Aside = () => {
       <div className={addclass ? `${styles.bottomContainer} ${styles.showBottomcontainer}` : `${styles.bottomContainer}`}>
         <Menu />
         <div className={styles.socials}>
-          <a href='!#' className={`${styles.socialsLink} ${styles.facebook}`} >
+          <a 
+            rel='noreferrer'
+            target='_blank'
+            href='https://www.facebook.com/LaPetiteObsession/' 
+            className={`${styles.socialsLink} ${styles.facebook}`}
+          >
             <i className="fab fa-facebook-f"></i>
           </a>
-          <a href='!#' className={`${styles.socialsLink} ${styles.instagram}`} >
+          <a 
+            rel='noreferrer'
+            target='_blank'
+            href='https://www.instagram.com/la_petite_obsession/' 
+            className={`${styles.socialsLink} ${styles.instagram}`} 
+          >
             <i className="fab fa-instagram"></i>
           </a>
-          <a href='!#' className={`${styles.socialsLink} ${styles.whatsapp}`} >
+          <a 
+            rel='noreferrer'
+            target='_blank'
+            href="https://api.whatsapp.com/send?phone=525537295707" 
+            className={`${styles.socialsLink} ${styles.whatsapp}`} 
+          >
             <i className="fab fa-whatsapp"></i>
           </a>
-          <a href='!#' className={`${styles.socialsLink} ${styles.tiktok}`} >
+          <a 
+            rel='noreferrer'
+            target='_blank'
+            href='https://www.tiktok.com/@la_petite_obsession/' 
+            className={`${styles.socialsLink} ${styles.tiktok}`} 
+          >
             <i className="fab fa-tiktok"></i>
           </a>
         </div>
