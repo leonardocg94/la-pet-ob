@@ -12,8 +12,8 @@ const TouchSlider = () => {
     <Swiper
       spaceBetween={35}
       slidesPerView={1}
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+      onSlideChange={() => {}}
+      onSwiper={(swiper) => {}}
       breakpoints={{
         1501: {
           slidesPerView: 4
@@ -27,28 +27,28 @@ const TouchSlider = () => {
       }}
     >
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Menta-lacia-larga' id='1' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Castaño-lacio-bob' id='2' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Rojo-ruby-bob' id='3' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Dark-chocolate-chino-largo' id='4' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Rubio-lacio-bob' id='5' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Gris-plata-larga-lacia' id='6' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Gris-morada-larga' id='7' precio='999' />
       </SwiperSlide>
       <SwiperSlide>
-        <Producto tipo='pelucas' nombre='peluca' precio='999' />
+        <Producto tipo='pelucas' nombre='Golden-pink-corta' id='8' precio='999' />
       </SwiperSlide>
 
     </Swiper>

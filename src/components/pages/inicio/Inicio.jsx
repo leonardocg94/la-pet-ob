@@ -20,7 +20,9 @@ const Inicio = () => {
         <SectionTitle title='Ventajas'/>
         <Ventajas />
         <SectionTitle title='Productos Recientes'/>
-        <TouchSlider/>
+        <div className={styles.sliderContainer}>
+          <TouchSlider/>
+        </div>
       </section>
     </>
   )

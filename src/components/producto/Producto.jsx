@@ -1,20 +1,29 @@
 import React from 'react'
 import styles from './producto.module.scss'
+import Button from '../button/Button'
 
-const Producto = ({ tipo, nombre, precio }) => {
+const Producto = ({ id, tipo, nombre, precio }) => {
+  console.log([id, tipo, nombre]);
+  const imagen = require(`../../img/${tipo}/${id}_${nombre}/1.jpg`).default
   return (
     <article className={styles.producto}>
-      <figure className={styles.imagen}>
-        <img
-          src={require(`../../img/${tipo}/${nombre}.jpg`).default}
-          alt={`Producto: ${nombre}`}
-        />
-      </figure>
-      <div className={styles.info}>
-        <p className={styles.nombre}>{nombre.replace("_", " ")}</p>
-        <p className={styles.precio}>{precio}</p>
+      <div className={[styles.cardSide, styles.cardSideFront].join(' ')}>
+        <div className={styles.frontContent}>
+          <img
+            src={imagen}
+            alt={nombre}
+          />
+        </div>
       </div>
-      
+      <div className={[styles.cardSide, styles.cardSideBack].join(' ')}>
+        <div className={styles.backContent}>
+          <h3>{nombre.replaceAll('-', ' ')}</h3>
+          <p>{`$${precio}`}</p>
+          <div>
+            <Button text='DETALLES'/>
+          </div>
+        </div>
+      </div>
     </article>
   )
 }
