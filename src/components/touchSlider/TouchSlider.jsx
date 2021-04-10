@@ -1,19 +1,24 @@
 import React from 'react'
 // Import Swiper React components
+import SwiperCore, { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import Producto from '../producto/Producto'
 
 // Import Swiper styles
 import 'swiper/swiper.scss'
+import 'swiper/components/pagination/pagination.scss'
 import './swiper.scss'
+
+SwiperCore.use([Pagination])
 
 const TouchSlider = () => {
   return (
     <Swiper
       spaceBetween={35}
       slidesPerView={1}
-      onSlideChange={() => {}}
-      onSwiper={(swiper) => {}}
+      pagination
+      onSlideChange={() => { }}
+      onSwiper={(swiper) => { }}
       breakpoints={{
         1501: {
           slidesPerView: 4
