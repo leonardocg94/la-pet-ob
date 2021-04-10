@@ -6,7 +6,7 @@ const Ventajas = () => {
     <div className={styles.ventajas}>
       <div className={styles.ventaja}>
         <p className={styles.icon}>
-          <i class="fas fa-people-arrows"></i>
+          <i className="fas fa-people-arrows"></i>
         </p>
         <p className={styles.text}>
           Entregas personales en el transporte público del Estado de México y la Ciudad de México.
@@ -14,7 +14,7 @@ const Ventajas = () => {
       </div>
       <div className={styles.ventaja}>
         <p className={styles.icon}>
-          <i class="fas fa-percent"></i>
+          <i className="fas fa-percent"></i>
         </p>
         <p className={styles.text}>
           Descuentos en diferentes promociones y al enviarnos tus fotos usando nuestros productos.
@@ -22,7 +22,7 @@ const Ventajas = () => {
       </div>
       <div className={styles.ventaja}>
         <p className={styles.icon}>
-          <i class="fas fa-money-bill-wave"></i>
+          <i className="fas fa-money-bill-wave"></i>
         </p>
         <p className={styles.text}>
           Pagos seguros, en efectivo, con tarjeta o transferencia bancaria.

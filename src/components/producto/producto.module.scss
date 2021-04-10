@@ -1,0 +1,39 @@
+@import '../../scss/variables';
+
+.producto {
+  width: 100%;
+  height: 50rem;
+  cursor: pointer;
+  box-shadow: 0 1rem 2.5rem rgba(#000,0.2);
+  &:hover .info {
+    background-position-y: 0;
+    color: white;
+  }
+  .imagen {
+    width: 100%;
+    height: 80%;
+    img {
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      object-fit: cover;
+    }
+  }
+  .info {
+    transition: all 0.5s ease;
+    width: 100%;
+    height: 20%;
+    text-align: center;
+    background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+    background-position-y:  13rem;
+    background-repeat: no-repeat;
+    .precio,
+    .nombre {
+      height: 50%;
+      background-color: transparent;
+      font-size: 2rem;
+      padding: 1rem;
+      font-weight: bold;
+    }
+  }
+}

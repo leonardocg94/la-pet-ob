@@ -4,6 +4,7 @@ import SectionTitle from '../../sectionTitle/SectionTitle'
 import Ventajas from './ventajas/Ventajas'
 import About from './about/About'
 import Categorias from './categorias/Categorias'
+import TouchSlider from  '../../touchSlider/TouchSlider'
 
 const Inicio = () => {
   return (
@@ -18,6 +19,8 @@ const Inicio = () => {
         <Categorias />
         <SectionTitle title='Ventajas'/>
         <Ventajas />
+        <SectionTitle title='Productos Recientes'/>
+        <TouchSlider/>
       </section>
     </>
   )
