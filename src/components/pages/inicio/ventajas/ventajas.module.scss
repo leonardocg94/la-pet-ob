@@ -1,0 +1,38 @@
+@import '../.../../../../../scss/variables';
+
+.ventajas {
+  width: 100%;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  .ventaja {
+    width: 30%;
+    max-width: 20rem;
+
+    .icon {
+      background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+      background-clip: text;
+      color: transparent;
+      background-size: 100%;
+      font-size: 4rem;
+      text-align: center;
+    }
+
+    .text {
+      font-size: 1.6rem;
+      text-align: center;
+      line-height: 1.7;
+    }
+  }
+}
+
+@media screen and (max-width:600px) {
+  .ventajas {
+    flex-wrap: wrap;
+    .ventaja {
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+  }
+}
