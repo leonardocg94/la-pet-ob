@@ -78,7 +78,7 @@
     }
   }
   .bottomContainer {
-    
+    transition: all 0.4s ease;    
 
     .socials {
       position: absolute;
@@ -189,11 +189,11 @@
       visibility: visible;
     }
     .bottomContainer {
-      height: 0;
+      opacity: 0;
       visibility: hidden;
 
       &.showBottomcontainer {
-        height: initial;
+        opacity: 1;
         visibility: visible;
       }
     }
