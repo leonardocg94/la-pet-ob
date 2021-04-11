@@ -10,17 +10,23 @@
   left: 0;
   bottom: 0;
   background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+  overflow: hidden;
   z-index: 10;
   .topContainer {
     .storeName {
-      font-family: "Pacifico", cursive;
-      text-align: center;
-      font-size: 3rem;
-      font-weight: 400;
-      padding: 1rem;
-      color: white;
-      &::after {
-        @include underlineAfter;
+      text-decoration: none;
+      h1 {
+        transition: all 0.3s ease;
+        font-family: "Pacifico", cursive;
+        text-align: center;
+        font-size: 3rem;
+        font-weight: 400;
+        padding: 1rem;
+        color: white;
+
+        &::after {
+          @include underlineAfter;
+        }
       }
     }
 
@@ -41,7 +47,7 @@
         margin: auto;
         position: relative;
         &::after {
-          content: '';
+          content: "";
           transition: all 0.3s ease;
           display: block;
           width: 2.5rem;
@@ -51,7 +57,7 @@
           top: 0.8rem;
         }
         &::before {
-          content: '';
+          content: "";
           transition: all 0.3s ease;
           display: block;
           width: 2.5rem;
@@ -72,13 +78,13 @@
           transform: rotateZ(-135deg);
         }
       }
-      .color{
+      .color {
         background-color: #f77737;
       }
     }
   }
   .bottomContainer {
-    transition: all 0.4s ease;    
+    transition: all 0.4s ease;
 
     .socials {
       position: absolute;
@@ -89,7 +95,7 @@
       display: flex;
       flex-flow: row nowrap;
       justify-content: space-evenly;
-  
+
       &Link {
         text-decoration: none;
         font-size: 3rem;
@@ -99,7 +105,7 @@
         background-color: white;
         position: relative;
         border-radius: 5px 10px;
-  
+
         i {
           position: absolute;
           top: 50%;
@@ -107,28 +113,28 @@
           transform: translate(-50%, -50%);
         }
       }
-  
+
       .facebook {
         color: #3b5998;
-  
+
         &:hover {
           color: white;
           background-color: #3b5998;
         }
       }
-  
+
       .instagram {
         color: #f77737;
-  
+
         &:hover {
           color: white;
           background-color: #f77737;
         }
       }
-  
+
       .whatsapp {
         color: #4ac959;
-  
+
         &:hover {
           color: white;
           background-color: #4ac959;
@@ -136,11 +142,11 @@
       }
 
       .tiktok {
-        color: 	#010101;
+        color: #010101;
 
         &:hover {
           color: white;
-          background-color: 	#010101;
+          background-color: #010101;
         }
       }
     }
@@ -172,11 +178,13 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 3rem;
-      
+
       .storeName {
-        padding: 0;
-        &::after {
-          display: none;
+        h1 {
+          padding: 0;
+          &::after {
+            display: none;
+          }
         }
       }
 
@@ -200,12 +208,14 @@
   }
 }
 
-@media screen and (max-width:620px) {
+@media screen and (max-width: 620px) {
   .navigation {
-    .topContainer{
+    .topContainer {
       padding: 1rem 1.5rem;
       .storeName {
-        font-size: 2.3rem;
+        h1 {
+          font-size: 2.3rem;
+        }
       }
     }
   }

@@ -1,17 +1,27 @@
 @import '../../scss/mixins';
+@import '../../scss/variables';
 
 .menu {
   font-size: 2rem;
   margin-top: 2rem;
   text-align: center;
+  
   &::after {
     @include underlineAfter;
   }
 
   &Item {
     color: white;
+    transition: all 0.3s ease;
     text-transform: uppercase;
     padding: 0.5rem;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 1rem;
+    &:hover {
+      transform: skewY(-5deg) translateY(-5px) scale(1.15);
+      background-color: $primary-color-light;
+    }
   }
 }
 

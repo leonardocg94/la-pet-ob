@@ -12,6 +12,58 @@ import './swiper.scss'
 SwiperCore.use([Pagination])
 
 const TouchSlider = () => {
+
+  const tempCatalog = [
+    {
+      id: '1',
+      nombre: 'Menta-lacia-larga',
+      precio: '600',
+      tipo: 'pelucas'
+    },
+    {
+      id: '2',
+      nombre: 'Castaño-lacio-bob',
+      precio: '550',
+      tipo: 'pelucas'
+    },
+    {
+      id: '3',
+      nombre: 'Rojo-ruby-bob',
+      precio: '600',
+      tipo: 'pelucas'
+    },
+    {
+      id: '4',
+      nombre: 'Dark-chocolate-chino-largo',
+      precio: '700',
+      tipo: 'pelucas'
+    },
+    {
+      id: '5',
+      nombre: 'Rubio-lacio-bob',
+      precio: '550',
+      tipo: 'pelucas'
+    },
+    {
+      id: '6',
+      nombre: 'Gris-plata-larga-lacia',
+      precio: '700',
+      tipo: 'pelucas'
+    },
+    {
+      id: '7',
+      nombre: 'Gris-morada-larga',
+      precio: '750',
+      tipo: 'pelucas'
+    },
+    {
+      id: '8',
+      nombre: 'Golden-pink-corta',
+      precio: '550',
+      tipo: 'pelucas'
+    }
+  ]
+
   return (
     <Swiper
       spaceBetween={35}
@@ -31,30 +83,16 @@ const TouchSlider = () => {
         }
       }}
     >
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Menta-lacia-larga' id='1' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Castaño-lacio-bob' id='2' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Rojo-ruby-bob' id='3' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Dark-chocolate-chino-largo' id='4' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Rubio-lacio-bob' id='5' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Gris-plata-larga-lacia' id='6' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Gris-morada-larga' id='7' precio='999' />
-      </SwiperSlide>
-      <SwiperSlide>
-        <Producto tipo='pelucas' nombre='Golden-pink-corta' id='8' precio='999' />
-      </SwiperSlide>
+      {tempCatalog.map(peluca => (
+        <SwiperSlide key={peluca.id}>
+          <Producto
+            tipo={peluca.tipo}
+            nombre={peluca.nombre}
+            id={peluca.id}
+            precio={peluca.precio}
+          />
+        </SwiperSlide>
+      ))}
 
     </Swiper>
   )

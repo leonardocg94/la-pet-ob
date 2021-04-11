@@ -1,13 +1,20 @@
 import React from 'react'
 import styles from './menu.module.scss'
+import { NavLink } from 'react-router-dom'
 
-const Menu = () => {
-  
+const Menu = ({ click }) => {
+
   return (
     <nav className={styles.menu}>
-      <p className={styles.menuItem}>Pelucas</p>
-      <p className={styles.menuItem}>Accesorios</p>
-      <p className={styles.menuItem}>Lenceria</p>
+      <NavLink onClick={click} to='/catalogo' className={styles.menuItem}>
+        Pelucas
+      </NavLink>
+      <NavLink onClick={click} to='/catalogo' className={styles.menuItem}>
+        Accesorios
+      </NavLink>
+      <NavLink onClick={click} to='/catalogo' className={styles.menuItem}>
+        Lenceria
+      </NavLink>
     </nav>
   )
 }

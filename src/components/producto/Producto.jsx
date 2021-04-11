@@ -6,7 +6,7 @@ const Producto = ({ id, tipo, nombre, precio }) => {
 
   const [flip, setFlip] = useState(false)
 
-  const flipHandler = e => {
+  const flipHandler = () => {
     const auxFlip = !flip
     setFlip(auxFlip)
   }

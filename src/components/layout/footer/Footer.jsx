@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './footer.module.scss'
+import { NavLink } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -13,7 +14,7 @@ const Footer = () => {
         <div className={styles.usefulLinks}>
           <h3>Enlaces útiles</h3>
           <a href='/'>Inicio</a>
-          <a href='/'>Catalogo</a>
+          <NavLink to='/catalogo'>Catalogo</NavLink>
         </div>
         <div className={styles.socials}>
           <h3>Redes Sociales</h3>
@@ -24,23 +25,23 @@ const Footer = () => {
         </div>
       </div>
       <div className={styles.payMethods}>
-        <img 
-          src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png" 
+        <img
+          src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-100px.png"
           alt="PayPal Logo"
         />
-        <img 
-          src={require('../../../img/paymethods/mastercard.png').default}   alt="Master Card Logo"
+        <img
+          src={require('../../../img/paymethods/mastercard.png').default} alt="Master Card Logo"
         />
-        <img 
+        <img
           src={require('../../../img/paymethods/visa.png').default}
           alt='Visa Logo'
         />
-        
-        
+
+
       </div>
     </footer>
-      )
+  )
 }
 
-      export default Footer
+export default Footer
 

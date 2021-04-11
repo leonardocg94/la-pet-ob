@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 import styles from './aside.module.scss'
 import Menu from '../../menu/Menu'
 
@@ -10,11 +11,21 @@ const Aside = () => {
     const auxClass = !addclass
     setAddClass(auxClass)
   }
+  const hideMenu = () => {
+    setAddClass(false)
+  }
 
   return (
-    <aside className={addclass ? `${styles.navigation} ${styles.showNavigation}` : `${styles.navigation}`}>
+    <aside
+      className={addclass
+        ? `${styles.navigation} ${styles.showNavigation}`
+        : `${styles.navigation}`}
+    >
       <div className={styles.topContainer}>
-        <h1 className={styles.storeName}>La Petite Obsession</h1>
+        <NavLink onClick={hideMenu} className={styles.storeName} exact to='/'>
+          <h1>La Petite Obsession</h1>
+        </NavLink>
+
         <button onClick={showMenu} className={styles.btnMenu}>
           <span
             className={addclass ? `${styles.barsAnimated} ${styles.crossAnimated}` : `${styles.barsAnimated}`}>
@@ -22,37 +33,37 @@ const Aside = () => {
         </button>
       </div>
       <div className={addclass ? `${styles.bottomContainer} ${styles.showBottomcontainer}` : `${styles.bottomContainer}`}>
-        <Menu />
+        <Menu click={hideMenu}/>
         <div className={styles.socials}>
-          <a 
+          <a
             rel='noreferrer'
             target='_blank'
-            href='https://www.facebook.com/LaPetiteObsession/' 
+            href='https://www.facebook.com/LaPetiteObsession/'
             className={`${styles.socialsLink} ${styles.facebook}`}
           >
             <i className="fab fa-facebook-f"></i>
           </a>
-          <a 
+          <a
             rel='noreferrer'
             target='_blank'
-            href='https://www.instagram.com/la_petite_obsession/' 
-            className={`${styles.socialsLink} ${styles.instagram}`} 
+            href='https://www.instagram.com/la_petite_obsession/'
+            className={`${styles.socialsLink} ${styles.instagram}`}
           >
             <i className="fab fa-instagram"></i>
           </a>
-          <a 
+          <a
             rel='noreferrer'
             target='_blank'
-            href="https://api.whatsapp.com/send?phone=525537295707" 
-            className={`${styles.socialsLink} ${styles.whatsapp}`} 
+            href="https://api.whatsapp.com/send?phone=525537295707"
+            className={`${styles.socialsLink} ${styles.whatsapp}`}
           >
             <i className="fab fa-whatsapp"></i>
           </a>
-          <a 
+          <a
             rel='noreferrer'
             target='_blank'
-            href='https://www.tiktok.com/@la_petite_obsession/' 
-            className={`${styles.socialsLink} ${styles.tiktok}`} 
+            href='https://www.tiktok.com/@la_petite_obsession/'
+            className={`${styles.socialsLink} ${styles.tiktok}`}
           >
             <i className="fab fa-tiktok"></i>
           </a>
