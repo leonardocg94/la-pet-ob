@@ -1,0 +1,34 @@
+@import "../../scss/variables";
+
+.sectionContainer {
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  .title {
+    font-family: "Pacifico", cursive;
+    font-weight: 400;
+    font-size: 4rem;
+    background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+    background-clip: text;
+    background-size: 100%;
+    color: transparent;
+    transition: all 0.3s ease;
+
+    text-shadow: 0 1rem 2rem $primary-color-dark;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .sectionContainer {
+    .title {
+      font-size: 3rem;
+    }
+  }
+}
+@media screen and (max-width: 450px) {
+  .sectionContainer {
+    .title {
+      font-size: 2.5rem;
+    }
+  }
+}

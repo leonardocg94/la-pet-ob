@@ -1,0 +1,38 @@
+.contenedorProductos {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  .productWrapper {
+    width: 25rem;
+    height: 40rem;
+    margin: 2rem;
+  }
+}
+
+// @media screen and (max-width: 1122px) {
+//   .contenedorProductos {
+//     .productWrapper {
+//       width: 22rem;
+//       height: 35rem;
+//     }
+//   }
+// }
+
+@media screen and (max-width: 580px) {
+  .contenedorProductos {
+    .productWrapper {
+      width: 35rem;
+      height: 43rem;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .contenedorProductos {
+    .productWrapper {
+      width: 35rem;
+      height: 39rem;
+    }
+  }
+}

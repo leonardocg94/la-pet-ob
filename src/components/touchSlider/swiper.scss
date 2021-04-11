@@ -2,3 +2,19 @@
   padding: 3rem 0;
 }
 
+.swiper-slide {
+  height: 50rem;
+}
+
+@media screen and (max-width: 600px) {
+  .swiper-slide {
+    height: 40rem;
+  }
+}
+
+@media screen and (max-width:350px) {
+  .swiper-slide {
+    height: 35rem;
+  }
+}
+

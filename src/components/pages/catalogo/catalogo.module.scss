@@ -1,0 +1,102 @@
+@import '../../../scss/variables';
+
+.catalogo {
+  width: 100%;
+
+  .positioning {
+    margin: 4rem 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    .filtros {
+      width: 25%;
+      height: 70vh;
+      background-color: $secondary-grey-light;
+      overflow: hidden;
+      position: -webkit-sticky;
+      position: sticky;
+      top: 0;
+      padding: 3rem;
+      font-weight: 1.6rem;
+      transition: all 0.5s ease;
+    }
+    .productos {
+      width: 75%;
+    }
+    .btnFiltros {
+      display: none;
+      outline: none;
+      border: none;
+      background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+      color: white;
+      font-size: 1.6rem;
+      border-radius: 50%;
+      position: fixed;
+      bottom: 3rem;
+      right: 3rem;
+      width: 4rem;
+      height: 4rem;
+      z-index: 5;
+    }
+    .pantalla {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      position: fixed;
+      bottom: 3.5rem;
+      right: 3.5rem;
+      background-color: $secondary-grey-light;
+      z-index: 2;
+      transition: all 0.6s ease;
+      &.grow {
+        transform: scale(100);
+      }
+      visibility: hidden;
+    }
+  }
+}
+
+@media screen and (max-width: 1380px) {
+  .catalogo {
+    .positioning {
+      .productos {
+        width: 65%;
+      }
+      .filtros {
+        width: 35%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .catalogo {
+    .positioning {
+      display: block;
+      .productos {
+        width: 100%;
+      }
+      .btnFiltros{
+        display: block;
+      }
+      .filtros {
+        position: fixed;
+        width: 100vw;
+        height: calc(100vh - 12rem);
+        top: 12rem;
+        bottom: 0;
+        left: -100vw;
+        background-color: transparent;
+        visibility: hidden;
+        &.show {
+          z-index: 3;
+          visibility: visible;
+          left: 0;
+        }
+      }
+      .pantalla {
+        visibility: visible;
+      }
+    }
+  }
+}
