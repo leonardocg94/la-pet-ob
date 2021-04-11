@@ -1,0 +1,42 @@
+@import '../../../../../../scss/variables';
+
+.singleFiltro {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+  .rInput {
+    visibility: hidden;
+  }
+
+  .rInput:checked + .figure::after {
+    display: block;
+  }
+  .label {
+    font-size: 1.6rem;
+  }
+  .figure {
+    width: 2rem;
+    height: 2rem;
+    display: inline-block;
+    border-radius: 50%;
+    border: 3px solid $primary-color-dark;
+    position: relative;
+    &::after {
+      content: '';
+      display: none;
+      width: 0.8rem;
+      height: 0.8rem;
+      border-radius: 50%;
+      background-color: $primary-color-dark;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 0.8rem $primary-color-dark;
+    }
+  }
+}

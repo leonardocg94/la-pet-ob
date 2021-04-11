@@ -86,12 +86,14 @@
         top: 12rem;
         bottom: 0;
         left: -100vw;
+        z-index: 3;
         background-color: transparent;
         visibility: hidden;
+        opacity: 0;
         &.show {
-          z-index: 3;
           visibility: visible;
           left: 0;
+          opacity: 1;
         }
       }
       .pantalla {
