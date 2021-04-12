@@ -10,7 +10,7 @@
     justify-content: space-between;
     .filtros {
       width: 25%;
-      height: 70vh;
+      height: 75vh;
       background-color: $secondary-grey-light;
       overflow: hidden;
       position: -webkit-sticky;
@@ -88,6 +88,7 @@
         left: -100vw;
         z-index: 3;
         background-color: transparent;
+        overflow-y: auto;
         visibility: hidden;
         opacity: 0;
         &.show {

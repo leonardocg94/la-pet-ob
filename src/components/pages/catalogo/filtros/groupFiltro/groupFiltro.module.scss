@@ -1,0 +1,50 @@
+@import '../../../../../scss/variables';
+
+.groupFiltro {
+  width: 100%;
+  .nombreFiltro {
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+    font-family: 'Pacifico', cursive;
+    color: $primary-color-dark;
+    font-weight: 400;
+    padding: 1rem;
+    border-bottom: 1px solid $primary-color-dark;
+    margin-bottom: 1rem;
+    align-items: center;
+    cursor: pointer;
+    
+    .plusIcon {
+      &, &::after {
+        width: 1.5rem;
+        height: 0.2rem;
+        background-color: $primary-color-dark;
+        display: block;
+      }
+      &::after {
+        transition: all 0.3s ease;
+        content: '';
+        transform: rotate(270deg);
+      }
+    }
+    .resIcon {
+      &::after {
+        transform: rotate(0);
+      }
+    }
+  }
+  .filtroContenedor {
+    transition: all 0.2s;
+    visibility: hidden;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0; 
+    
+    &.show {
+      visibility: visible;
+      max-height: 15rem;
+      opacity: 1;
+    }  
+  }
+}

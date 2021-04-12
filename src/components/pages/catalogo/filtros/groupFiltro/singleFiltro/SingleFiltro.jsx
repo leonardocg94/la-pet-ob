@@ -10,7 +10,7 @@ const SingleFiltro = ({id, nombre}) => {
     <div className={singleFiltro}>
       <label className={label} htmlFor={id}>{nombre}</label>
       <input className={rInput} type="checkbox" id={id}/>
-      <span className={figure}>.</span>
+      <span className={figure}></span>
     </div>
   )
 }
