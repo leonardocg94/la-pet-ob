@@ -6,14 +6,13 @@ const Producto = ({ id, tipo, nombre, precio }) => {
 
   const [flip, setFlip] = useState(false)
 
+
   const flipHandler = () => {
     const auxFlip = !flip
     setFlip(auxFlip)
   }
 
-  const detailsHandler = e => {
-    e.stopPropagation()
-  }
+  const detailsHandler = e => { e.stopPropagation() }
 
   const imagen = require(`../../img/${tipo}/${id}_${nombre}/1.jpg`).default
   return (
@@ -41,7 +40,7 @@ const Producto = ({ id, tipo, nombre, precio }) => {
           <h3>{nombre.replaceAll('-', ' ')}</h3>
           <p>{`$${precio}`}</p>
           <div>
-            <Button click={detailsHandler} text='DETALLES' />
+            <Button route={`/${tipo}/${id}`} click={detailsHandler} text='DETALLES' />
           </div>
         </div>
       </div>

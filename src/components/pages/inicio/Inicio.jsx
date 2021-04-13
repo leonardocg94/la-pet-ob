@@ -7,6 +7,69 @@ import Categorias from './categorias/Categorias'
 import TouchSlider from  '../../touchSlider/TouchSlider'
 
 const Inicio = () => {
+
+  const tempCatalog = [
+    {
+      id: '1',
+      nombre: 'Menta-lacia-larga',
+      precio: '600',
+      tipo: 'pelucas'
+    },
+    {
+      id: '2',
+      nombre: 'Castaño-lacio-bob',
+      precio: '550',
+      tipo: 'pelucas'
+    },
+    {
+      id: '3',
+      nombre: 'Rojo-ruby-bob',
+      precio: '600',
+      tipo: 'pelucas'
+    },
+    {
+      id: '4',
+      nombre: 'Dark-chocolate-chino-largo',
+      precio: '700',
+      tipo: 'pelucas'
+    },
+    {
+      id: '5',
+      nombre: 'Rubio-lacio-bob',
+      precio: '550',
+      tipo: 'pelucas'
+    },
+    {
+      id: '6',
+      nombre: 'Gris-plata-larga-lacia',
+      precio: '700',
+      tipo: 'pelucas'
+    },
+    {
+      id: '7',
+      nombre: 'Gris-morada-larga',
+      precio: '750',
+      tipo: 'pelucas'
+    },
+    {
+      id: '8',
+      nombre: 'Golden-pink-corta',
+      precio: '550',
+      tipo: 'pelucas'
+    }
+  ]
+  const breakPoints = {
+    1501: {
+      slidesPerView: 4
+    },
+    1101: {
+      slidesPerView: 3
+    },
+    501: {
+      slidesPerView: 2
+    }
+  }
+
   return (
     <>
       <section className={styles.inicio}>
@@ -21,7 +84,11 @@ const Inicio = () => {
         <Ventajas />
         <SectionTitle title='Productos Recientes'/>
         <div className={styles.sliderContainer}>
-          <TouchSlider/>
+          <TouchSlider 
+            tempCatalog={tempCatalog} 
+            breakPoints={breakPoints}
+            slides={1}
+          />
         </div>
       </section>
     </>
