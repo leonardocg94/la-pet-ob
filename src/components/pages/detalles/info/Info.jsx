@@ -18,8 +18,8 @@ const Info = () => {
     return () => {
       selectProduct(-1)
     }
-  }, [])
-
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+  //EL comentario al final del use efect elimina el warning de las dependencias faltantes en el arreglo de dependencias
   if (productoSeleccionado) {
     const { id, nombre, tipo, precio } = productoSeleccionado
 
