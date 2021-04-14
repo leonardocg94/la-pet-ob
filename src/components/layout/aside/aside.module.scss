@@ -18,15 +18,14 @@
       h1 {
         transition: all 0.3s ease;
         font-family: "Pacifico", cursive;
-        text-align: center;
         font-size: 3rem;
         font-weight: 400;
-        padding: 1rem;
         color: white;
-
-        &::after {
-          @include underlineAfter;
-        }
+        text-align: center;
+        padding: 1rem;
+      }
+      &::after {
+        @include underlineAfter;
       }
     }
 
@@ -36,7 +35,6 @@
       height: 4rem;
       border: none;
       outline: none;
-      border-radius: 3px;
       background-color: transparent;
       .barsAnimated {
         transition: all 0.3s ease;
@@ -174,17 +172,18 @@
 
     .topContainer {
       display: flex;
+      height: 6rem;
       flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
-      padding: 0 3rem;
+      padding: 0 2rem;
 
       .storeName {
         h1 {
-          padding: 0;
-          &::after {
-            display: none;
-          }
+          padding: 1rem 0;
+        }
+        &::after {
+          display: none;
         }
       }
 
@@ -211,7 +210,7 @@
 @media screen and (max-width: 620px) {
   .navigation {
     .topContainer {
-      padding: 1rem 1.5rem;
+      padding: 0 1rem;
       .storeName {
         h1 {
           font-size: 2.3rem;

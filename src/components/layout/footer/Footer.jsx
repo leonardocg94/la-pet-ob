@@ -3,6 +3,7 @@ import styles from './footer.module.scss'
 import { NavLink } from 'react-router-dom'
 
 const Footer = () => {
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footerInfo}>
@@ -13,7 +14,7 @@ const Footer = () => {
         </div>
         <div className={styles.usefulLinks}>
           <h3>Enlaces útiles</h3>
-          <a href='/'>Inicio</a>
+          <NavLink to='/'>Inicio</NavLink>
           <NavLink to='/catalogo'>Catalogo</NavLink>
         </div>
         <div className={styles.socials}>

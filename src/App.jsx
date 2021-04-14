@@ -5,11 +5,14 @@ import Inicio from './components/pages/inicio/Inicio'
 import Catalogo from './components/pages/catalogo/Catalogo'
 import Detalles from './components/pages/detalles/Detalles'
 import StateProductos from './context/productos/StateProductos'
+import ScrollTotop from './components/scrollTotop/ScrollTotop'
 
 const App = () => {
+
   return (
     <StateProductos>
       <Router>
+        <ScrollTotop/>
         <Layout>
           <Route exact path='/'><Inicio /></Route>
           <Route exact path='/catalogo'><Catalogo /></Route>

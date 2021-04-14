@@ -16,7 +16,7 @@ const Inicio = () => {
 
   const tempCatalog = []
 
-  for(let i = 0; i < 8; i++)
+  for (let i = 0; i < 8; i++)
     tempCatalog.push({
       id: productos[i].id,
       item: (<Producto {...productos[i]} />)
@@ -35,27 +35,25 @@ const Inicio = () => {
   }
 
   return (
-    <>
-      <section className={styles.inicio}>
-        <div className={styles.banner}>
-          <img src={require('../../../img/banner/banner.jpg').default} alt="banner" />
-        </div>
-        <SectionTitle title='Bienvenido!' />
-        <About />
-        <SectionTitle title='Categorias' />
-        <Categorias />
-        <SectionTitle title='Ventajas' />
-        <Ventajas />
-        <SectionTitle title='Productos Recientes' />
-        <div className={styles.sliderContainer}>
-          <TouchSlider
-            tempCatalog={tempCatalog}
-            breakPoints={breakPoints}
-            slides={1}
-          />
-        </div>
-      </section>
-    </>
+    <section className={styles.inicio}>
+      <div className={styles.banner}>
+        <img src={require('../../../img/banner/banner.jpg').default} alt="banner" />
+      </div>
+      <SectionTitle title='Bienvenido!' />
+      <About />
+      <SectionTitle title='Categorias' />
+      <Categorias />
+      <SectionTitle title='Ventajas' />
+      <Ventajas />
+      <SectionTitle title='Productos Recientes' />
+      <div className={styles.sliderContainer}>
+        <TouchSlider
+          tempCatalog={tempCatalog}
+          breakPoints={breakPoints}
+          slides={1}
+        />
+      </div>
+    </section>
   )
 }
 

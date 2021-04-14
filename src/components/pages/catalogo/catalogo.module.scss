@@ -20,7 +20,7 @@
       font-weight: 1.6rem;
       transition: all 0.5s ease;
     }
-    .productos {
+    .productosPosition {
       width: 75%;
     }
     .btnFiltros {
@@ -59,7 +59,7 @@
 @media screen and (max-width: 1380px) {
   .catalogo {
     .positioning {
-      .productos {
+      .productosPosition {
         width: 65%;
       }
       .filtros {
@@ -73,7 +73,7 @@
   .catalogo {
     .positioning {
       display: block;
-      .productos {
+      .productosPosition {
         width: 100%;
       }
       .btnFiltros{
