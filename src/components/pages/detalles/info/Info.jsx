@@ -1,39 +1,44 @@
-import React, { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import styles from './info.module.scss'
-import contextProductos from '../../../../context/productos/contextProductos'
 
-const Info = () => {
+const Info = ({ productoSeleccionado }) => {
 
-  const refId = useParams().id
-
-  const pContext = useContext(contextProductos)
-  const { productoSeleccionado, selectProduct } = pContext
-  
-
-  useEffect(() => {
-    
-    selectProduct(refId)
-
-    return () => {
-      selectProduct(-1)
-    }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   //EL comentario al final del use efect elimina el warning de las dependencias faltantes en el arreglo de dependencias
-  if (productoSeleccionado) {
-    const { id, nombre, tipo, precio } = productoSeleccionado
 
-    return (
-      <div className={styles.info}>
-        <p>{id}</p>
-        <p>{nombre}</p>
-        <p>{tipo}</p>
-        <p>{precio}</p>
+  const { nombre, precio, caracteristicas } = productoSeleccionado
+  const { material, tipo, descripcion, tamano, color, peinado } = caracteristicas
+
+  return (
+    <div className={styles.info}>
+      <h3 className={styles.nombre} >{nombre}</h3>
+      <p className={styles.precio} >${precio}</p>
+      <p className={styles.descripcion}>{descripcion}</p>
+      <p>- {material}</p>
+      <p>- {tipo}</p>
+      <p>- {tamano}cm</p>
+      <p>- {color}</p>
+      <p>- {peinado}</p>
+      <div className={styles.contacto}>
+        <p className={styles.cont}>Contactanos!</p>
+        <a
+          rel='noreferrer'
+          target='_blank'
+          href="https://api.whatsapp.com/send?phone=525537295707"
+          className={styles.whatsapp}
+        >
+          <i className="fab fa-whatsapp"></i>
+        </a>
+        <a
+          rel='noreferrer'
+          target='_blank'
+          href='http://m.me/LaPetiteObsession'
+          className={styles.facebook}
+        >
+          <i className="fab fa-facebook-messenger"></i>
+        </a>
       </div>
-    )
-  } else {
-    return null
-  }
+    </div>
+  )
 }
 
 export default Info

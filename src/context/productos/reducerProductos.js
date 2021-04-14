@@ -5,9 +5,7 @@ const reducerProyectos = (state,action) => {
     case SELECCIONAR_PRODUCTO:
       return {
         ...state,
-        productoSeleccionado: (state.productos.filter(ele => 
-          ele.id === action.payload
-        ))[0]
+        productoSeleccionado: action.payload
       }
     default:
       return state

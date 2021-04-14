@@ -2,7 +2,6 @@ import React from 'react'
 // Import Swiper React components
 import SwiperCore, { Pagination } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import Producto from '../producto/Producto'
 
 // Import Swiper styles
 import 'swiper/swiper.scss'
@@ -24,14 +23,9 @@ const TouchSlider = ({ tempCatalog, breakPoints, slides }) => {
       onSwiper={(swiper) => { }}
       breakpoints={breakPoints}
     >
-      {tempCatalog.map(peluca => (
-        <SwiperSlide key={peluca.id}>
-          <Producto
-            tipo={peluca.tipo}
-            nombre={peluca.nombre}
-            id={peluca.id}
-            precio={peluca.precio}
-          />
+      {tempCatalog.map(ele => (
+        <SwiperSlide key={ele.id}>
+          {ele.item}
         </SwiperSlide>
       ))}
 

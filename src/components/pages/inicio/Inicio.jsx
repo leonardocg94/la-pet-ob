@@ -1,63 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from './inicio.module.scss'
+import contextProductos from '../../../context/productos/contextProductos'
 import SectionTitle from '../../sectionTitle/SectionTitle'
 import Ventajas from './ventajas/Ventajas'
 import About from './about/About'
 import Categorias from './categorias/Categorias'
-import TouchSlider from  '../../touchSlider/TouchSlider'
+import TouchSlider from '../../touchSlider/TouchSlider'
+import Producto from '../../producto/Producto'
 
 const Inicio = () => {
 
-  const tempCatalog = [
-    {
-      id: '1',
-      nombre: 'Menta-lacia-larga',
-      precio: '600',
-      tipo: 'pelucas'
-    },
-    {
-      id: '2',
-      nombre: 'Castaño-lacio-bob',
-      precio: '550',
-      tipo: 'pelucas'
-    },
-    {
-      id: '3',
-      nombre: 'Rojo-ruby-bob',
-      precio: '600',
-      tipo: 'pelucas'
-    },
-    {
-      id: '4',
-      nombre: 'Dark-chocolate-chino-largo',
-      precio: '700',
-      tipo: 'pelucas'
-    },
-    {
-      id: '5',
-      nombre: 'Rubio-lacio-bob',
-      precio: '550',
-      tipo: 'pelucas'
-    },
-    {
-      id: '6',
-      nombre: 'Gris-plata-larga-lacia',
-      precio: '700',
-      tipo: 'pelucas'
-    },
-    {
-      id: '7',
-      nombre: 'Gris-morada-larga',
-      precio: '750',
-      tipo: 'pelucas'
-    },
-    {
-      id: '8',
-      nombre: 'Golden-pink-corta',
-      precio: '550',
-      tipo: 'pelucas'
-    }
-  ]
+  const pContext = useContext(contextProductos)
+
+  const { productos } = pContext
+
+  const tempCatalog = []
+
+  for(let i = 0; i < 8; i++)
+    tempCatalog.push({
+      id: productos[i].id,
+      item: (<Producto {...productos[i]} />)
+    })
+
   const breakPoints = {
     1501: {
       slidesPerView: 4
@@ -74,18 +38,18 @@ const Inicio = () => {
     <>
       <section className={styles.inicio}>
         <div className={styles.banner}>
-          <img src={require('../../../img/banner/banner.jpg').default} alt="banner"/>
+          <img src={require('../../../img/banner/banner.jpg').default} alt="banner" />
         </div>
-        <SectionTitle title='Bienvenido!'/>
-        <About/>
-        <SectionTitle title='Categorias'/>
+        <SectionTitle title='Bienvenido!' />
+        <About />
+        <SectionTitle title='Categorias' />
         <Categorias />
-        <SectionTitle title='Ventajas'/>
+        <SectionTitle title='Ventajas' />
         <Ventajas />
-        <SectionTitle title='Productos Recientes'/>
+        <SectionTitle title='Productos Recientes' />
         <div className={styles.sliderContainer}>
-          <TouchSlider 
-            tempCatalog={tempCatalog} 
+          <TouchSlider
+            tempCatalog={tempCatalog}
             breakPoints={breakPoints}
             slides={1}
           />
