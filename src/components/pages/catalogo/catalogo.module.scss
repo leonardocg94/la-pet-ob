@@ -1,4 +1,4 @@
-@import '../../../scss/variables';
+@import "../../../scss/variables";
 
 .catalogo {
   width: 100%;
@@ -28,8 +28,6 @@
       outline: none;
       border: none;
       background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
-      color: white;
-      font-size: 1.6rem;
       border-radius: 50%;
       position: fixed;
       bottom: 3rem;
@@ -37,6 +35,45 @@
       width: 4rem;
       height: 4rem;
       z-index: 5;
+      .ftAnimated {
+        position: relative;
+        &,
+        &::after,
+        &::before {
+          transition: all 0.3s ease;
+          display: block;
+          width: 0.6rem;
+          height: 0.6rem;
+          background-color: white;
+          border-radius: 50%;
+          margin: auto;
+        }
+        &::after,
+        &::before {
+          content: "";
+          position: absolute;
+        }
+        &::after {
+          top: 1rem;
+        }
+        &::before {
+          bottom: 1rem;
+        }
+      }
+      .ftCloseAnimated {
+        background-color: transparent;
+        &::after,&::before {
+          width: 2.5rem; 
+          height: 3px;
+          border-radius: 5px;
+        }
+        &::after {
+          transform: rotateZ(45deg) translateX(-50%);
+        }
+        &::before {
+          transform: rotateZ(-45deg) translateX(-50%);
+        }
+      }
     }
     .pantalla {
       width: 2.5rem;
@@ -76,7 +113,7 @@
       .productosPosition {
         width: 100%;
       }
-      .btnFiltros{
+      .btnFiltros {
         display: block;
       }
       .filtros {

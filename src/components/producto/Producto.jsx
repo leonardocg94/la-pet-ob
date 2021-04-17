@@ -39,8 +39,8 @@ const Producto = ({ id, tipo, nombre, precio }) => {
         <div className={styles.backContent}>
           <h3>{nombre.replaceAll('-', ' ')}</h3>
           <p>{`$${precio}`}</p>
-          <div>
-            <Button route={`/${tipo}/${id}`} click={detailsHandler} text='DETALLES' />
+          <div className={styles.buttonContainer}>
+            <Button route={`/${tipo}/${id}`} click={detailsHandler} text='DETALLES'/>
           </div>
         </div>
       </div>

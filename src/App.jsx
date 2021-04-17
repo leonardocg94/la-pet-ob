@@ -6,19 +6,24 @@ import Catalogo from './components/pages/catalogo/Catalogo'
 import Detalles from './components/pages/detalles/Detalles'
 import StateProductos from './context/productos/StateProductos'
 import ScrollTotop from './components/scrollTotop/ScrollTotop'
+import StateCarrito from './context/carrito/StateCarrito'
+import Carrito from './components/pages/carrito/Carrito'
 
 const App = () => {
 
   return (
     <StateProductos>
-      <Router>
-        <ScrollTotop/>
-        <Layout>
-          <Route exact path='/'><Inicio /></Route>
-          <Route exact path='/catalogo'><Catalogo /></Route>
-          <Route exact path='/pelucas/:id'><Detalles /></Route>
-        </Layout>
-      </Router>
+      <StateCarrito>
+        <Router>
+          <ScrollTotop />
+          <Layout>
+            <Route exact path='/'><Inicio /></Route>
+            <Route exact path='/catalogo'><Catalogo /></Route>
+            <Route exact path='/carrito'><Carrito/></Route>
+            <Route exact path='/pelucas/:id'><Detalles /></Route>
+          </Layout>
+        </Router>
+      </StateCarrito>
     </StateProductos>
   );
 }

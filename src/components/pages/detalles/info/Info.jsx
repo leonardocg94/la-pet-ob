@@ -1,23 +1,51 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import contextCarrito from '../../../../context/carrito/contextCarrito'
 import styles from './info.module.scss'
+import Button from '../../../button/Button'
+import Message from '../../../message/Message'
 
 const Info = ({ productoSeleccionado }) => {
-
-  //EL comentario al final del use efect elimina el warning de las dependencias faltantes en el arreglo de dependencias
 
   const { nombre, precio, caracteristicas } = productoSeleccionado
   const { material, tipo, descripcion, tamano, color, peinado } = caracteristicas
 
+  const [show, setShow] = useState(false)
+
+  const cContext = useContext(contextCarrito)
+  const { addItem } = cContext
+
+  const addHandler = e => {
+    e.preventDefault()
+    let pro = {
+      ...productoSeleccionado,
+      cantidad: 1
+    }
+    addItem(pro)
+    setShow(true)
+    setTimeout(() => {
+      setShow(false)
+    }, 3000);
+  }
+
   return (
     <div className={styles.info}>
+      {show ? <Message texto='Producto Agregado' tipo='success'/> : null}
       <h3 className={styles.nombre} >{nombre}</h3>
       <p className={styles.precio} >${precio}</p>
       <p className={styles.descripcion}>{descripcion}</p>
       <p>- {material}</p>
       <p>- {tipo}</p>
       <p>- {tamano}cm</p>
-      <p>- {color}</p>
-      <p>- {peinado}</p>
+      <p>- {color.charAt(0).toUpperCase() + color.slice(1)}</p>
+      <p>- {peinado.charAt(0).toUpperCase() + peinado.slice(1)}</p>
+      <div className={styles.btnContainer}>
+        <Button
+          text='Agregar al carrito'
+          route='#'
+          color
+          click={addHandler}
+        />
+      </div>
       <div className={styles.contacto}>
         <p className={styles.cont}>Contactanos!</p>
         <a
@@ -37,7 +65,9 @@ const Info = ({ productoSeleccionado }) => {
           <i className="fab fa-facebook-messenger"></i>
         </a>
       </div>
+
     </div>
+
   )
 }
 

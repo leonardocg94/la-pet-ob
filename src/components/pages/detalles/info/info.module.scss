@@ -18,6 +18,17 @@
   .descripcion {
     margin-bottom: 2rem;
     line-height: 1.5;
+    position: relative;
+    padding-top: 2rem;
+    &::before {
+      content: '';
+      display: block;
+      width: 60%;
+      height: 3px;
+      background-color: $secondary-color-purple;
+      position: absolute;
+      top: 0;
+    }
   }
   p{
     font-size: 1.6rem;
@@ -29,15 +40,7 @@
     align-items: center;
     padding: 2rem;
     position: relative;
-    &::before {
-      content: '';
-      display: block;
-      width: 60%;
-      height: 3px;
-      background-color: $secondary-color-purple;
-      position: absolute;
-      top: 0;
-    }
+    justify-content: flex-end;
     .cont {
       font-size: 2rem;
       font-weight: bold;
@@ -53,5 +56,9 @@
       font-size: 3rem;
       margin-right: 2rem;
     }
+  }
+  .btnContainer {
+    margin: 3rem auto 0 auto;
+    max-width: 80%;
   }
 }

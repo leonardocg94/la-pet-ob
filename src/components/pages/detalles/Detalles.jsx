@@ -33,7 +33,6 @@ const Detalles = () => {
 
   const getRandomNumber = (max, min) => {
     const randomNumber = Math.ceil(Math.random() * (max - min) + min)
-    console.log(randomNumber)
     return randomNumber
   }
 
@@ -62,8 +61,7 @@ const Detalles = () => {
     }
     const relatedItems = []
     for (let i = 0; i < 4; i++)
-      relatedItems.push(productos[getRandomNumber(29, 0)])
-    console.log(relatedItems);  
+      relatedItems.push(productos[getRandomNumber(29, 0)])  
 
     return (
       <section className={detalles}>
