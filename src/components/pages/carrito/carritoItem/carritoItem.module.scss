@@ -11,6 +11,10 @@
   border-radius: 3px;
   color: white;
   font-size: 1.6rem;
+  .nombre {
+    text-decoration: none;
+    color: white;
+  }
   @include standarShadow;
   .controls {
     display: flex;

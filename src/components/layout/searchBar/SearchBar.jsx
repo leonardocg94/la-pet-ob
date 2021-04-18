@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import contextProductos from '../../../context/productos/contextProductos'
+import contextCarrito from '../../../context/carrito/contextCarrito'
 import { useHistory } from 'react-router-dom'
 import styles from './searchbar.module.scss'
 
@@ -8,15 +9,17 @@ const SearchBar = () => {
   const [searchVal, setSearchval] = useState('')
 
   const pContext = useContext(contextProductos)
+  const cContext = useContext(contextCarrito)
+  const { noItems } = cContext
   const { filtProducts } = pContext
 
   const searchHandler = e => { setSearchval(e.target.value) }
 
   const submitHandler = () => {
-    if(searchVal === '')
+    if (searchVal === '')
       return
     const auxVal = searchVal.toLocaleLowerCase()
-    filtProducts(auxVal)  
+    filtProducts(auxVal)
     history.push('/catalogo')
   }
 
@@ -38,6 +41,7 @@ const SearchBar = () => {
         </p>
         <p onClick={carritoHandler} className={styles.shoppingCartIcon} >
           <i className="fas fa-shopping-cart"></i>
+          <span className={styles.count}>{noItems}</span>
         </p>
       </div>
     </header>

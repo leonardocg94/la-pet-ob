@@ -7,7 +7,8 @@ const StateCarrito = ({ children }) => {
 
   const initialState = {
     items: [],
-    total: 0
+    total: 0,
+    noItems: 0
   }
 
   const [state, dispatch] = useReducer(reducerCarrito, initialState)
@@ -19,12 +20,14 @@ const StateCarrito = ({ children }) => {
 
   const updateTotal = () => {
     let total = 0
+    let noItems = 0
     state.items.forEach(item => {
       total += item.precio * item.cantidad
+      noItems += item.cantidad
     })
     dispatch({
       type: ACTUALIZAR_TOTAL,
-      payload: total
+      payload: { total, noItems }
     })
   }
 
@@ -86,6 +89,7 @@ const StateCarrito = ({ children }) => {
       value={{
         carItems: state.items,
         total: state.total,
+        noItems: state.noItems,
         addItem,
         incrementItem,
         decrementItem,

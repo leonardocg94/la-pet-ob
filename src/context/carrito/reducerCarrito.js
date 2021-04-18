@@ -5,7 +5,8 @@ const reducerCarrito = (state, action) => {
     case ACTUALIZAR_TOTAL:
       return {
         ...state,
-        total: action.payload
+        total: action.payload.total,
+        noItems: action.payload.noItems
       }
     case AGREGAR_CARRITO:
       return {

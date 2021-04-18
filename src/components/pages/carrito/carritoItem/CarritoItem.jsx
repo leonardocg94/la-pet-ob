@@ -1,15 +1,16 @@
 import React, { useContext } from 'react'
+import { NavLink } from 'react-router-dom'
 import contextCarrito from '../../../../context/carrito/contextCarrito'
 import styles from './carritoItem.module.scss'
 
-const CarritoItem = ({ id, cantidad, nombre, precio }) => {
+const CarritoItem = ({ id, cantidad, nombre, precio, tipo }) => {
 
   const cContext = useContext(contextCarrito)
   const { incrementItem, delItem, decrementItem } = cContext
 
   return (
     <div className={styles.carritoItem}>
-      <p className={styles.nombre}>{nombre}</p>
+      <NavLink to={`/${tipo}/${id}`} className={styles.nombre}>{nombre}</NavLink>
       <div className={styles.controls}>
         <div className={styles.quantity}>
           <button onClick={() => decrementItem(id)} className={styles.down}>
