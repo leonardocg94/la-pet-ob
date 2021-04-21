@@ -30,7 +30,7 @@ const Carrito = () => {
     return (
       <section className={styles.carrito}>
         <SectionTitle2 titulo='Carrito' />
-        <h3 className={styles.empty}>No hay Productos en el Carrito</h3>
+        <h2 className={styles.empty}>No hay Productos en el Carrito</h2>
       </section>
     )
   }

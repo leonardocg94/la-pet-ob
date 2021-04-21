@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 .searchBar {
   padding: 2rem 3rem;
@@ -14,7 +15,7 @@
 
     .searchIcon {
       font-size: 2.5rem;
-      color: $secondary-color-purple;
+      @include textGradient;
       cursor: pointer;
     }
 
@@ -39,12 +40,14 @@
       color: $secondary-color-purple;
       cursor: pointer;
       position: relative;
+      @include textGradient;
       .count {
         position: absolute;
         top: -1.2rem;
         right: -0.8rem;
         font-size: 1.6rem;
         font-weight: bold;
+        @include textGradient;
       }
     }
 

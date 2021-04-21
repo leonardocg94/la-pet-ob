@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import contextCarrito from '../../../../context/carrito/contextCarrito'
 import styles from './info.module.scss'
 import Button from '../../../button/Button'
@@ -14,6 +14,19 @@ const Info = ({ productoSeleccionado }) => {
   const cContext = useContext(contextCarrito)
   const { addItem } = cContext
 
+  useEffect(() => {
+    let mounted = true
+    if (show) {
+      setTimeout(() => {
+        if (mounted)
+          setShow(false)
+      }, 3000);
+    }
+    return () => {
+      mounted = false
+    }  
+  }, [show])
+
   const addHandler = e => {
     e.preventDefault()
     let pro = {
@@ -22,14 +35,11 @@ const Info = ({ productoSeleccionado }) => {
     }
     addItem(pro)
     setShow(true)
-    setTimeout(() => {
-      setShow(false)
-    }, 3000);
   }
 
   return (
     <div className={styles.info}>
-      {show ? <Message texto='Producto Agregado' tipo='success'/> : null}
+      {show ? <Message texto='Producto Agregado' tipo='success' /> : null}
       <h3 className={styles.nombre} >{nombre}</h3>
       <p className={styles.precio} >${precio}</p>
       <p className={styles.descripcion}>{descripcion}</p>

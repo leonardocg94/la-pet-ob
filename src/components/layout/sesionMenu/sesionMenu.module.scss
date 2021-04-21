@@ -1,0 +1,43 @@
+@import '../../../scss/variables';
+@import '../../../scss/mixins';
+
+.sesionMenu {
+  position: absolute;
+  top: 6rem;
+  right: 8.5rem;
+  border: 3px solid;
+  border-image-width: 3px;
+  border-image-slice: 1;
+  border-image-source: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+  // padding: 1rem;
+  @include standarShadow;
+
+  .link {
+    transition: all 0.3s ease;
+    padding: 1rem 2rem;
+    color: $primary-color-dark;
+    font-size: 1.6rem;
+    display: block;
+    text-decoration: none;
+    background-image: linear-gradient(120deg, $secondary-grey-light 0%, $secondary-grey-light 50%, $primary-color-dark 50%, $secondary-color-purple 100%);
+    background-size: 250%;
+    background-position: 0%;
+    &:hover {
+      background-position: 100%;
+      color: white;
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .sesionMenu {
+    position: fixed;
+    top: 11rem;
+    z-index: 9;
+  }
+}
+@media screen and (max-width: 620px) {
+  .sesionMenu {
+    right: 6.5rem;
+  }
+}

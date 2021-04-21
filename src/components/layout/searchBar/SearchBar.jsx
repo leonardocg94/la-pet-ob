@@ -4,7 +4,7 @@ import contextCarrito from '../../../context/carrito/contextCarrito'
 import { useHistory } from 'react-router-dom'
 import styles from './searchbar.module.scss'
 
-const SearchBar = () => {
+const SearchBar = ({show, menu, btn}) => {
   const history = useHistory()
   const [searchVal, setSearchval] = useState('')
 
@@ -27,6 +27,11 @@ const SearchBar = () => {
     history.push('/carrito')
   }
 
+  const menuHandler = () => {
+    const auxShow = !show
+    menu(auxShow)
+  }
+
   return (
     <header className={styles.searchBar} >
       <div className={styles.leftSide}>
@@ -36,7 +41,7 @@ const SearchBar = () => {
         <input onChange={searchHandler} className={styles.searchInput} type="search" placeholder='Nombre o Color...' />
       </div>
       <div className={styles.rightSide}>
-        <p className={styles.userIcon}>
+        <p ref={btn} onClick={menuHandler} className={styles.userIcon}>
           <i className="fas fa-user-circle"></i>
         </p>
         <p onClick={carritoHandler} className={styles.shoppingCartIcon} >

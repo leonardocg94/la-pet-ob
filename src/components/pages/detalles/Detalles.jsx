@@ -1,11 +1,12 @@
-import React, { useEffect, useContext } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import React, {  useContext } from 'react'
+import { useParams } from 'react-router-dom'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './detalles.module.scss'
 import TouchSlider from '../../touchSlider/TouchSlider'
 import Info from './info/Info'
 import SectionTitle from '../../sectionTitle/SectionTitle'
 import Producto from '../../producto/Producto'
+import NotFound from '../../notFound/NotFound'
 
 
 const Detalles = () => {
@@ -13,23 +14,11 @@ const Detalles = () => {
   const { detalles, mainContent, images, info } = styles
 
   const refId = useParams().id
-  const history = useHistory()
 
   const pContext = useContext(contextProductos)
-  const { productoSeleccionado, selectProduct, productos } = pContext
+  const {  productos } = pContext
 
-
-  useEffect(() => {
-    const pro = (productos.filter(ele => ele.id === refId))[0]
-    if (!pro)
-      history.push('/catalogo')
-    else
-      selectProduct(pro)
-
-    return () => {
-      selectProduct(null)
-    }
-  }, [refId]) // eslint-disable-line react-hooks/exhaustive-deps
+  const product = (productos.filter(ele => ele.id === refId))[0]
 
   const getRandomNumber = (max, min) => {
     const randomNumber = Math.ceil(Math.random() * (max - min) + min)
@@ -37,7 +26,7 @@ const Detalles = () => {
   }
 
 
-  if (productoSeleccionado) {
+  if (product) {
     const imgSty = {
       height: '100%',
       verticalAlign: 'top',
@@ -47,7 +36,7 @@ const Detalles = () => {
       borderRadius: '3px'
     }
     const tempCatalog = []
-    const { id, nombre, tipo } = productoSeleccionado
+    const { id, nombre, tipo } = product
     for (let i = 1; i < 5; i++) {
       const img = <img
         src={require(`../../../img/${tipo}/${id}_${nombre}/${i}.jpg`).default}
@@ -61,7 +50,7 @@ const Detalles = () => {
     }
     const relatedItems = []
     for (let i = 0; i < 4; i++)
-      relatedItems.push(productos[getRandomNumber(29, 0)])  
+      relatedItems.push(productos[getRandomNumber(29, 0)])
 
     return (
       <section className={detalles}>
@@ -74,12 +63,12 @@ const Detalles = () => {
             />
           </div>
           <div className={info}>
-            <Info productoSeleccionado={productoSeleccionado} />
+            <Info productoSeleccionado={product} />
           </div>
         </div>
         <SectionTitle title='Productos que quiza te interesen' />
         <div className={styles.relatedProducts}>
-          {relatedItems.map((ele,i) => (
+          {relatedItems.map((ele, i) => (
             <div key={i} className={styles.productContainer}>
               <Producto {...ele} />
             </div>
@@ -88,7 +77,9 @@ const Detalles = () => {
       </section>
     )
   } else {
-    return null
+    return (
+      <NotFound texto='Producto no encontrado'/>
+    )
   }
 }
 

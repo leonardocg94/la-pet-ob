@@ -2,7 +2,6 @@
 
 .catalogo {
   width: 100%;
-
   .positioning {
     margin: 4rem 0;
     width: 100%;
@@ -86,7 +85,7 @@
       z-index: 2;
       transition: all 0.6s ease;
       &.grow {
-        transform: scale(100);
+        transform: scale(120);
       }
       visibility: hidden;
     }
