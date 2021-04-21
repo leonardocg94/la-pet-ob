@@ -14,17 +14,6 @@
       padding: 5rem 2rem;
     }
   }
-  .relatedProducts {
-    width: 100%;
-    padding: 2rem 4rem;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-    .productContainer{
-      width: 20%;
-      height: 40rem;
-    }
-  }
 }
 
 @media screen and (max-width: 1440px) {
@@ -37,11 +26,6 @@
         width: 35%;
       }
     }
-    .relatedProducts {
-      .productContainer {
-        width: 23%;
-      }
-    }
   }
 }
 @media screen and (max-width: 1210px) {
@@ -49,11 +33,6 @@
     .mainContent {
       .images {
         padding: 2rem 0.5rem;
-      }
-    }
-    .relatedProducts {
-      .productContainer {
-        width: 30%;
       }
     }
   }
@@ -69,24 +48,12 @@
         width: 100%;
       }
     }
-    .relatedProducts {
-      .productContainer {
-        width: 45%;
-        margin-bottom: 2rem;
-      }
-    }
   }
 }
 @media screen and (max-width: 550px) {
   .detalles {
     .mainContent {
       width: 100%;
-    }
-    .relatedProducts {
-      padding: 2rem;
-      .productContainer {
-        width: 100%;
-      }
     }
   }
 }

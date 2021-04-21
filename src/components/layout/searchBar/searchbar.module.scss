@@ -17,6 +17,8 @@
       font-size: 2.5rem;
       @include textGradient;
       cursor: pointer;
+      border: none;
+      outline: none;
     }
 
     .searchInput {

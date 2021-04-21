@@ -15,7 +15,8 @@ const SearchBar = ({show, menu, btn}) => {
 
   const searchHandler = e => { setSearchval(e.target.value) }
 
-  const submitHandler = () => {
+  const submitHandler = e => {
+    e.preventDefault()
     if (searchVal === '')
       return
     const auxVal = searchVal.toLocaleLowerCase()
@@ -34,12 +35,12 @@ const SearchBar = ({show, menu, btn}) => {
 
   return (
     <header className={styles.searchBar} >
-      <div className={styles.leftSide}>
-        <p onClick={submitHandler} className={styles.searchIcon}>
+      <form onSubmit={submitHandler} className={styles.leftSide}>
+        <button type='submit' className={styles.searchIcon}>
           <i className="fas fa-search"></i>
-        </p>
+        </button>
         <input onChange={searchHandler} className={styles.searchInput} type="search" placeholder='Nombre o Color...' />
-      </div>
+      </form>
       <div className={styles.rightSide}>
         <p ref={btn} onClick={menuHandler} className={styles.userIcon}>
           <i className="fas fa-user-circle"></i>

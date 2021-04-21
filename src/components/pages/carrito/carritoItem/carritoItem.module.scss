@@ -7,13 +7,15 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  background-color: $primary-color-light;
-  border-radius: 3px;
-  color: white;
+  color: $primary-color-dark;
   font-size: 1.6rem;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-width: 3px;
+  border-image-source: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+
   .nombre {
     text-decoration: none;
-    color: white;
   }
   @include standarShadow;
   .controls {
@@ -37,3 +39,17 @@
   }
 }
 
+@media screen and (max-width: 500px) {
+  .carritoItem {
+    flex-wrap: wrap;
+    .nombre{
+      width: 100%;
+      text-align: center;
+    }
+    .controls {
+      width: 100%;
+      margin-top: 2rem;
+      justify-content: space-evenly;
+    }
+  }
+}

@@ -3,6 +3,7 @@ import contextCarrito from '../../../context/carrito/contextCarrito'
 import styles from './carrito.module.scss'
 import SectionTitle2 from '../../sectionTitle2/SectionTitle2'
 import CarritoItem from './carritoItem/CarritoItem'
+import RelatedProducts from '../../relatedProducts/RelatedProducts'
 
 const Carrito = () => {
 
@@ -21,9 +22,9 @@ const Carrito = () => {
             </div>
           ))}
 
-
         </div>
-        <p style={{fontSize: '2rem'}}>{total}</p>
+        <p className={styles.total}>Total: ${total}</p>
+        <RelatedProducts/>
       </section>
     )
   } else {

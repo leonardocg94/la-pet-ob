@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './catalogo.module.scss'
+import NotFound from '../../notFound/NotFound'
 import SectionTitle2 from '../../sectionTitle2/SectionTitle2'
 import ContenedorProductos from './contenedorProductos/ContenedorProductos'
 import Filtros from './filtros/Filtros'
@@ -35,7 +36,10 @@ const Catalogo = () => {
           <Filtros />
         </div>
         <div className={productosPosition}>
-          <ContenedorProductos productos={filteredProducts} />
+          {filteredProducts.length === 0
+            ? <NotFound texto='Sin resultados' />
+            : <ContenedorProductos productos={filteredProducts} />
+          }
         </div>
         <button onClick={filtrosHandler} className={btnFiltros}><span className={showFiltros ? [ftAnimated,ftCloseAnimated].join(' ') : ftAnimated}></span></button>
         <div className={showFiltros ? [pantalla, grow].join(' ') : pantalla}></div>

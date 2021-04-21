@@ -1,12 +1,11 @@
-import React, {  useContext } from 'react'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './detalles.module.scss'
 import TouchSlider from '../../touchSlider/TouchSlider'
 import Info from './info/Info'
-import SectionTitle from '../../sectionTitle/SectionTitle'
-import Producto from '../../producto/Producto'
 import NotFound from '../../notFound/NotFound'
+import RelatedProducts from '../../relatedProducts/RelatedProducts'
 
 
 const Detalles = () => {
@@ -16,14 +15,9 @@ const Detalles = () => {
   const refId = useParams().id
 
   const pContext = useContext(contextProductos)
-  const {  productos } = pContext
+  const { productos } = pContext
 
   const product = (productos.filter(ele => ele.id === refId))[0]
-
-  const getRandomNumber = (max, min) => {
-    const randomNumber = Math.ceil(Math.random() * (max - min) + min)
-    return randomNumber
-  }
 
 
   if (product) {
@@ -48,9 +42,6 @@ const Detalles = () => {
         item: img
       })
     }
-    const relatedItems = []
-    for (let i = 0; i < 4; i++)
-      relatedItems.push(productos[getRandomNumber(29, 0)])
 
     return (
       <section className={detalles}>
@@ -66,19 +57,13 @@ const Detalles = () => {
             <Info productoSeleccionado={product} />
           </div>
         </div>
-        <SectionTitle title='Productos que quiza te interesen' />
-        <div className={styles.relatedProducts}>
-          {relatedItems.map((ele, i) => (
-            <div key={i} className={styles.productContainer}>
-              <Producto {...ele} />
-            </div>
-          ))}
-        </div>
+        <RelatedProducts />
+
       </section>
     )
   } else {
     return (
-      <NotFound texto='Producto no encontrado'/>
+      <NotFound texto='Producto no encontrado' />
     )
   }
 }
