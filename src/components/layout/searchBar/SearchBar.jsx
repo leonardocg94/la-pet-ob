@@ -4,9 +4,10 @@ import contextCarrito from '../../../context/carrito/contextCarrito'
 import { useHistory } from 'react-router-dom'
 import styles from './searchbar.module.scss'
 
-const SearchBar = ({show, menu, btn}) => {
-  const history = useHistory()
+const SearchBar = ({ show, menu, btn }) => {
   const [searchVal, setSearchval] = useState('')
+
+  const history = useHistory()
 
   const pContext = useContext(contextProductos)
   const cContext = useContext(contextCarrito)
@@ -21,7 +22,7 @@ const SearchBar = ({show, menu, btn}) => {
       return
     const auxVal = searchVal.toLocaleLowerCase()
     filtProducts(auxVal)
-    history.push('/catalogo')
+    history.replace('/catalogo')
   }
 
   const carritoHandler = () => {
@@ -39,7 +40,12 @@ const SearchBar = ({show, menu, btn}) => {
         <button type='submit' className={styles.searchIcon}>
           <i className="fas fa-search"></i>
         </button>
-        <input onChange={searchHandler} className={styles.searchInput} type="search" placeholder='Nombre o Color...' />
+        <input
+          onChange={searchHandler}
+          className={styles.searchInput}
+          type="search"
+          placeholder='Nombre o Color...'
+        />
       </form>
       <div className={styles.rightSide}>
         <p ref={btn} onClick={menuHandler} className={styles.userIcon}>

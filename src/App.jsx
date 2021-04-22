@@ -12,6 +12,7 @@ import Carrito from './components/pages/carrito/Carrito'
 import Registro from './components/pages/registro/Registro'
 import NotFound from './components/notFound/NotFound'
 
+
 const App = () => {
 
   return (

@@ -853,15 +853,15 @@ const StateProductos = ({ children }) => {
         }
       }
     ],
-    productoSeleccionado: null
+    search: null
   }
 
   const [state, dispatch] = useReducer(reducerProductos, initialState)
 
-  const selectProduct = idPro => {
+  const selectProduct = srch => {
     dispatch({
       type: SELECCIONAR_PRODUCTO,
-      payload: idPro
+      payload: srch
     })
   }
 
@@ -882,11 +882,12 @@ const StateProductos = ({ children }) => {
     <contextProductos.Provider
       value={{
         productos: state.productos,
-        productoSeleccionado: state.productoSeleccionado,
+        search: state.search,
         filteredProducts: state.filteredProducts,
         selectProduct,
         filtProducts,
         resetProducts
+
       }}
     >
       {children}

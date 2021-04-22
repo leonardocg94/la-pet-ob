@@ -1,4 +1,5 @@
 @import "../../../scss/variables";
+@import "../../../scss/mixins";
 
 .catalogo {
   width: 100%;
@@ -88,6 +89,21 @@
         transform: scale(120);
       }
       visibility: hidden;
+    }
+  }
+  .loadMore {
+    display: block;
+    margin: 4rem 4rem 4rem auto;
+    font-size: 2.3rem;
+    font-family: 'Pacifico', cursive;
+    font-weight: 400;
+    @include textGradient;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover{
+      text-shadow: 0 1rem 0.5rem rgba($primary-color-dark,0.2);
     }
   }
 }

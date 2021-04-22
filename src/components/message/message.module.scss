@@ -9,7 +9,8 @@
   font-size: 1.7rem;
   position: fixed;
   top: 18rem;
-  right: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
   z-index: 1;
   &.error {

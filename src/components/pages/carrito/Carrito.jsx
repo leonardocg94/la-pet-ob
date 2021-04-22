@@ -10,6 +10,8 @@ const Carrito = () => {
   const cContext = useContext(contextCarrito)
   const { total, carItems } = cContext
 
+  
+
   if (carItems.length > 0) {
     return (
       <section className={styles.carrito}>
@@ -24,7 +26,7 @@ const Carrito = () => {
 
         </div>
         <p className={styles.total}>Total: ${total}</p>
-        <RelatedProducts/>
+        <RelatedProducts />
       </section>
     )
   } else {
@@ -32,6 +34,7 @@ const Carrito = () => {
       <section className={styles.carrito}>
         <SectionTitle2 titulo='Carrito' />
         <h2 className={styles.empty}>No hay Productos en el Carrito</h2>
+        <RelatedProducts />
       </section>
     )
   }

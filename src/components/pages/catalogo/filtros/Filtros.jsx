@@ -11,11 +11,7 @@ const Filtros = () => {
     },
     {
       nombre: 'Tamaño',
-      categories: ['55','60','70']
-    },
-    {
-      nombre: 'Peinado',
-      categories: ['Lacio','Rizado','Chino','Ondulado']
+      categories: ['55cm','60cm','70cm']
     },
     {
       nombre: 'Tipo',

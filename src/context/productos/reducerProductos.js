@@ -8,7 +8,7 @@ const reducerProyectos = (state,action) => {
     case SELECCIONAR_PRODUCTO:
       return {
         ...state,
-        productoSeleccionado: action.payload
+        search: action.payload
       }
     case BUSCAR_PRODUCTOS:
       return {
@@ -17,9 +17,7 @@ const reducerProyectos = (state,action) => {
           ele.caracteristicas.descripcion.toLowerCase().includes(action.payload)
           || ele.nombre.toLowerCase().includes(action.payload)
           || ele.caracteristicas.color.toLowerCase().includes(action.payload)
-          || ele.caracteristicas.peinado.toLowerCase().includes(action.payload)
           || ele.caracteristicas.tipo.toLowerCase().includes(action.payload)
-          || ele.caracteristicas.material.toLowerCase().includes(action.payload)
         ))
       }  
     case REINICIAR_PRODUCTOS:

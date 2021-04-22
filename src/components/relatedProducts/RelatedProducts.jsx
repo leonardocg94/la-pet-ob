@@ -1,4 +1,5 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
+import { useLocation } from 'react-router-dom'
 import styles from './relatedProducts.module.scss'
 import contextProductos from '../../context/productos/contextProductos'
 import SectionTitle from '../sectionTitle/SectionTitle'
@@ -9,15 +10,25 @@ const RelatedProducts = () => {
   const pContext = useContext(contextProductos)
   const { productos } = pContext
 
-  const relatedItems = []
+  const location = useLocation()
 
   const getRandomNumber = (max, min) => {
     const randomNumber = Math.ceil(Math.random() * (max - min) + min)
     return randomNumber
   }
 
-  for (let i = 0; i < 4; i++)
-    relatedItems.push(productos[getRandomNumber(29, 0)])
+  const loadItems = () => {
+    const relatedItems = []
+    for (let i = 0; i < 4; i++)
+      relatedItems.push(productos[getRandomNumber(29, 0)])
+    return relatedItems
+  }
+
+  const relatedItems = useMemo(() => loadItems(),
+// eslint-disable-next-line react-hooks/exhaustive-deps
+ [location.pathname])   
+
+
 
   return (
     <>
