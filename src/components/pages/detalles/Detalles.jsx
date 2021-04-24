@@ -26,6 +26,8 @@ const Detalles = () => {
   }, [refId])
 
   useEffect(() => {
+    selectProduct(refId)
+    setLoading(false)
     return () => {
       selectProduct(null)
     }

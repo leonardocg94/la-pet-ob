@@ -94,7 +94,11 @@ const Catalogo = () => {
       </section>
     )
   } else {
-    return null
+    return (
+      <section className={catalogo}>
+        <h2 style={{margin: '4rem 0', fontSize: '2rem', textAlign: 'center'}}>Loading...</h2>
+      </section>
+    )
   }
 
 }
