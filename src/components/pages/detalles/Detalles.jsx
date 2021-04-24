@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './detalles.module.scss'
@@ -7,14 +7,6 @@ import Info from './info/Info'
 import NotFound from '../../notFound/NotFound'
 import RelatedProducts from '../../relatedProducts/RelatedProducts'
 
-const imgSty = {
-  height: '100%',
-  verticalAlign: 'top',
-  objectFit: 'cover',
-  margin: '0 auto',
-  display: 'block',
-  borderRadius: '3px'
-}
 
 const Detalles = () => {
 
@@ -27,37 +19,29 @@ const Detalles = () => {
   const pContext = useContext(contextProductos)
   const { selectedProduct, selectProduct } = pContext
 
-  let tempCatalog
-
   useEffect(() => {
     selectProduct(refId)
     setLoading(false)
-    return () => {
-      selectProduct('-1')
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refId])
 
-  const loadImg = () => {
-    const tempCatalog = []
-    const { id, nombre, tipo } = selectedProduct
-    for (let i = 1; i < 5; i++) {
-      const img = <img
-        src={require(`../../../img/${tipo}/${id}_${nombre}/${i}.jpg`).default}
-        alt={`Peluca ${nombre}`}
-        style={imgSty}
-      />
-      tempCatalog.push({
-        id: i,
-        item: img
-      })
+  useEffect(() => {
+    return () => {
+      selectProduct(null)
     }
-    return tempCatalog
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  if(loading) {
+    return (
+      <div>
+        <h2 style={{fontSize: '3rem',
+      marginTop: '4rem'}}>Loading...</h2>
+      </div>
+    )
   }
 
   if (selectedProduct) {
-
-    tempCatalog = loadImg()
 
     return (
       <section className={detalles}>
@@ -66,11 +50,11 @@ const Detalles = () => {
             <TouchSlider
               breakPoints={{}}
               slides={1}
-              tempCatalog={loading ? [<h2>loading</h2>] : tempCatalog}
+              tempCatalog={loading ? [<h2>loading...</h2>] : selectedProduct.imgs}
             />
           </div>
           <div className={info}>
-            <Info productoSeleccionado={selectedProduct} />
+            <Info productoSeleccionado={selectedProduct.product} />
           </div>
         </div>
         <RelatedProducts />

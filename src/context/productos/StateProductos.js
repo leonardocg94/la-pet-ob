@@ -859,11 +859,42 @@ const StateProductos = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducerProductos, initialState)
 
-  const selectProduct = id => {
-    const product = (state.productos.filter(ele => ele.id === id))[0]
+  const selectProduct = proid => {
+    const product = (state.productos.filter(ele => ele.id === proid))[0]
+    const imgs = []
+    const imgSty = {
+      height: '100%',
+      verticalAlign: 'top',
+      objectFit: 'cover',
+      margin: '0 auto',
+      display: 'block',
+      borderRadius: '3px'
+    }
+
+    if (product) {
+      const { id, nombre, tipo } = product
+      for (let i = 1; i < 5; i++) {
+        const img = <img
+          src={require(`../../img/${tipo}/${id}_${nombre}/${i}.jpg`).default}
+          alt={`Peluca ${nombre}`}
+          style={imgSty}
+        />
+        imgs.push({
+          id: i,
+          item: img
+        })
+      }
+    } else {
+      dispatch({
+        type: SELECCIONAR_PRODUCTO,
+        payload: null
+      })
+      return
+    }
+
     dispatch({
       type: SELECCIONAR_PRODUCTO,
-      payload: product
+      payload: { product, imgs }
     })
   }
 

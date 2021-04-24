@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import styles from './aside.module.scss'
 import Menu from '../../menu/Menu'
 
@@ -22,9 +22,9 @@ const Aside = () => {
         : `${styles.navigation}`}
     >
       <div className={styles.topContainer}>
-        <NavLink onClick={hideMenu} className={styles.storeName} exact to='/'>
+        <Link onClick={hideMenu} className={styles.storeName} exact to='/'>
           <h1>La Petite Obsession</h1>
-        </NavLink>
+        </Link>
 
         <button onClick={showMenu} className={styles.btnMenu}>
           <span
