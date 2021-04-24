@@ -56,7 +56,7 @@ const Detalles = () => {
   }
 
   if (selectedProduct) {
-    
+
     tempCatalog = loadImg()
 
     return (
@@ -66,7 +66,7 @@ const Detalles = () => {
             <TouchSlider
               breakPoints={{}}
               slides={1}
-              tempCatalog={loading ? ['Loading...'] : tempCatalog}
+              tempCatalog={loading ? [<h2>loading</h2>] : tempCatalog}
             />
           </div>
           <div className={info}>
