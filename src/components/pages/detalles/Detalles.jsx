@@ -1,4 +1,4 @@
-import React, { useContext, useEffect} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './detalles.module.scss'
@@ -18,6 +18,8 @@ const imgSty = {
 
 const Detalles = () => {
 
+  const [loading, setLoading] = useState(true)
+
   const { detalles, mainContent, images, info } = styles
 
   const refId = useParams().id
@@ -25,8 +27,11 @@ const Detalles = () => {
   const pContext = useContext(contextProductos)
   const { selectedProduct, selectProduct } = pContext
 
+  let tempCatalog
+
   useEffect(() => {
     selectProduct(refId)
+    setLoading(false)
     return () => {
       selectProduct('-1')
     }
@@ -51,9 +56,8 @@ const Detalles = () => {
   }
 
   if (selectedProduct) {
-
-    const tempCatalog = loadImg()
-
+    
+    tempCatalog = loadImg()
 
     return (
       <section className={detalles}>
@@ -62,7 +66,7 @@ const Detalles = () => {
             <TouchSlider
               breakPoints={{}}
               slides={1}
-              tempCatalog={tempCatalog}
+              tempCatalog={loading ? ['Loading...'] : tempCatalog}
             />
           </div>
           <div className={info}>
