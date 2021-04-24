@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect} from 'react'
 import { useParams } from 'react-router-dom'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './detalles.module.scss'
@@ -7,6 +7,14 @@ import Info from './info/Info'
 import NotFound from '../../notFound/NotFound'
 import RelatedProducts from '../../relatedProducts/RelatedProducts'
 
+const imgSty = {
+  height: '100%',
+  verticalAlign: 'top',
+  objectFit: 'cover',
+  margin: '0 auto',
+  display: 'block',
+  borderRadius: '3px'
+}
 
 const Detalles = () => {
 
@@ -15,22 +23,19 @@ const Detalles = () => {
   const refId = useParams().id
 
   const pContext = useContext(contextProductos)
-  const { productos } = pContext
+  const { selectedProduct, selectProduct } = pContext
 
-  const product = (productos.filter(ele => ele.id === refId))[0]
-
-
-  if (product) {
-    const imgSty = {
-      height: '100%',
-      verticalAlign: 'top',
-      objectFit: 'cover',
-      margin: '0 auto',
-      display: 'block',
-      borderRadius: '3px'
+  useEffect(() => {
+    selectProduct(refId)
+    return () => {
+      selectProduct('-1')
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refId])
+
+  const loadImg = () => {
     const tempCatalog = []
-    const { id, nombre, tipo } = product
+    const { id, nombre, tipo } = selectedProduct
     for (let i = 1; i < 5; i++) {
       const img = <img
         src={require(`../../../img/${tipo}/${id}_${nombre}/${i}.jpg`).default}
@@ -42,6 +47,13 @@ const Detalles = () => {
         item: img
       })
     }
+    return tempCatalog
+  }
+
+  if (selectedProduct) {
+
+    const tempCatalog = loadImg()
+
 
     return (
       <section className={detalles}>
@@ -54,7 +66,7 @@ const Detalles = () => {
             />
           </div>
           <div className={info}>
-            <Info productoSeleccionado={product} />
+            <Info productoSeleccionado={selectedProduct} />
           </div>
         </div>
         <RelatedProducts />

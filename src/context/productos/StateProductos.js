@@ -853,15 +853,17 @@ const StateProductos = ({ children }) => {
         }
       }
     ],
-    search: null
+    search: null,
+    selectedProduct: null
   }
 
   const [state, dispatch] = useReducer(reducerProductos, initialState)
 
-  const selectProduct = srch => {
+  const selectProduct = id => {
+    const product = (state.productos.filter(ele => ele.id === id))[0]
     dispatch({
       type: SELECCIONAR_PRODUCTO,
-      payload: srch
+      payload: product
     })
   }
 
@@ -884,10 +886,10 @@ const StateProductos = ({ children }) => {
         productos: state.productos,
         search: state.search,
         filteredProducts: state.filteredProducts,
+        selectedProduct: state.selectedProduct,
         selectProduct,
         filtProducts,
         resetProducts
-
       }}
     >
       {children}

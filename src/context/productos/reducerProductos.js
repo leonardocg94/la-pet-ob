@@ -8,7 +8,7 @@ const reducerProyectos = (state,action) => {
     case SELECCIONAR_PRODUCTO:
       return {
         ...state,
-        search: action.payload
+        selectedProduct: action.payload
       }
     case BUSCAR_PRODUCTOS:
       return {
