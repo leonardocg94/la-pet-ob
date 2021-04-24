@@ -1,0 +1,73 @@
+.color {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  &:not(:first-child){
+    margin-left: 5rem;
+  }
+}
+.check {
+  display: none;
+}
+
+.check:checked + .rojo {
+  box-shadow: 0 0 1.5rem red;
+}
+.check:checked + .verde {
+  box-shadow: 0 0 1.5rem green;
+}
+.check:checked + .azul {
+  box-shadow: 0 0 1.5rem blue;
+}
+.check:checked + .morado {
+  box-shadow: 0 0 1.5rem purple;
+}
+.check:checked + .gris {
+  box-shadow: 0 0 1.5rem grey;
+}
+.check:checked + .rubio {
+  box-shadow: 0 0 1.5rem yellow;
+}
+.check:checked + .castaño {
+  box-shadow: 0 0 1.5rem brown;
+}
+.check:checked + .rosa {
+  box-shadow: 0 0 1.5rem pink;
+}
+
+.rojo {
+  background-color: red;
+}
+
+.verde {
+  background-color: green;
+}
+
+.azul {
+  background-color: blue;
+}
+
+.morado {
+  background-color: purple;
+}
+
+.gris {
+  background-color: grey;
+}
+
+.rubio {
+  background-color: yellow;
+}
+
+.castaño {
+  background-color: brown;
+}
+
+.rosa {
+  background-color: pink;
+}

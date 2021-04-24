@@ -2,54 +2,87 @@
 @import "../../../../scss/mixins";
 
 .carritoItem {
-  width: 100%;
-  padding: 2rem;
   display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  color: $primary-color-dark;
-  font-size: 1.6rem;
   border: 3px solid;
   border-image-slice: 1;
   border-image-width: 3px;
-  border-image-source: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+  border-image-source: linear-gradient(120deg, $primary-color-dark,
+  $secondary-color-purple);
+  height: 20rem;
 
-  .nombre {
-    text-decoration: none;
-  }
   @include standarShadow;
-  .controls {
+  .image {
+    width: 38%;
+    overflow: hidden;
+    img {
+      height: 100%;
+      vertical-align: top;
+      object-fit: cover;
+    }
+  }
+  .info {
+    width: 62%;
+    padding: 2rem;
     display: flex;
-    .quantity {
-      .cantidad {
-        margin: 0 1rem;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: $primary-color-dark;
+    font-size: 1.6rem;
+    text-align: center;
+
+    .nombre {
+      text-decoration: none;
+      width: 100%;
+    }
+    .controls {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .quantity {
+        .cantidad {
+          margin: 0 1rem;
+        }
+      }
+      .quantity,
+      .eliminar,
+      .precio {
+        width: 33%;
       }
     }
-    .quantity,
-    .eliminar {
-      margin-right: 3rem;
+    button {
+      outline: none;
+      border: none;
+      @include textGradient;
+      font-size: 1.6rem;
+      cursor: pointer;
     }
-  }
-  button {
-    outline: none;
-    border: none;
-    @include textGradient;
-    font-size: 1.6rem;
-    cursor: pointer;
   }
 }
 
 @media screen and (max-width: 500px) {
   .carritoItem {
     flex-wrap: wrap;
-    .nombre{
+    height: max-content;
+    .image {
       width: 100%;
       text-align: center;
+      img {
+        width: 50%;
+      }
     }
-    .controls {
+    .info {
+      flex-wrap: wrap;
       width: 100%;
-      margin-top: 2rem;
-      justify-content: space-evenly;
+      .nombre {
+        width: 100%;
+        text-align: center;
+      }
+      .controls {
+        width: 100%;
+        margin-top: 2rem;
+        justify-content: space-evenly;
+      }
     }
   }
 }

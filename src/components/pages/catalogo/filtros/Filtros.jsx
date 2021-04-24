@@ -7,7 +7,7 @@ const Filtros = () => {
   const tempCategories = [
     {
       nombre: 'Color',
-      categories: ['Rojo','Azul','Verde','Blanco','Rubio','Castaño','Rosa','Plata']
+      categories: ['rojo','azul','verde','gris','rubio','castaño','rosa','morado']
     },
     {
       nombre: 'Tamaño',

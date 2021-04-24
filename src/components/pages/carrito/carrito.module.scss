@@ -2,11 +2,18 @@
 
 .carrito {
   min-height: 75vh;
+  width: 100%;
   .itemContainer {
+    width: 90%;
+    max-width: 100rem;  
+    margin: 0 auto;  
     margin-bottom: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     .item {
-      width: 90%;
-      max-width: 100rem;
+      width: 48%;
+      max-width: 50rem;
       margin: 0 auto;
       &:not(:last-child) {
         margin-bottom: 2rem;
@@ -29,5 +36,16 @@
     margin: 0 auto;
     margin-bottom: 4rem;
     background-color: antiquewhite;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .carrito {
+    .itemContainer {
+      .item {
+        width: 100%;
+        max-width: 100rem;
+      }
+    }
   }
 }

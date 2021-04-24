@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import SingleFiltro from './singleFiltro/SingleFiltro'
+import ColorFilter from './colorFilter/ColorFilter'
 import styles from './groupFiltro.module.scss'
 
 const GroupFiltro = ({ nombre, categories }) => {
@@ -7,7 +8,7 @@ const GroupFiltro = ({ nombre, categories }) => {
   const { groupFiltro, nombreFiltro, filtroContenedor, plusIcon,
     resIcon, show } = styles
 
-  const [drop, setDrop] = useState(false)  
+  const [drop, setDrop] = useState(false)
 
   const dropHandler = () => {
     const auxDrop = !drop
@@ -18,18 +19,22 @@ const GroupFiltro = ({ nombre, categories }) => {
     <div className={groupFiltro}>
       <h3 onClick={dropHandler} className={nombreFiltro}>
         {nombre}
-        <span className={drop 
-          ? [plusIcon,resIcon].join(' ')
+        <span className={drop
+          ? [plusIcon, resIcon].join(' ')
           : [plusIcon].join(' ')
         }></span>
       </h3>
-      <div className={drop 
-        ? [filtroContenedor,show].join(' ')
+      <div className={drop
+        ? [filtroContenedor, show].join(' ')
         : [filtroContenedor].join(' ')
       }>
-        {categories.map(ele => (
-          <SingleFiltro key={ele} nombre={ele} id={ele} />
-        ))}
+        {categories.map(ele => {
+          if(nombre === 'Color')
+            return <ColorFilter key={ele} color={ele} />
+          else {
+            return <SingleFiltro key={ele} nombre={ele} id={ele}/>
+          }  
+        })}
       </div>
     </div>
   )
