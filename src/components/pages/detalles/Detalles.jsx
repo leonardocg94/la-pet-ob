@@ -32,40 +32,51 @@ const Detalles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  if(loading) {
-    return (
-      <div>
-        <h2 style={{fontSize: '3rem',
-      marginTop: '4rem'}}>Loading...</h2>
-      </div>
-    )
-  }
+  let displayed
 
-  if (selectedProduct) {
-
-    return (
+  if (loading) {
+    displayed = (
       <section className={detalles}>
-        <div className={mainContent}>
-          <div className={images}>
-            <TouchSlider
-              breakPoints={{}}
-              slides={1}
-              tempCatalog={loading ? [<h2>loading...</h2>] : selectedProduct.imgs}
-            />
-          </div>
-          <div className={info}>
-            <Info productoSeleccionado={selectedProduct.product} />
-          </div>
-        </div>
-        <RelatedProducts />
-
+        <h2 style={{
+          marginBottom: '4rem',
+          fontSize: '2.5rem'
+        }}>Cargando...</h2>
       </section>
     )
   } else {
-    return (
-      <NotFound texto='Producto no encontrado' />
-    )
+    if (selectedProduct) {
+
+      displayed = (
+        <section className={detalles}>
+          <div className={mainContent}>
+            <div className={images}>
+              <TouchSlider
+                breakPoints={{}}
+                slides={1}
+                tempCatalog={loading ? [<h2>loading...</h2>] : selectedProduct.imgs}
+              />
+            </div>
+            <div className={info}>
+              <Info productoSeleccionado={selectedProduct.product} />
+            </div>
+          </div>
+          <RelatedProducts />
+
+        </section>
+      )
+    } else {
+      displayed = (
+        <NotFound texto='Producto no encontrado' />
+      )
+    }
   }
+
+  return (
+    <>
+      {displayed}
+    </>
+  )
+
 }
 
 export default Detalles
