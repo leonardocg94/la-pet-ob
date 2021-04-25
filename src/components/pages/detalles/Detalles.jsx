@@ -21,10 +21,14 @@ const Detalles = () => {
   const { selectedProduct, selectProduct } = pContext
 
   useEffect(() => {
+    setLoading(true)
     selectProduct(refId)
     setLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refId])
+
+  
+ 
 
   useEffect(() => {
     selectProduct(refId)
