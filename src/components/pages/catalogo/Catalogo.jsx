@@ -5,6 +5,7 @@ import NotFound from '../../notFound/NotFound'
 import SectionTitle2 from '../../sectionTitle2/SectionTitle2'
 import ContenedorProductos from './contenedorProductos/ContenedorProductos'
 import Filtros from './filtros/Filtros'
+import Spinner from '../../spinner/Spinner'
 
 const Catalogo = () => {
 
@@ -95,8 +96,8 @@ const Catalogo = () => {
     )
   } else {
     return (
-      <section className={catalogo}>
-        <h2 style={{margin: '4rem 0', fontSize: '2rem', textAlign: 'center'}}>Loading...</h2>
+      <section className={styles.load}>
+        <Spinner/>
       </section>
     )
   }

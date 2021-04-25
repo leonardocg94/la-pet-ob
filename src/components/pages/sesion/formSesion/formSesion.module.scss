@@ -1,0 +1,39 @@
+@import '../../../../scss/variables';
+@import '../../../../scss/mixins';
+
+.form {
+  width: 100%;
+  border: 5px solid;
+  border-image-slice: 1;
+  border-image-width: 5px;
+  border-image-source: linear-gradient(120deg,$primary-color-dark,$secondary-color-purple);
+  padding: 5rem 3rem;
+  @include standarShadow;
+
+  .formOption {
+    &:not(:last-child){
+      margin-bottom: 5rem;
+    }
+  }
+
+  .btnSubmit {
+    display: block;
+    border: none;
+    outline: none;
+    padding: 2rem;
+    border-radius: 3px;
+    margin: 0 auto;
+    font-size: 1.6rem;
+    background-image: linear-gradient(120deg, $primary-color-dark, $secondary-color-purple);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    @include standarShadow;
+    &:hover { 
+      transform: translateY(-0.5rem);
+    }
+    &:active {
+      transform: translateY(-0.2rem);
+    }
+  }
+}

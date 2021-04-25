@@ -1,43 +1,42 @@
 .color {
-  width: 2rem;
-  height: 2rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border-radius: 50%;
   display: inline-block;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-right: 1rem;
   cursor: pointer;
-  &:not(:first-child){
-    margin-left: 5rem;
-  }
+  margin: 1rem;
 }
 .check {
   display: none;
 }
 
+.check:checked + .color {
+  transform: scale(1.3);
+}
+
 .check:checked + .rojo {
-  box-shadow: 0 0 1.5rem red;
+  box-shadow: 0 0 1.8rem red;
 }
 .check:checked + .verde {
-  box-shadow: 0 0 1.5rem green;
+  box-shadow: 0 0 1.8rem green;
 }
 .check:checked + .azul {
-  box-shadow: 0 0 1.5rem blue;
+  box-shadow: 0 0 1.8rem blue;
 }
 .check:checked + .morado {
-  box-shadow: 0 0 1.5rem purple;
+  box-shadow: 0 0 1.8rem purple;
 }
 .check:checked + .gris {
-  box-shadow: 0 0 1.5rem grey;
+  box-shadow: 0 0 1.8rem grey;
 }
 .check:checked + .rubio {
-  box-shadow: 0 0 1.5rem yellow;
+  box-shadow: 0 0 1.8rem yellow;
 }
 .check:checked + .castaño {
-  box-shadow: 0 0 1.5rem brown;
+  box-shadow: 0 0 1.8rem brown;
 }
 .check:checked + .rosa {
-  box-shadow: 0 0 1.5rem pink;
+  box-shadow: 0 0 1.8rem pink;
 }
 
 .rojo {

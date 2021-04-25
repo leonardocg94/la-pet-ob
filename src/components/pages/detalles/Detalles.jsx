@@ -6,6 +6,7 @@ import TouchSlider from '../../touchSlider/TouchSlider'
 import Info from './info/Info'
 import NotFound from '../../notFound/NotFound'
 import RelatedProducts from '../../relatedProducts/RelatedProducts'
+import Spinner from '../../spinner/Spinner'
 
 
 const Detalles = () => {
@@ -38,11 +39,8 @@ const Detalles = () => {
 
   if (loading) {
     displayed = (
-      <section className={detalles}>
-        <h2 style={{
-          marginBottom: '4rem',
-          fontSize: '2.5rem'
-        }}>Cargando...</h2>
+      <section className={styles.load}>
+        <Spinner/>
       </section>
     )
   } else {

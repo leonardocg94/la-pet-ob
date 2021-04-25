@@ -1,5 +1,12 @@
 @import '../../../scss/variables';
 
+.load {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .detalles {
   width: 100%;
   min-height: 75vh;

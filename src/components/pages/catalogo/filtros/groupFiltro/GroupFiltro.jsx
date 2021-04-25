@@ -3,12 +3,14 @@ import SingleFiltro from './singleFiltro/SingleFiltro'
 import ColorFilter from './colorFilter/ColorFilter'
 import styles from './groupFiltro.module.scss'
 
-const GroupFiltro = ({ nombre, categories }) => {
+const GroupFiltro = ({ nombre, categories, getValue, val }) => {
 
   const { groupFiltro, nombreFiltro, filtroContenedor, plusIcon,
     resIcon, show } = styles
 
   const [drop, setDrop] = useState(false)
+
+  
 
   const dropHandler = () => {
     const auxDrop = !drop
@@ -24,15 +26,22 @@ const GroupFiltro = ({ nombre, categories }) => {
           : [plusIcon].join(' ')
         }></span>
       </h3>
-      <div className={drop
+      <div onChange={getValue} value={val} id={nombre} className={drop
         ? [filtroContenedor, show].join(' ')
         : [filtroContenedor].join(' ')
       }>
         {categories.map(ele => {
           if(nombre === 'Color')
-            return <ColorFilter key={ele} color={ele} />
+            return <ColorFilter 
+              key={ele} 
+              color={ele}
+            />
           else {
-            return <SingleFiltro key={ele} nombre={ele} id={ele}/>
+            return <SingleFiltro 
+              key={ele} 
+              nombre={ele} 
+              id={nombre}
+            />
           }  
         })}
       </div>

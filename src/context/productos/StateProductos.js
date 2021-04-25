@@ -905,6 +905,7 @@ const StateProductos = ({ children }) => {
     })
   }
 
+
   const resetProducts = () => {
     dispatch({
       type: REINICIAR_PRODUCTOS

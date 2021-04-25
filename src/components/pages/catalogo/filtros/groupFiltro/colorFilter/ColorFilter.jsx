@@ -6,7 +6,7 @@ const ColorFilter = ({ color }) => {
 
   return (
     <>
-      <input className={styles.check} type='checkbox' name={color} id={color} />
+      <input className={styles.check} value={color} type='radio' name='Color' id={color} />
       <label className={sty} htmlFor={color}></label>
     </>
   )

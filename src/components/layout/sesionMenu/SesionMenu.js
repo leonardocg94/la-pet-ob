@@ -21,7 +21,7 @@ const SesionMenu = ({setShow}) => {
     return (
       <div className={styles.sesionMenu}>
         <NavLink
-          to='/'
+          to='/sesion'
           className={styles.link}
           onClick={() => setShow(false)}>Iniciar Sesion</NavLink>
         <NavLink

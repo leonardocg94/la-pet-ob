@@ -1,6 +1,13 @@
 @import "../../../scss/variables";
 @import "../../../scss/mixins";
 
+.load {
+  min-height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .catalogo {
   width: 100%;
   .positioning {

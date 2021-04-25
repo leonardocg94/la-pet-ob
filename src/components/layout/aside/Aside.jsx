@@ -22,7 +22,7 @@ const Aside = () => {
         : `${styles.navigation}`}
     >
       <div className={styles.topContainer}>
-        <Link onClick={hideMenu} className={styles.storeName} exact to='/'>
+        <Link onClick={hideMenu} className={styles.storeName} to='/'>
           <h1>La Petite Obsession</h1>
         </Link>
 
