@@ -8,18 +8,19 @@ import NotFound from '../../notFound/NotFound'
 import RelatedProducts from '../../relatedProducts/RelatedProducts'
 import Spinner from '../../spinner/Spinner'
 
-
+//Componente principal que muestra los detalles de un producto
 const Detalles = () => {
-
+  //Estado que nos indica si el componente esta cargando
   const [loading, setLoading] = useState(true)
 
-  const { detalles, mainContent, images, info } = styles
-
+  //id del producto pasado como parametro en la url
   const refId = useParams().id
 
+  //Contexto de los productos y sus metodos a usar
   const pContext = useContext(contextProductos)
   const { selectedProduct, selectProduct } = pContext
 
+  //Cuando el id es cambiado se reselecciona el producto en el contexto de productos
   useEffect(() => {
     setLoading(true)
     selectProduct(refId)
@@ -27,9 +28,7 @@ const Detalles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refId])
 
-  
- 
-
+  //se selecciona el producto al renderizar el y se deselecciona al salir del componente detalles
   useEffect(() => {
     selectProduct(refId)
     setLoading(false)
@@ -39,37 +38,41 @@ const Detalles = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  let displayed
-
+  //Contenido condicional del componente
+  let content
   if (loading) {
-    displayed = (
+    content = (
       <section className={styles.load}>
         <Spinner/>
       </section>
     )
   } else {
     if (selectedProduct) {
+      content = (
+        <section className={styles.detalles}>
 
-      displayed = (
-        <section className={detalles}>
-          <div className={mainContent}>
-            <div className={images}>
+          <div className={styles.mainContent}>
+
+            <div className={styles.images}>
               <TouchSlider
                 breakPoints={{}}
                 slides={1}
-                tempCatalog={loading ? [<h2>loading...</h2>] : selectedProduct.imgs}
+                tempCatalog={selectedProduct.imgs}
               />
             </div>
-            <div className={info}>
+
+            <div className={styles.info}>
               <Info productoSeleccionado={selectedProduct.product} />
             </div>
+
           </div>
+          
           <RelatedProducts />
 
         </section>
       )
     } else {
-      displayed = (
+      content = (
         <NotFound texto='Producto no encontrado' />
       )
     }
@@ -77,7 +80,7 @@ const Detalles = () => {
 
   return (
     <>
-      {displayed}
+      {content}
     </>
   )
 

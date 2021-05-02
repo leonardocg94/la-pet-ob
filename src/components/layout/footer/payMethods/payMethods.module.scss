@@ -1,0 +1,29 @@
+@import '../../../../scss/variables';
+
+
+.payMethods {
+  width: 100%;
+  background-color: $secondary-grey-light;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  img {
+    height: 3rem;
+
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .payMethods {
+    padding: 2rem 0.5rem;
+    img {
+      height: 2rem;
+      &:not(:last-child) {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

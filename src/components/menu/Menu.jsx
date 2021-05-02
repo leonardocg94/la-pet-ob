@@ -2,10 +2,12 @@ import React from 'react'
 import styles from './menu.module.scss'
 import { Link } from 'react-router-dom'
 
+//componente con los links del menu principal, recibe el manejador de mostrar u ocultar menu
 const Menu = ({ click }) => {
 
   return (
     <nav className={styles.menu}>
+
       <Link 
         onClick={click} 
         to='/catalogo'
@@ -13,12 +15,15 @@ const Menu = ({ click }) => {
       >
         Pelucas
       </Link>
+
       <Link onClick={click} to='/catalogo' className={styles.menuItem}>
         Accesorios
       </Link>
+
       <Link onClick={click} to='/catalogo' className={styles.menuItem}>
         Lenceria
       </Link>
+      
     </nav>
   )
 }

@@ -1,6 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
-import { useHistory } from 'react-router-dom'
-import contextUsuario from '../../../../context/usuario/contextUsuario'
+import React, { useState, useEffect } from 'react'
 import styles from './formRegistro.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
 import Message from '../../../message/Message'
@@ -19,11 +17,6 @@ const FormRegistro = () => {
     message: '',
     err: ''
   }
-
-  const history = useHistory()
-
-  const uContext = useContext(contextUsuario)
-  const { registrarUsuario } = uContext
 
   const [form, setForm] = useState(initialState)
   const { nombre, email, password, cpassword } = form
@@ -64,16 +57,11 @@ const FormRegistro = () => {
       return
     }
 
-    registrarUsuario({ name: nombre, email, password })
     setMessg({
       show: true,
       message: 'Usuario creado exitosamente',
       err: 'success'
     })
-
-    setTimeout(() => {
-      history.push('/sesion')
-    }, 3000);
 
     setForm(initialState)
   }

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styles from './inicio.module.scss'
 import contextProductos from '../../../context/productos/contextProductos'
 import SectionTitle from '../../sectionTitle/SectionTitle'
@@ -8,20 +8,28 @@ import Categorias from './categorias/Categorias'
 import TouchSlider from '../../touchSlider/TouchSlider'
 import Producto from '../../producto/Producto'
 
+//Componente principal de inicio
 const Inicio = () => {
 
+  //Uso del contexto de productos y su atributo productos
   const pContext = useContext(contextProductos)
-
   const { productos } = pContext
 
-  const tempCatalog = []
-
-  for (let i = 0; i < 8; i++)
-    tempCatalog.push({
+  //Funcion que carga los productos recientes
+  const recentProductsLoad = () => {
+    const arr = []
+    for (let i = 0; i < 8; i++)
+    arr.push({
       id: productos[i].id,
       item: (<Producto {...productos[i]} />)
     })
+    return arr
+  }  
 
+  //Variable que contiene los productos recientes
+  const recentProducts = useMemo(recentProductsLoad, [productos])
+
+  //Objecto que contiene los brakpoints del slider
   const breakPoints = {
     1501: {
       slidesPerView: 4
@@ -36,23 +44,29 @@ const Inicio = () => {
 
   return (
     <section className={styles.inicio}>
+
       <div className={styles.banner}>
         <img src={require('../../../img/banner/banner.jpg').default} alt="banner" />
       </div>
+
       <SectionTitle title='Bienvenido!' />
       <About />
+
       <SectionTitle title='Categorias' />
       <Categorias />
+
       <SectionTitle title='Ventajas' />
       <Ventajas />
+
       <SectionTitle title='Productos Recientes' />
       <div className={styles.sliderContainer}>
         <TouchSlider
-          tempCatalog={tempCatalog}
+          tempCatalog={recentProducts}
           breakPoints={breakPoints}
           slides={1}
         />
       </div>
+
     </section>
   )
 }

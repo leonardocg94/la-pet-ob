@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useContext } from 'react'
-import contextUsuario from '../../../../context/usuario/contextUsuario'
-import { useHistory } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
 import styles from './formSesion.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
 import Message from '../../../message/Message'
 
 const FormSesion = () => {
-
-  const history = useHistory()
 
   const initialState = {
     email: '',
@@ -19,9 +15,6 @@ const FormSesion = () => {
     message: '',
     err: ''
   }
-
-  const uContext = useContext(contextUsuario)
-  const { logearUsuario } = uContext
 
   const [form, setForm] = useState(initialState)
   const { email, password } = form
@@ -40,7 +33,6 @@ const FormSesion = () => {
         mounted = false
       }
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show])
 
@@ -63,10 +55,10 @@ const FormSesion = () => {
 
     }
 
-    logearUsuario({email, password})
+
 
     setForm(initialState)
-    history.push('/')
+
   }
 
   return (

@@ -3,13 +3,13 @@ import styles from './button.module.scss'
 import { Link } from 'react-router-dom'
 
 //Componente Button recibe un texto, color del boton, manejador de click y ruta a la que se redirige
-const Button = ({text, color, click, route}) => {
+const Button = ({ text, color, click, route }) => {
   //clases del componente
-  const clases = color ? [styles.btn, styles.btnPurple] : [styles.btn]
+  const clases = color ? [styles.btn, styles.btnPurple] : [styles.btn, styles.btnWhite]
   return (
-    <Link 
-      to={route} 
-      onClick={click} 
+    <Link
+      to={route}
+      onClick={click}
       className={clases.join(' ')}
     >
       {text}

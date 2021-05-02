@@ -47,20 +47,6 @@
       width: 30%;
     }
   }
-  .payMethods {
-    width: 100%;
-    background-color: $secondary-grey-light;
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    img {
-      height: 3rem;
-
-      &:not(:last-child) {
-        margin-right: 2rem;
-      }
-    }
-  }
 }
 
 @media screen and (max-width:1000px) {
@@ -83,15 +69,6 @@
     &Info {
       .usefulLinks, .socials {
         width: 100%;
-      }
-    }
-    .payMethods {
-      padding: 2rem 0.5rem;
-      img {
-        height: 2rem;
-        &:not(:last-child) {
-          margin-right: 0.5rem;
-        }
       }
     }
   }

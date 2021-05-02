@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
     <>
       <Aside />
       <div className={styles.rightContainer}>
-        <SearchBar menu={setShow} show={show} />
+        <SearchBar setShow={setShow} show={show} />
         {sessMenu}
         <main className={styles.mainContent}>
           {children}
