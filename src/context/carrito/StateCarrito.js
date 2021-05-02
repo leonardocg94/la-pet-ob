@@ -7,7 +7,8 @@ import { AGREGAR_CARRITO, INCREMENTAR_ITEM, DECREMENTAR_ITEM, ACTUALIZAR_TOTAL, 
 const StateCarrito = ({ children }) => {
 
   //Estado inicial del carrito
-  const initialState = {
+  const initialState = JSON.parse(localStorage.getItem('carPetOb')) 
+  || {
     items: [],
     total: 0,
     noItems: 0
@@ -35,6 +36,7 @@ const StateCarrito = ({ children }) => {
       type: ACTUALIZAR_TOTAL,
       payload: { total, noItems }
     })
+    localStorage.setItem('carPetOb', JSON.stringify(state))
   }
 
   //Funcion que agrega un producto al carrito

@@ -25,7 +25,7 @@ const App = () => {
               <Route exact path='/'><Inicio /></Route>
               <Route
                 exact
-                path='/catalogo'
+                path='/catalogo/:category'
                 render={() => <Catalogo key={Math.random().toString()}
                 />}></Route>
               {/* <Route exact path='/catalogo'><Catalogo /></Route> */}

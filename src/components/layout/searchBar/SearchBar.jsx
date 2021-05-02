@@ -31,8 +31,8 @@ const SearchBar = ({ show, setShow }) => {
     const auxVal = searchVal.toLocaleLowerCase()
     searchProducts(auxVal)
     setSearchval('')
-    if(location.pathname !== '/catalogo')
-      history.push('/catalogo')
+    if(!location.pathname.includes('/catalogo'))
+      history.push('/catalogo/Pelucas')
   }
 
   //redireccionamiento al carrito al clickear el icono de carrito

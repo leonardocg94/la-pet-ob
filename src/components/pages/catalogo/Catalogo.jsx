@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import contextProductos from '../../../context/productos/contextProductos'
 import styles from './catalogo.module.scss'
 import NotFound from '../../notFound/NotFound'
@@ -13,6 +14,9 @@ const Catalogo = () => {
   //useo del contexto de productos y el atributo de productos filtrados 
   const pContext = useContext(contextProductos)
   const { productos, resetProducts } = pContext
+
+  //Variable que contiene el tpo de catalogo en el que estamos
+  const category = useParams().category
 
   //Variable que muestra los productos por pagina mostrados por el catalogo
   const prodPerPage = 8
@@ -38,8 +42,8 @@ const Catalogo = () => {
 
   //funcion para mostrar los productos en pantalla de 8 en 8
   const getProductos = () => { return catgProducts.slice(0, next) }
-  
-  
+
+
   //Cuando cambian los productos en general se reinicia la paginacion
   useEffect(() => {
     setLoading(true)
@@ -47,7 +51,7 @@ const Catalogo = () => {
     setNext(prodPerPage)
     setLoading(false)
   }, [productos])
-  
+
   //reinicia los productos al salir del catalogo
   useEffect(() => {
     return () => {
@@ -55,7 +59,14 @@ const Catalogo = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-  
+
+  if (
+    category !== 'Pelucas' &&
+    category !== 'Accesorios' &&
+    category !== 'Lenceria'
+  )
+    return <NotFound texto='Categoria no encontrada' />
+
   //variable que contiene el contenido condicional del componente
   let content
   if (!loading) {
@@ -93,7 +104,7 @@ const Catalogo = () => {
     content = (
       <section className={styles.catalogo}>
 
-        <SectionTitle2 titulo='Catalogo' />
+        <SectionTitle2 titulo={`Catalogo de ${category}`} />
 
         <div className={styles.positioning}>
 

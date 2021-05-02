@@ -5,7 +5,8 @@ import { dbproductos } from '../../data/data'
 import {
   SELECCIONAR_PRODUCTO,
   BUSCAR_PRODUCTOS,
-  REINICIAR_PRODUCTOS
+  REINICIAR_PRODUCTOS,
+  FIJAR_CATEGORIA
 } from '../../types/productsTypes'
 
 //Estado global de los productos
@@ -84,6 +85,14 @@ const StateProductos = ({ children }) => {
     })
   }
 
+  //Selecciona la categoria del catalogo
+  const setCategory = cat => {
+    dispatch({
+      type: FIJAR_CATEGORIA,
+      payload: cat
+    })
+  }
+
   return (
     <contextProductos.Provider
       value={{
@@ -93,7 +102,8 @@ const StateProductos = ({ children }) => {
         noAllItems: state.noAllItems,
         selectProduct,
         searchProducts,
-        resetProducts
+        resetProducts,
+        setCategory
       }}
     >
       {children}
