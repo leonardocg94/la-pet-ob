@@ -6,28 +6,29 @@ import SectionTitle2 from '../../sectionTitle2/SectionTitle2'
 import ContenedorProductos from './contenedorProductos/ContenedorProductos'
 import Filtros from './filtros/Filtros'
 import Spinner from '../../spinner/Spinner'
+import LoadComp from '../../loadComp/LoadComp'
 
 //Componente principal catalogo
 const Catalogo = () => {
-
-  //Estado que muestra u oculta los filtros en dispositivos moviles
-  const [showFiltros, setShowiltros] = useState(false)
-  //Estado que muestra si el componente se esta renderizando
-  const [loading, setLoading] = useState(true)
+  //useo del contexto de productos y el atributo de productos filtrados 
+  const pContext = useContext(contextProductos)
+  const { productos, resetProducts } = pContext
 
   //Variable que muestra los productos por pagina mostrados por el catalogo
   const prodPerPage = 8
 
-  //Estado para saber si es el primer renderizado
-  const [first, setFirst] = useState(true)
-  //Estado para saber cuantos productos mostrar de la lista
-  const [next, setNext] = useState(prodPerPage)
-  //Estado que contiene los productos a mostrar de la lista
-  const [slicedArray, setSlicedarray] = useState([])
+  //Productos locales en el catalogo
+  const [catgProducts, setCatgproducts] = useState([])
 
-  //useo del contexto de productos y el atributo de productos filtrados 
-  const pContext = useContext(contextProductos)
-  const { filteredProducts } = pContext
+
+  //Estado que muestra u oculta los filtros en dispositivos moviles
+  const [showFiltros, setShowiltros] = useState(false)
+  //Estado que muestra si el componente se esta renderizando
+  const [loading, setLoading] = useState()
+
+  //Estado para saber cuantos productos mostrar de la lista
+  const [next, setNext] = useState()
+
 
   //Manejador para ocultar o mostrar los filtros 
   const filtrosHandler = () => {
@@ -35,37 +36,26 @@ const Catalogo = () => {
     setShowiltros(auxShow)
   }
 
-  //Manejador para cargar mas productos de la lista
-  const handleLoad = () => {
-    setSlicedarray(filteredProducts.slice(0, next))
-    setNext(next + prodPerPage)
-  }
-
-  //Cargar los primeros por pagina de la lista
+  //funcion para mostrar los productos en pantalla de 8 en 8
+  const getProductos = () => { return catgProducts.slice(0, next) }
+  
+  
+  //Cuando cambian los productos en general se reinicia la paginacion
   useEffect(() => {
-    console.log('mount')
-    handleLoad()
+    setLoading(true)
+    setCatgproducts([...productos])
+    setNext(prodPerPage)
     setLoading(false)
+  }, [productos])
+  
+  //reinicia los productos al salir del catalogo
+  useEffect(() => {
     return () => {
-      console.log('unmounted')
+      resetProducts()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
-  //Cada vez que los productos filtrados cambian se reinicia la carga de productos por pagina de la lista
-  useEffect(() => {
-    if (first) {
-      console.log('first')
-      setFirst(false)
-    } else {
-      console.log('not first')
-      setSlicedarray([])
-      setNext(0)
-      handleLoad()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [filteredProducts])
-
+  
   //variable que contiene el contenido condicional del componente
   let content
   if (!loading) {
@@ -85,14 +75,17 @@ const Catalogo = () => {
     }
 
     //variable del contenido condicional de los productos mostrados
-    const displayedProducts = filteredProducts.length === 0
+    const displayedProducts = catgProducts.length === 0
       ? <NotFound texto='Sin resultados' />
-      : <ContenedorProductos productos={slicedArray} />
+      : <ContenedorProductos productos={getProductos()} />
 
     //Variable que muestra condicionalmente el boton de cargarmas
-    const btnLoadMore = next <= filteredProducts.length + prodPerPage
+    const btnLoadMore = next <= catgProducts.length
       ?
-      <button onClick={handleLoad} className={styles.loadMore}>
+      <button
+        onClick={() => setNext(next + prodPerPage)}
+        className={styles.loadMore}
+      >
         Ver más...
       </button>
       : null
@@ -128,9 +121,9 @@ const Catalogo = () => {
     )
   } else {
     content = (
-      <section className={styles.load}>
+      <LoadComp>
         <Spinner />
-      </section>
+      </LoadComp>
     )
   }
 

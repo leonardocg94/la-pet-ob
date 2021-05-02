@@ -6,7 +6,6 @@ import Button from '../button/Button'
 const Producto = ({ id, tipo, nombre, precio }) => {
   //Estado que maneja si la card de un producto esta volteada o no
   const [flip, setFlip] = useState(false)
-
   //Manejador del volteo de la card de los productos
   const flipHandler = () => {
     const auxFlip = !flip

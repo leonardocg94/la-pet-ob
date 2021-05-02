@@ -13,14 +13,12 @@ const reducerProyectos = (state,action) => {
     case BUSCAR_PRODUCTOS:
       return {
         ...state,
-        filteredProducts: action.payload
+        productos: action.payload
       }  
     case REINICIAR_PRODUCTOS:
-      const auxProd = [...state.productos]  
       return {
-        ...state,
-        filteredProducts: auxProd
-      }  
+        ...action.payload
+      }
     default:
       return state
   }

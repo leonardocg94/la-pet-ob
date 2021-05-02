@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import contextProductos from '../../../context/productos/contextProductos'
 import contextCarrito from '../../../context/carrito/contextCarrito'
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import styles from './searchbar.module.scss'
 
 //Componente barra de busqueda que recibe el estado y el manejador para ocultar el menu de sesion
@@ -12,12 +12,13 @@ const SearchBar = ({ show, setShow }) => {
 
   //variable history para cambiar de ruta
   const history = useHistory()
+  const location = useLocation()
 
   //Contexto de productos y contexto de carrito
   const pContext = useContext(contextProductos)
   const cContext = useContext(contextCarrito)
   const { noItems } = cContext
-  const { filtProducts } = pContext
+  const { searchProducts } = pContext
 
   //manejador de cambio en el input de busqueda
   const searchHandler = e => { setSearchval(e.target.value) }
@@ -28,9 +29,10 @@ const SearchBar = ({ show, setShow }) => {
     if (searchVal === '')
       return
     const auxVal = searchVal.toLocaleLowerCase()
-    filtProducts(auxVal)
+    searchProducts(auxVal)
     setSearchval('')
-    history.push('/catalogo')
+    if(location.pathname !== '/catalogo')
+      history.push('/catalogo')
   }
 
   //redireccionamiento al carrito al clickear el icono de carrito
@@ -73,7 +75,7 @@ const SearchBar = ({ show, setShow }) => {
         </p>
 
       </div>
-      
+
     </header>
   )
 }
