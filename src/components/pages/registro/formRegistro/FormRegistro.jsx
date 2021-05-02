@@ -3,8 +3,9 @@ import styles from './formRegistro.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
 import Message from '../../../message/Message'
 
+//Componente del formulario de registro
 const FormRegistro = () => {
-
+  //Estado inicial de los inputs del registro
   const initialState = {
     nombre: '',
     email: '',
@@ -12,18 +13,21 @@ const FormRegistro = () => {
     cpassword: ''
   }
 
+  //Estado inicial del posible mensaje del registro
   const errorInitialState = {
     show: false,
     message: '',
     err: ''
   }
 
+  //Estado de los inputs del registro y su destructuracion
   const [form, setForm] = useState(initialState)
   const { nombre, email, password, cpassword } = form
-
+  //Estado del mensaje y su destructuracion
   const [messg, setMessg] = useState(errorInitialState)
   const { show, message, err } = messg
 
+  //Cuando un mensaje es desplegado se elimina a los 3 segundos
   useEffect(() => {
     let mounted = true
     if (show) {
@@ -35,10 +39,10 @@ const FormRegistro = () => {
         mounted = false
       }
     }
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show])
 
+  //Maneja el onchange de los inputs
   const changeHandler = e => {
     setForm({
       ...form,
@@ -46,6 +50,7 @@ const FormRegistro = () => {
     })
   }
 
+  //Maneja el submit del formulario
   const submitHandler = e => {
     e.preventDefault()
     if (nombre === '' || email === '' || password === '' || cpassword === '') {
@@ -66,9 +71,14 @@ const FormRegistro = () => {
     setForm(initialState)
   }
 
+  //Variable del despliegue condicional del mensaje
+  const mssg = show ? <Message texto={message} tipo={err} /> : null
+
   return (
     <form onSubmit={submitHandler} className={styles.form}>
-      {show ? <Message texto={message} tipo={err} /> : null}
+
+      {mssg}
+
       <div className={styles.formOption}>
         <FormGroup
           ptype='text'
@@ -78,6 +88,7 @@ const FormRegistro = () => {
           val={nombre}
         />
       </div>
+
       <div className={styles.formOption}>
         <FormGroup
           ptype='email'
@@ -87,6 +98,7 @@ const FormRegistro = () => {
           val={email}
         />
       </div>
+
       <div className={styles.formOption}>
         <FormGroup
           ptype='password'
@@ -96,6 +108,7 @@ const FormRegistro = () => {
           val={password}
         />
       </div>
+
       <div className={styles.formOption}>
         <FormGroup
           ptype='password'
@@ -105,6 +118,7 @@ const FormRegistro = () => {
           val={cpassword}
         />
       </div>
+      
       <button className={styles.btnSubmit} type='submit'>
         Obtener Cuenta
       </button>

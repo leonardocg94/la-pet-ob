@@ -2,25 +2,13 @@ import React, { useState, useContext } from 'react'
 import styles from './filtros.module.scss'
 import contextProductos from '../../../../context/productos/contextProductos'
 import GroupFiltro from './groupFiltro/GroupFiltro'
+import { dbcategories } from '../../../../data/data'
 
 //Componente filtros que contiene el manejador para mostrar u ocultar filtros
 const Filtros = ({ show }) => {
 
   //Arreglo de categorias temporales
-  const tempCategories = [
-    {
-      nombre: 'Color',
-      categories: ['rojo', 'azul', 'verde', 'gris', 'rubio', 'castaño', 'rosa', 'morado']
-    },
-    {
-      nombre: 'Tamaño',
-      categories: ['55cm', '60cm', '70cm']
-    },
-    {
-      nombre: 'Tipo',
-      categories: ['Lacefront', 'Simulacion de Raiz']
-    }
-  ]
+  const tempCategories = dbcategories
 
   //Estado inicial de los filtros
   const initialState = {

@@ -3,25 +3,29 @@ import styles from './formSesion.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
 import Message from '../../../message/Message'
 
+//Componente del formulario para iniciar sesion
 const FormSesion = () => {
-
+  //Estado inicial de los inputs
   const initialState = {
     email: '',
     password: ''
   }
 
+  //Estado inicial de un posible mensaje
   const errorInitialState = {
     show: false,
     message: '',
     err: ''
   }
 
+  //Estado de los inputs y su destructuracion
   const [form, setForm] = useState(initialState)
   const { email, password } = form
-
+  //Estado del mensaje y su destructuracion
   const [messg, setMessg] = useState(errorInitialState)
   const { show, message, err } = messg
 
+  //Si un mensaje esta desplegado se borra a los 3 segundos
   useEffect(() => {
     let mounted = true
     if (show) {
@@ -36,6 +40,7 @@ const FormSesion = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show])
 
+  //Manejador del onchange de los inputs
   const changeHandler = e => {
     setForm({
       ...form,
@@ -43,6 +48,7 @@ const FormSesion = () => {
     })
   }
 
+  //Manejador del submit del formulario
   const submitHandler = e => {
     e.preventDefault()
     if (email === '' || password === '') {
@@ -52,18 +58,17 @@ const FormSesion = () => {
         err: 'error'
       })
       return
-
     }
-
-
-
     setForm(initialState)
-
   }
+
+  //Variable del despliegue condicional del mensaje
+  const mssg = show ? <Message texto={message} tipo={err} /> : null
 
   return (
     <form onSubmit={submitHandler} className={styles.form}>
-      {show ? <Message texto={message} tipo={err} /> : null}
+      {mssg}
+
       <div className={styles.formOption}>
         <FormGroup
           ptype='email'
@@ -73,6 +78,7 @@ const FormSesion = () => {
           val={email}
         />
       </div>
+
       <div className={styles.formOption}>
         <FormGroup
           ptype='password'
@@ -82,6 +88,7 @@ const FormSesion = () => {
           val={password}
         />
       </div>
+
       <button className={styles.btnSubmit} type='submit'>
         Iniciar Sesion
       </button>

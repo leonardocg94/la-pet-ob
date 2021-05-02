@@ -27,7 +27,11 @@ const Inicio = () => {
   }  
 
   //Variable que contiene los productos recientes
-  const recentProducts = useMemo(recentProductsLoad, [productos])
+  const recentProducts = useMemo(
+    () => recentProductsLoad(), 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [productos]
+  )
 
   //Objecto que contiene los brakpoints del slider
   const breakPoints = {

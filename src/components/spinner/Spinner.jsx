@@ -1,6 +1,7 @@
 import React from 'react'
 import styles from './spinner.module.scss'
 
+//Componente que despliega un spinner
 const Spinner = () => {
   return (
     <div className={styles.spinner}></div>
