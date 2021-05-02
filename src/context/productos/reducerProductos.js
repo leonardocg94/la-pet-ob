@@ -13,12 +13,7 @@ const reducerProyectos = (state,action) => {
     case BUSCAR_PRODUCTOS:
       return {
         ...state,
-        filteredProducts: state.productos.filter(ele => (
-          ele.caracteristicas.descripcion.toLowerCase().includes(action.payload)
-          || ele.nombre.toLowerCase().includes(action.payload)
-          || ele.caracteristicas.color.toLowerCase().includes(action.payload)
-          || ele.caracteristicas.tipo.toLowerCase().includes(action.payload)
-        ))
+        filteredProducts: action.payload
       }  
     case REINICIAR_PRODUCTOS:
       const auxProd = [...state.productos]  

@@ -6,7 +6,11 @@ const Menu = ({ click }) => {
 
   return (
     <nav className={styles.menu}>
-      <Link onClick={click} to='/catalogo' className={styles.menuItem}>
+      <Link 
+        onClick={click} 
+        to='/catalogo'
+        className={styles.menuItem}
+      >
         Pelucas
       </Link>
       <Link onClick={click} to='/catalogo' className={styles.menuItem}>

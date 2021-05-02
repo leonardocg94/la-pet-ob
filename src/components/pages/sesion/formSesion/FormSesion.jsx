@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import contextUsuario from '../../../../context/usuario/contextUsuario'
 import { useHistory } from 'react-router-dom'
 import styles from './formSesion.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
@@ -18,6 +19,9 @@ const FormSesion = () => {
     message: '',
     err: ''
   }
+
+  const uContext = useContext(contextUsuario)
+  const { logearUsuario } = uContext
 
   const [form, setForm] = useState(initialState)
   const { email, password } = form
@@ -56,10 +60,13 @@ const FormSesion = () => {
         err: 'error'
       })
       return
+
     }
 
-    history.push('/')
+    logearUsuario({email, password})
+
     setForm(initialState)
+    history.push('/')
   }
 
   return (

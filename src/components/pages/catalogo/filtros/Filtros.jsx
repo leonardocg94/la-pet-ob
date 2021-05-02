@@ -3,7 +3,7 @@ import styles from './filtros.module.scss'
 import contextProductos from '../../../../context/productos/contextProductos'
 import GroupFiltro from './groupFiltro/GroupFiltro'
 
-const Filtros = () => {
+const Filtros = ({ show }) => {
 
   const tempCategories = [
     {
@@ -34,10 +34,10 @@ const Filtros = () => {
 
   const handleSubmit = e => {
     e.preventDefault()
+    show()
   }
 
   const getValue = e => {
-    console.log(e.target.checked);
     setFilts({
       ...filts,
       [e.target.name]: e.target.value
@@ -47,20 +47,22 @@ const Filtros = () => {
   const clearFilters = () => {
     setFilts(initialState)
     resetProducts()
-  } 
+  }
 
   return (
     <form className={styles.formFilters} onSubmit={handleSubmit}>
       {tempCategories.map(ele => {
-        if(ele.nombre === 'Color') 
+        if (ele.nombre === 'Color')
           return <GroupFiltro val={Color} getValue={getValue} key={ele.nombre} {...ele} />
-        else if(ele.nombre === 'Tamaño') 
+        else if (ele.nombre === 'Tamaño')
           return <GroupFiltro val={Tamaño} getValue={getValue} key={ele.nombre} {...ele} />
-        else 
+        else
           return <GroupFiltro val={Tipo} getValue={getValue} key={ele.nombre} {...ele} />
       })}
       <button className={styles.btn} type='submit'>Filtrar</button>
-      <button onClick={clearFilters} className={styles.btn}>Eliminar Filtros</button>
+      <button onClick={clearFilters} className={styles.btn}>
+        Eliminar Filtros
+      </button>
     </form>
   )
 }

@@ -40,7 +40,7 @@ const Info = ({ productoSeleccionado }) => {
   return (
     <div className={styles.info}>
       {show ? <Message texto='Producto Agregado' tipo='success' /> : null}
-      <h3 className={styles.nombre} >{nombre}</h3>
+      <h3 className={styles.nombre} >{nombre.replaceAll('-',' ')}</h3>
       <p className={styles.precio} >${precio}</p>
       <p className={styles.descripcion}>{descripcion}</p>
       <p>- {material}</p>

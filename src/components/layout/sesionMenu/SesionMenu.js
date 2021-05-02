@@ -6,15 +6,23 @@ import styles from './sesionMenu.module.scss'
 const SesionMenu = ({setShow}) => {
 
   const uContext = useContext(contextUsuario)
-  const { loged } = uContext
+  const { loged, logoutUsuario } = uContext
 
-
+  const logoutHandler = () => {
+    logoutUsuario()
+    setShow(false)
+  }
 
   if (loged) {
     return (
       <div className={styles.sesionMenu}>
         <NavLink to='/' className={styles.link}>Perfil</NavLink>
         <NavLink to='/' className={styles.link}>Compras</NavLink>
+        <NavLink 
+          to='/' 
+          onClick={logoutHandler} 
+          className={styles.link}
+        >Cerrar sesión</NavLink>
       </div>
     )
   } else {

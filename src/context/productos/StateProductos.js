@@ -899,9 +899,16 @@ const StateProductos = ({ children }) => {
   }
 
   const filtProducts = str => {
+    const aux = state.productos.filter(ele => (
+      ele.caracteristicas.descripcion.toLowerCase().includes(str)
+      || ele.nombre.toLowerCase().includes(str)
+      || ele.caracteristicas.color.toLowerCase().includes(str)
+      || ele.caracteristicas.tipo.toLowerCase().includes(str)
+    ))
+    
     dispatch({
       type: BUSCAR_PRODUCTOS,
-      payload: str
+      payload: [...aux]
     })
   }
 

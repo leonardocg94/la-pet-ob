@@ -26,7 +26,7 @@ const GroupFiltro = ({ nombre, categories, getValue, val }) => {
           : [plusIcon].join(' ')
         }></span>
       </h3>
-      <div onChange={getValue} id={nombre} className={drop
+      <div id={nombre} className={drop
         ? [filtroContenedor, show].join(' ')
         : [filtroContenedor].join(' ')
       }>
@@ -36,6 +36,7 @@ const GroupFiltro = ({ nombre, categories, getValue, val }) => {
               key={ele} 
               color={ele}
               val={val}
+              getValue={getValue}
             />
           else {
             return <SingleFiltro 
@@ -43,6 +44,7 @@ const GroupFiltro = ({ nombre, categories, getValue, val }) => {
               nombre={ele} 
               id={nombre}
               val={val}
+              getValue={getValue}
             />
           }  
         })}

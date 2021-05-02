@@ -20,12 +20,13 @@ const Catalogo = () => {
   //productos per page
   const prodPerPage = 8
   //state to manage the slice of products and set the next slice
-  const [sliceArray, setSlicearray] = useState([])
+  const [first, setFirst] = useState(true)
   const [next, setNext] = useState(prodPerPage)
+  const [slicedArray, setSlicedarray] = useState([])
 
   //useo del contexto de productos 
   const pContext = useContext(contextProductos)
-  const { resetProducts, filteredProducts } = pContext
+  const { filteredProducts } = pContext
 
   //funcion para cambiar el estado de show  
   const filtrosHandler = () => {
@@ -33,28 +34,35 @@ const Catalogo = () => {
     setShowiltros(auxShow)
   }
 
-  //logica para el cargar mas
-  const loadMore = (start, end) => {
-    const slicedPost = filteredProducts.slice(start, end)
-    const currentPost = [...sliceArray, ...slicedPost]
-    setSlicearray(currentPost)
-  }
-
   //to manage load more btn
   const handleLoad = () => {
-    loadMore(next, next + prodPerPage)
+    setSlicedarray(filteredProducts.slice(0, next))
     setNext(next + prodPerPage)
   }
 
   useEffect(() => {
-
-    loadMore(0, prodPerPage)
+    console.log('mount')
+    handleLoad()
     setLoading(false)
     return () => {
-      resetProducts()
+      console.log('unmounted')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useEffect(() => {
+    if(first){
+      console.log('first')
+      setFirst(false)
+    }else {
+      console.log('not first')
+      setSlicedarray([])
+      setNext(0)
+      handleLoad()
+      
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredProducts])
 
 
   if (!loading) {
@@ -64,12 +72,12 @@ const Catalogo = () => {
         <SectionTitle2 titulo='Catalogo' />
         <div className={positioning}>
           <div className={showFiltros ? [filtros, show].join(' ') : filtros}>
-            <Filtros />
+            <Filtros show={filtrosHandler}/>
           </div>
           <div className={productosPosition}>
             {filteredProducts.length === 0
               ? <NotFound texto='Sin resultados' />
-              : <ContenedorProductos productos={sliceArray} />
+              : <ContenedorProductos productos={slicedArray} />
             }
           </div>
           <button
@@ -85,7 +93,7 @@ const Catalogo = () => {
           ></div>
         </div>
         {
-          next <= filteredProducts.length
+          next <= filteredProducts.length + prodPerPage
             ?
             <button onClick={handleLoad} className={styles.loadMore}>
               Cargar más...
