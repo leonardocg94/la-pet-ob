@@ -11,9 +11,9 @@ const ColorFilter = ({ color, val, getValue }) => {
       <input 
         onChange={getValue} 
         className={styles.check}
-        alue={color} 
+        value={color} 
         type='radio'
-         name='Color' 
+        name='Color' 
         id={color} 
         checked={color === val}
       />
