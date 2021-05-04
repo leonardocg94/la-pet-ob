@@ -8,7 +8,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color menta degradada ombre directo de fabrica, broches ajustables delanteros, red de encaje.',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'verde',
       peinado: 'lacio'
     }
@@ -22,7 +22,7 @@ export const dbproductos = [
       descripcion: 'Peluca corte bob castaño directo de fabrica, red de encaje, broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de raiz',
-      tamano: 35,
+      tamaño: 35,
       color: 'negro',
       peinado: 'lacio'
     }
@@ -36,7 +36,7 @@ export const dbproductos = [
       descripcion: 'Peluca corte bob rojo-ruby ombre directo de fabrica, red de encaje, broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'rojo',
       peinado: 'lacio'
     }
@@ -50,7 +50,7 @@ export const dbproductos = [
       descripcion: 'Peluca larga dark-chocolate ondulada directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra de Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 80,
+      tamaño: 80,
       color: 'negro',
       peinado: 'ondulado'
     }
@@ -64,7 +64,7 @@ export const dbproductos = [
       descripcion: 'Peluca rubia clara corte Midi lacia ombre directo de fabrica, Red de encaje, Broches delanteros ajustables',
       material: 'Fibra Kanecalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'rubio',
       peinado: 'lacio'
     }
@@ -78,7 +78,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color gris plateada degradada ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'gris',
       peinado: 'lacio'
     }
@@ -92,7 +92,7 @@ export const dbproductos = [
       descripcion: 'Peluca de ondas color plata lila degradada californiano ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 85,
+      tamaño: 85,
       color: 'morado, gris',
       peinado: 'ondulado'
     }
@@ -106,7 +106,7 @@ export const dbproductos = [
       descripcion: 'Peluca corta ondulada Golden Pink directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'rosa',
       peinado: 'chino'
     }
@@ -120,7 +120,7 @@ export const dbproductos = [
       descripcion: 'Peluca corta ondulada rojo-creza directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'rojo',
       peinado: 'chino'
     }
@@ -134,7 +134,7 @@ export const dbproductos = [
       descripcion: 'Peluca corta ondulada Rosa Chicle directo de fabrica, Red de encaje, Broches ajustables delantero',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'rosa',
       peinado: 'chino'
     }
@@ -148,7 +148,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color Rosa Coral degradada ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'rosa',
       peinado: 'lacio'
     }
@@ -162,7 +162,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color vino magenta degradada ombre directo de fabrica, Red de Encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'rojo',
       peinado: 'lacio'
     }
@@ -176,7 +176,7 @@ export const dbproductos = [
       descripcion: 'Peluca corta ondulada azul bondi directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'azul',
       peinado: 'chino'
     }
@@ -190,7 +190,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color castaño claro dorado degradada ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'castaño',
       peinado: 'lacio'
     }
@@ -204,7 +204,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color negro terciopelo directo de fabrica, Red de encaje, Broches delanteros ajustables',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'negro',
       peinado: 'lacio'
     }
@@ -218,7 +218,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color rubio dorado degradada ombre directo de fabrica, Red de encaje, Broches delanteros ajustables',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'rubio',
       peinado: 'lacio'
     }
@@ -232,7 +232,7 @@ export const dbproductos = [
       descripcion: 'Peluca larga rubio paja ondulada directo de fabrica, Red de encaje, Broches delanteros ajustables',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 80,
+      tamaño: 80,
       color: 'rubio',
       peinado: 'ondulada'
     }
@@ -246,7 +246,7 @@ export const dbproductos = [
       descripcion: 'Peluca larga roja granate ondulada directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 80,
+      tamaño: 80,
       color: 'rojo',
       peinado: 'ondulado'
     }
@@ -260,8 +260,8 @@ export const dbproductos = [
       descripcion: 'Peluca larga Miel ondulada directo de fabrica, Red de encaje, Broches delanteros ajustables',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 80,
-      color: 'castano',
+      tamaño: 80,
+      color: 'castaño',
       peinado: 'ondulado'
     }
   },
@@ -274,7 +274,7 @@ export const dbproductos = [
       descripcion: 'Peluca corte bob negro directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'negro',
       peinado: 'lacio'
     }
@@ -288,7 +288,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color vino magenta degradada californiano directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'rojo',
       peinado: 'lacio'
     }
@@ -302,7 +302,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color turquesa degradada ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'azul',
       peinado: 'lacio'
     }
@@ -316,7 +316,7 @@ export const dbproductos = [
       descripcion: 'Peluca corta ondulada con fleco rosa flamingo directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'rosa',
       peinado: 'chino'
     }
@@ -330,7 +330,7 @@ export const dbproductos = [
       descripcion: 'Peluca ondulada white silver degradada ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'gris',
       peinado: 'ondulado'
     }
@@ -344,7 +344,7 @@ export const dbproductos = [
       descripcion: 'Peluca corte bob verde esmeralda directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'verde',
       peinado: 'lacio'
     }
@@ -358,7 +358,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color azul media noche degradada ombre directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'azul',
       peinado: 'lacio'
     }
@@ -372,7 +372,7 @@ export const dbproductos = [
       descripcion: 'Peluca ondulada rubio dorado degradada californiano directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'rubio',
       peinado: 'ondulado'
     }
@@ -386,7 +386,7 @@ export const dbproductos = [
       descripcion: 'Peluca lacia color gris plata degradada californiano directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 65,
+      tamaño: 65,
       color: 'gris',
       peinado: 'lacio'
     }
@@ -400,7 +400,7 @@ export const dbproductos = [
       descripcion: 'Peluca con ondas color snow queen directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 85,
+      tamaño: 85,
       color: 'gris',
       peinado: 'ondulado'
     }
@@ -414,7 +414,7 @@ export const dbproductos = [
       descripcion: 'Peluca corte tipo bob color caramelo directo de fabrica, Red de encaje, Broches ajustables delanteros',
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
-      tamano: 35,
+      tamaño: 35,
       color: 'castaño',
       peinado: 'lacio'
     }
@@ -423,15 +423,15 @@ export const dbproductos = [
 
 export const dbcategories = [
   {
-    nombre: 'Color',
-    categories: ['rojo', 'azul', 'verde', 'gris', 'rubio', 'castaño', 'rosa', 'morado']
+    nombre: 'color',
+    categories: ['rojo', 'azul', 'verde', 'gris', 'rubio', 'castaño', 'rosa', 'morado', 'negro']
   },
   {
-    nombre: 'Tamaño',
-    categories: ['55cm', '60cm', '70cm']
+    nombre: 'tamaño',
+    categories: ['35cm', '65cm', '80cm', '85cm']
   },
   {
-    nombre: 'Tipo',
-    categories: ['Lacefront', 'Simulacion de Raiz']
+    nombre: 'tipo',
+    categories: ['Lacefront', 'Simulación de Raíz']
   }
 ]

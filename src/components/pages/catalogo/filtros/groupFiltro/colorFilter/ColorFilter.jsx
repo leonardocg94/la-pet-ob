@@ -13,7 +13,7 @@ const ColorFilter = ({ color, val, getValue }) => {
         className={styles.check}
         value={color} 
         type='radio'
-        name='Color' 
+        name='color' 
         id={color} 
         checked={color === val}
       />

@@ -39,6 +39,14 @@
   box-shadow: 0 0 1.8rem pink;
 }
 
+.check:checked + .negro {
+  box-shadow: 0 0 1.8rem black;
+}
+
+.negro {
+  background-color: black;
+}
+
 .rojo {
   background-color: red;
 }

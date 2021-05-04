@@ -44,6 +44,9 @@ const SearchBar = ({ show, setShow }) => {
     setShow(auxShow)
   }
 
+  //variable que contiene los estilos de inicio de sesion del icono de usuario
+  const userStyles = localStorage.getItem('authPetOb') ? {color: 'green'} : {}
+
   return (
     <header className={styles.searchBar} >
 
@@ -65,7 +68,7 @@ const SearchBar = ({ show, setShow }) => {
 
       <div className={styles.rightSide}>
 
-        <p onClick={menuHandler} className={styles.userIcon}>
+        <p onClick={menuHandler} style={userStyles} className={styles.userIcon}>
           <i className="fas fa-user-circle"></i>
         </p>
 

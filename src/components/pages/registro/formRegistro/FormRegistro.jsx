@@ -53,7 +53,7 @@ const FormRegistro = () => {
   //Maneja el submit del formulario
   const submitHandler = e => {
     e.preventDefault()
-    if (nombre === '' || email === '' || password === '' || cpassword === '') {
+    if (!nombre || !email || !password || !cpassword)  {
       setMessg({
         show: true,
         message: 'Los campos son obligatorios',
@@ -61,6 +61,11 @@ const FormRegistro = () => {
       })
       return
     }
+
+    localStorage.setItem('authPetOb',JSON.stringify({
+      email,
+      password
+    }))
 
     setMessg({
       show: true,

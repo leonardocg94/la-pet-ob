@@ -51,7 +51,7 @@ const FormSesion = () => {
   //Manejador del submit del formulario
   const submitHandler = e => {
     e.preventDefault()
-    if (email === '' || password === '') {
+    if (!email || !password) {
       setMessg({
         show: true,
         message: 'Los campos son obligatorios',
@@ -59,6 +59,33 @@ const FormSesion = () => {
       })
       return
     }
+
+    const data = localStorage.getItem('authPetOb')
+    if(!data) {
+      setMessg({
+        show: true,
+        message: 'Primero necesitas registrarte',
+        err: 'error'
+      })
+      return
+    }
+
+    const user = JSON.parse(data)
+    if(user.email !== email || user.password !== password){
+      setMessg({
+        show: true,
+        message: 'Credenciales incorrectas',
+        err: 'error'
+      })
+      return
+    }
+
+    setMessg({
+      show: true,
+      message: 'Sesion Iniciada',
+      err: 'success'
+    })
+
     setForm(initialState)
   }
 

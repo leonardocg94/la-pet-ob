@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import styles from './filtros.module.scss'
 import contextProductos from '../../../../context/productos/contextProductos'
 import GroupFiltro from './groupFiltro/GroupFiltro'
 import { dbcategories } from '../../../../data/data'
+import Message from '../../../message/Message'
 
 //Componente filtros que contiene el manejador para mostrar u ocultar filtros
 const Filtros = ({ show }) => {
@@ -11,23 +12,47 @@ const Filtros = ({ show }) => {
   const tempCategories = dbcategories
 
   //Estado inicial de los filtros
-  const initialState = {
-    Color: '',
-    Tamaño: '',
-    Tipo: ''
+  const initialState = {}
+  //inicializar el estado inicial
+  tempCategories.forEach(pro => {
+    initialState[pro.nombre] = ''
+  })
+
+
+  //Estado inicial para el mensaje
+  const messageInitialState = {
+    showup: false,
+    mensaje: '',
+    err: ''
   }
 
   //Contexto de los productos con su atributo resetProductos
   const pContext = useContext(contextProductos)
-  const { resetProducts } = pContext
+  const { resetProducts, filtProducts } = pContext
 
   //Estado para manejar las categorias seleccionadas de los filtros
   const [categories, setCategories] = useState(initialState)
-  const { Color, Tamaño, Tipo } = categories
+  //Estado para el mensaje y su destructuracion
+  const [message, setMessage] = useState(messageInitialState)
+  const { showup, err, mensaje } = message
 
   //Manejador del submit de filtros
   const handleSubmit = e => {
     e.preventDefault()
+    if (Object.keys(categories).every(cat => !categories[cat])) {
+      setMessage({
+        showup: true,
+        mensaje: 'Elija al menos un filtro',
+        err: 'error'
+      })
+      return
+    }
+
+    const obj = {}
+    for(let key in categories)
+      obj[key] = categories[key]  
+
+    filtProducts(obj)
     show()
   }
 
@@ -45,26 +70,37 @@ const Filtros = ({ show }) => {
     resetProducts()
   }
 
+  //Elimina el mensaje en 3 segundos si es mostrado
+  useEffect(() => {
+    let mounted = true
+    setTimeout(() => {
+      if (mounted)
+        setMessage(messageInitialState)
+    }, 3000);
+    return () => {
+      mounted = false
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [showup])
+
   //Variable que contiene los diferentes tipos de filtros
-  const filterItems = tempCategories.map(ele => {
-    if (ele.nombre === 'Color')
-      return <GroupFiltro val={Color} getValue={getValue} key={ele.nombre} {...ele} />
-    else if (ele.nombre === 'Tamaño')
-      return <GroupFiltro val={Tamaño} getValue={getValue} key={ele.nombre} {...ele} />
-    else
-      return <GroupFiltro val={Tipo} getValue={getValue} key={ele.nombre} {...ele} />
-  })
+  const filterItems = tempCategories.map(ele => 
+    <GroupFiltro val={categories[ele.nombre]} getValue={getValue} key={ele.nombre} {...ele} />
+  )
+
+  //Variable que contiene al mensaje condicional
+  const mssg = showup ? <Message texto={mensaje} tipo={err} /> : null
 
   return (
     <form className={styles.formFilters} onSubmit={handleSubmit}>
-      
+      {mssg}
       {filterItems}
 
       <button className={styles.btn} type='submit'>Filtrar</button>
 
-      <button onClick={clearFilters} className={styles.btn}>
+      <span onClick={clearFilters} className={styles.btn}>
         Eliminar Filtros
-      </button>
+      </span>
 
     </form>
   )

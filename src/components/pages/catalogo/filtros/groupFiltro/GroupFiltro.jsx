@@ -27,7 +27,7 @@ const GroupFiltro = ({ nombre, categories, getValue, val }) => {
 
   //Variable que contiene los filtros de la categoria
   const categoryItems = categories.map(ele => {
-    if (nombre === 'Color')
+    if (nombre === 'color')
       return <ColorFilter
         key={ele}
         color={ele}
@@ -49,7 +49,7 @@ const GroupFiltro = ({ nombre, categories, getValue, val }) => {
     <div className={styles.groupFiltro}>
 
       <h3 onClick={dropHandler} className={styles.nombreFiltro}>
-        {nombre}
+        {nombre.charAt(0).toUpperCase()+nombre.slice(1)}
         <span className={iconClasses}></span>
       </h3>
 

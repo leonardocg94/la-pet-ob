@@ -2,7 +2,8 @@ import {
   SELECCIONAR_PRODUCTO,
   BUSCAR_PRODUCTOS,
   REINICIAR_PRODUCTOS,
-  FIJAR_CATEGORIA
+  FIJAR_CATEGORIA,
+  FILTROS_PRODUCTO
 } from '../../types/productsTypes'
 
 const reducerProyectos = (state,action) => {
@@ -16,7 +17,12 @@ const reducerProyectos = (state,action) => {
       return {
         ...state,
         productos: action.payload
-      }  
+      }
+    case FILTROS_PRODUCTO:
+      return {
+        ...state,
+        productos: action.payload
+      }    
     case REINICIAR_PRODUCTOS:
       return action.payload
     case FIJAR_CATEGORIA:

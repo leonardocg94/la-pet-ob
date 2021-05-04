@@ -10,7 +10,7 @@ const Carrito = () => {
 
   //Contexto del carrito y los atributos total y numero de items
   const cContext = useContext(contextCarrito)
-  const { total, carItems } = cContext
+  const { total, carItems, noItems } = cContext
 
   //variable con contenido condicional del carrito
   let content
@@ -27,7 +27,12 @@ const Carrito = () => {
         <div className={styles.itemContainer}>
           {items}
         </div>
-        <p className={styles.total}>Total: ${total}</p>
+        <div className={styles.infoCarrito}>
+          <span className={styles.cantidadTotal}>
+            Número de artículos: {noItems}
+          </span>
+          <span className={styles.total}>Total: ${total}</span>
+        </div>
       </>
     )
   } else {
@@ -39,7 +44,7 @@ const Carrito = () => {
   return (
     <section className={styles.carrito}>
       <SectionTitle2 titulo='Carrito' />
-        {content}
+      {content}
       <RelatedProducts />
     </section>
   )

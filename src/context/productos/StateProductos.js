@@ -6,7 +6,8 @@ import {
   SELECCIONAR_PRODUCTO,
   BUSCAR_PRODUCTOS,
   REINICIAR_PRODUCTOS,
-  FIJAR_CATEGORIA
+  FIJAR_CATEGORIA,
+  FILTROS_PRODUCTO
 } from '../../types/productsTypes'
 
 //Estado global de los productos
@@ -70,7 +71,7 @@ const StateProductos = ({ children }) => {
       || ele.caracteristicas.color.toLowerCase().includes(str)
       || ele.caracteristicas.tipo.toLowerCase().includes(str)
     ))
-    
+
     dispatch({
       type: BUSCAR_PRODUCTOS,
       payload: [...aux]
@@ -93,6 +94,25 @@ const StateProductos = ({ children }) => {
     })
   }
 
+  //filtrar productos 
+  const filtProducts = obj => {
+    // elimina los cm del tamaño
+    if (obj.tamaño)
+      obj.tamaño = obj.tamaño.match(/[0-9]/g).join('')
+    //copia de los productos totales
+    let arr = [...dbproductos]  
+    //filtra el arreglo por los diferentes criterios de busqueda
+    for(let key in obj){
+      arr = arr.filter(pro =>
+        pro.caracteristicas[key].toString().includes(obj[key].toString())  
+      )
+    }  
+    dispatch({
+      type: FILTROS_PRODUCTO,
+      payload: arr
+    })
+  }
+
   return (
     <contextProductos.Provider
       value={{
@@ -103,7 +123,8 @@ const StateProductos = ({ children }) => {
         selectProduct,
         searchProducts,
         resetProducts,
-        setCategory
+        setCategory,
+        filtProducts
       }}
     >
       {children}
