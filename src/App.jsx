@@ -11,36 +11,39 @@ import Carrito from './components/pages/carrito/Carrito'
 import Registro from './components/pages/registro/Registro'
 import Sesion from './components/pages/sesion/Sesion'
 import NotFound from './components/notFound/NotFound'
+import StateUsuario from './context/usuario/StateUsuario'
 
 
 const App = () => {
 
   return (
-    <StateProductos>
-      <StateCarrito>
-        <Router>
-          <ScrollTotop />
-          <Layout>
-            <Switch>
-              <Route exact path='/'><Inicio /></Route>
-              <Route
-                exact
-                path='/catalogo/:category'
-                render={() => <Catalogo key={Math.random().toString()}
-                />}></Route>
-              {/* <Route exact path='/catalogo'><Catalogo /></Route> */}
-              <Route exact path='/carrito'><Carrito /></Route>
-              <Route exact path='/pelucas/:id'><Detalles /></Route>
-              <Route exact path='/registro'><Registro /></Route>
-              <Route exact path='/sesion'><Sesion /></Route>
-              <Route exact path='/*'>
-                <NotFound texto='Pagina no encontrada' />
-              </Route>
-            </Switch>
-          </Layout>
-        </Router>
-      </StateCarrito>
-    </StateProductos>
+    <StateUsuario>
+      <StateProductos>
+        <StateCarrito>
+          <Router>
+            <ScrollTotop />
+            <Layout>
+              <Switch>
+                <Route exact path='/'><Inicio /></Route>
+                <Route
+                  exact
+                  path='/catalogo/:category'
+                  render={() => <Catalogo key={Math.random().toString()}
+                  />}></Route>
+                {/* <Route exact path='/catalogo'><Catalogo /></Route> */}
+                <Route exact path='/carrito'><Carrito /></Route>
+                <Route exact path='/pelucas/:id'><Detalles /></Route>
+                <Route exact path='/registro'><Registro /></Route>
+                <Route exact path='/sesion'><Sesion /></Route>
+                <Route exact path='/*'>
+                  <NotFound texto='Pagina no encontrada' />
+                </Route>
+              </Switch>
+            </Layout>
+          </Router>
+        </StateCarrito>
+      </StateProductos>
+    </StateUsuario>
   );
 }
 

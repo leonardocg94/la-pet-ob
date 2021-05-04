@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
+import { useHistory } from 'react-router-dom'
 import styles from './formSesion.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
 import Message from '../../../message/Message'
+import contextUsuario from '../../../../context/usuario/contextUsuario'
 
 //Componente del formulario para iniciar sesion
 const FormSesion = () => {
@@ -17,6 +19,12 @@ const FormSesion = () => {
     message: '',
     err: ''
   }
+  //historia del navegador
+  const history = useHistory()
+
+  //Carga del contexto de usuario
+  const uContext = useContext(contextUsuario)
+  const { iniciar } = uContext
 
   //Estado de los inputs y su destructuracion
   const [form, setForm] = useState(initialState)
@@ -60,32 +68,13 @@ const FormSesion = () => {
       return
     }
 
-    const data = localStorage.getItem('authPetOb')
-    if(!data) {
-      setMessg({
-        show: true,
-        message: 'Primero necesitas registrarte',
-        err: 'error'
-      })
-      return
-    }
+    const response = iniciar({ email, password })
 
-    const user = JSON.parse(data)
-    if(user.email !== email || user.password !== password){
-      setMessg({
-        show: true,
-        message: 'Credenciales incorrectas',
-        err: 'error'
-      })
-      return
-    }
-
-    setMessg({
-      show: true,
-      message: 'Sesion Iniciada',
-      err: 'success'
-    })
-
+    if (response.complete) 
+      history.push('/')
+    else 
+      setMessg(response.error)
+    
     setForm(initialState)
   }
 

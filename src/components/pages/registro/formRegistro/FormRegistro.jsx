@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import styles from './formRegistro.module.scss'
 import FormGroup from '../../../formGroup/FormGroup'
 import Message from '../../../message/Message'
+import contextUsuario from '../../../../context/usuario/contextUsuario'
 
 //Componente del formulario de registro
 const FormRegistro = () => {
@@ -19,6 +20,10 @@ const FormRegistro = () => {
     message: '',
     err: ''
   }
+
+  //Cargar contexto de usuario
+  const uContext = useContext(contextUsuario)
+  const { registrar } = uContext
 
   //Estado de los inputs del registro y su destructuracion
   const [form, setForm] = useState(initialState)
@@ -53,7 +58,7 @@ const FormRegistro = () => {
   //Maneja el submit del formulario
   const submitHandler = e => {
     e.preventDefault()
-    if (!nombre || !email || !password || !cpassword)  {
+    if (!nombre || !email || !password || !cpassword) {
       setMessg({
         show: true,
         message: 'Los campos son obligatorios',
@@ -62,10 +67,7 @@ const FormRegistro = () => {
       return
     }
 
-    localStorage.setItem('authPetOb',JSON.stringify({
-      email,
-      password
-    }))
+    registrar({email, password})
 
     setMessg({
       show: true,
@@ -123,7 +125,7 @@ const FormRegistro = () => {
           val={cpassword}
         />
       </div>
-      
+
       <button className={styles.btnSubmit} type='submit'>
         Obtener Cuenta
       </button>

@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import contextUsuario from '../../../context/usuario/contextUsuario'
 import { NavLink } from 'react-router-dom'
 import styles from './sesionMenu.module.scss'
 
 //componente sesion de menu, recibe el manejador de su ocultamiento y despliege
 const SesionMenu = ({ setShow }) => {
 
-  //manejador de cerrar sesion
+  //Carga del contexto de usuario
+  const uContext = useContext(contextUsuario)
+  const { cerrar } = uContext
+
+  // manejador de cerrar sesion
   const endSession = () => {
-    localStorage.removeItem('authPetOb')
+    cerrar()
     setShow(false)
   }
 
