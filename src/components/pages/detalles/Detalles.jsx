@@ -24,6 +24,9 @@ const Detalles = () => {
   useEffect(() => {
     selectProduct(refId)
     setLoading(false)
+    return () => {
+      setLoading(true)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refId])
 

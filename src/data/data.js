@@ -93,7 +93,7 @@ export const dbproductos = [
       material: 'Fibra Kanekalon',
       tipo: 'Simulación de Raíz',
       tamaño: 85,
-      color: 'morado, gris',
+      color: 'morado,gris',
       peinado: 'ondulado'
     }
   },
@@ -380,7 +380,7 @@ export const dbproductos = [
   {
     id: '28',
     nombre: 'Gris-plata-californiano',
-    precio: '600',
+    precio: 600,
     tipo: 'pelucas',
     caracteristicas: {
       descripcion: 'Peluca lacia color gris plata degradada californiano directo de fabrica, Red de encaje, Broches ajustables delanteros',
