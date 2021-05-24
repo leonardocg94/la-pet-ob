@@ -23,7 +23,9 @@ const Detalles = () => {
   //Cuando el id es cambiado se reselecciona el producto en el contexto de productos
   useEffect(() => {
     selectProduct(refId)
-    setLoading(false)
+    setTimeout(() => {
+      setLoading(false)
+    }, 500);
     return () => {
       setLoading(true)
     }
@@ -43,7 +45,7 @@ const Detalles = () => {
   if (loading) {
     content = (
       <section className={styles.load}>
-        <Spinner/>
+        <Spinner />
       </section>
     )
   } else {
@@ -66,7 +68,7 @@ const Detalles = () => {
             </div>
 
           </div>
-          
+
           <RelatedProducts />
 
         </section>

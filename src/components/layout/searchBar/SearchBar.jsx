@@ -33,6 +33,7 @@ const SearchBar = ({ show, setShow }) => {
     setSearchval('')
     if(!location.pathname.includes('/catalogo'))
       history.push('/catalogo/Pelucas')
+    // history.push('/catalogo/pelucas')
   }
 
   //redireccionamiento al carrito al clickear el icono de carrito

@@ -8,6 +8,7 @@
   margin: auto;
   perspective: 150rem;
   cursor: pointer;
+  // animation: showup 2.5s ease-in forwards;
 
   // &:hover .cardSideFront {
   //   transform: rotateY(-180deg);
@@ -81,5 +82,14 @@
   }
 }
 
+
+// @keyframes showup {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
 
 

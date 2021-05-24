@@ -8,7 +8,7 @@ import Message from '../../../message/Message'
 const Info = ({ productoSeleccionado }) => {
   //destructuracion del producto seleccionado y sus caracteristicas
   const { nombre, precio, caracteristicas } = productoSeleccionado
-  const { material, tipo, descripcion, tamano, color, peinado } = caracteristicas
+  const { material, tipo, descripcion, tamaño, color, peinado } = caracteristicas
 
   //estado que maneja el despliegue de un mensaje al agregar un producto al carrito
   const [show, setShow] = useState(false)
@@ -57,7 +57,7 @@ const Info = ({ productoSeleccionado }) => {
       <p className={styles.descripcion}>{descripcion}</p>
       <p>- {material}</p>
       <p>- {tipo}</p>
-      <p>- {tamano}cm</p>
+      <p>- {tamaño}cm</p>
       <p>- {color.charAt(0).toUpperCase() + color.slice(1)}</p>
       <p>- {peinado.charAt(0).toUpperCase() + peinado.slice(1)}</p>
 

@@ -46,10 +46,12 @@ const Catalogo = () => {
 
   //Cuando cambian los productos en general se reinicia la paginacion
   useEffect(() => {
-    setLoading(true)
     setCatgproducts([...productos])
     setNext(prodPerPage)
     setLoading(false)
+    return () => {
+      setLoading(true)
+    }
   }, [productos])
 
   //reinicia los productos al salir del catalogo
