@@ -43,6 +43,10 @@
   box-shadow: 0 0 1.8rem black;
 }
 
+.check:checked + .anaranjado {
+  box-shadow: 0 0 1.8rem orange;
+}
+
 .negro {
   background-color: black;
 }
@@ -77,4 +81,8 @@
 
 .rosa {
   background-color: pink;
+}
+
+.anaranjado {
+  background-color: orange;
 }

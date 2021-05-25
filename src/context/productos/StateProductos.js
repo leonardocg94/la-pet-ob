@@ -1,12 +1,10 @@
 import React, { useReducer } from 'react'
 import contextProductos from './contextProductos'
 import reducerProductos from './reducerProductos'
-import { dbproductos } from '../../data/data'
 import {
   SELECCIONAR_PRODUCTO,
   BUSCAR_PRODUCTOS,
-  REINICIAR_PRODUCTOS,
-  FIJAR_CATEGORIA,
+  FIJAR_SEARCH,
   FILTROS_PRODUCTO
 } from '../../types/productsTypes'
 
@@ -14,103 +12,98 @@ import {
 const StateProductos = ({ children }) => {
   //Estado inicial de los productos
   const initialState = {
-    productos: dbproductos,
-    search: null,
-    selectedProduct: null,
-    noAllItems: dbproductos.length
+    productos: [],
+    search: undefined,
+    selectedProduct: undefined
   }
 
   //Inicializacion del reducer para manejar el estado
   const [state, dispatch] = useReducer(reducerProductos, initialState)
 
-  //Selecciona un producto y carga sus imagenes para mostrarlo en detalle
-  const selectProduct = proid => {
-    const product = (state.productos.filter(ele => ele.id === proid))[0]
-    const imgs = []
-    const imgSty = {
-      height: '100%',
-      verticalAlign: 'top',
-      objectFit: 'cover',
-      margin: '0 auto',
-      display: 'block',
-      borderRadius: '3px'
+  //fetch productos
+  const fetchProductos = async category => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/producto/listar/' + category.toLowerCase())
+      const data = await response.json()
+      dispatch({
+        type: BUSCAR_PRODUCTOS,
+        payload: data
+      })
+    } catch (error) {
+      console.log(error)
     }
+  }
 
-    if (product) {
-      const { id, nombre, tipo } = product
-      for (let i = 1; i < 5; i++) {
-        const img = <img
-          src={require(`../../img/${tipo}/${id}_${nombre}/${i}.jpg`).default}
-          alt={`Peluca ${nombre}`}
-          style={imgSty}
-        />
+  //Selecciona un producto y carga sus imagenes para mostrarlo en detalle
+  const selectProduct = async proid => {
+    try {
+      const response = await fetch("http://127.0.0.1:5000/producto/seleccionar/" + proid)
+      const data = await response.json()
+      console.log(data)
+      const imgs = []
+      for (let i = 1; i < 5; i++)
         imgs.push({
           id: i,
-          item: img
+          item: <img src={`${data.imagen}/${data.nombre}/${i}.jpg`} alt={`${data.nombre}_${i}`} />
         })
-      }
-    } else {
+
       dispatch({
         type: SELECCIONAR_PRODUCTO,
-        payload: null
+        payload: { product: data, imgs }
       })
-      return
+    } catch (error) {
+      console.log(error)
     }
-
-    dispatch({
-      type: SELECCIONAR_PRODUCTO,
-      payload: { product, imgs }
-    })
   }
 
   //Filtra los productos por busqueda
-  const searchProducts = str => {
-    const aux = dbproductos.filter(ele => (
-      ele.caracteristicas.descripcion.toLowerCase().includes(str)
-      || ele.nombre.toLowerCase().includes(str)
-      || ele.caracteristicas.color.toLowerCase().includes(str)
-      || ele.caracteristicas.tipo.toLowerCase().includes(str)
-    ))
-
-    dispatch({
-      type: BUSCAR_PRODUCTOS,
-      payload: [...aux]
-    })
-  }
-
-  //reinicia los productos filtrados
-  const resetProducts = () => {
-    dispatch({
-      type: REINICIAR_PRODUCTOS,
-      payload: initialState
-    })
+  const searchProducts = async str => {
+    try {
+      const response = await fetch('http://127.0.0.1:5000/producto/buscar?search=' + str)
+      const data = await response.json()
+      dispatch({
+        type: BUSCAR_PRODUCTOS,
+        payload: data
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   //Selecciona la categoria del catalogo
-  const setCategory = cat => {
+  const setSearch = str => {
     dispatch({
-      type: FIJAR_CATEGORIA,
-      payload: cat
+      type: FIJAR_SEARCH,
+      payload: str
     })
   }
 
   //filtrar productos 
-  const filtProducts = obj => {
+  const filtProducts = async obj => {
     // elimina los cm del tamaño
     if (obj.tamaño)
       obj.tamaño = obj.tamaño.match(/[0-9]/g).join('')
-    //copia de los productos totales
-    let arr = [...dbproductos]  
-    //filtra el arreglo por los diferentes criterios de busqueda
-    for(let key in obj){
-      arr = arr.filter(pro =>
-        pro.caracteristicas[key].toString().includes(obj[key].toString())  
-      )
-    }  
-    dispatch({
-      type: FILTROS_PRODUCTO,
-      payload: arr
+
+    const url = "http://127.0.0.1:5000/producto/filtrar?"
+    let params = ''
+    Object.keys(obj).forEach((p, i) => {
+      if (i === 0)
+        params += `${p}=${obj[p]}`
+      else
+        params += `&${p}=${obj[p]}`
     })
+    console.log(url + params)
+    try {
+      const response = await fetch(url + params)
+      const data = await response.json()
+      dispatch({
+        type: FILTROS_PRODUCTO,
+        payload: data
+      })
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   return (
@@ -119,12 +112,11 @@ const StateProductos = ({ children }) => {
         productos: state.productos,
         search: state.search,
         selectedProduct: state.selectedProduct,
-        noAllItems: state.noAllItems,
         selectProduct,
         searchProducts,
-        resetProducts,
-        setCategory,
-        filtProducts
+        filtProducts,
+        fetchProductos,
+        setSearch
       }}
     >
       {children}

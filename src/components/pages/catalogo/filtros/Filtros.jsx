@@ -4,6 +4,7 @@ import contextProductos from '../../../../context/productos/contextProductos'
 import GroupFiltro from './groupFiltro/GroupFiltro'
 import { dbcategories } from '../../../../data/data'
 import Message from '../../../message/Message'
+import { useParams } from 'react-router'
 
 //Componente filtros que contiene el manejador para mostrar u ocultar filtros
 const Filtros = ({ show }) => {
@@ -26,9 +27,11 @@ const Filtros = ({ show }) => {
     err: ''
   }
 
+  const catgry = useParams().category
+
   //Contexto de los productos con su atributo resetProductos
   const pContext = useContext(contextProductos)
-  const { resetProducts, filtProducts } = pContext
+  const { filtProducts, fetchProductos } = pContext
 
   //Estado para manejar las categorias seleccionadas de los filtros
   const [categories, setCategories] = useState(initialState)
@@ -50,7 +53,12 @@ const Filtros = ({ show }) => {
 
     const obj = {}
     for(let key in categories)
-      obj[key] = categories[key]  
+      if(categories[key]){
+        if(key === 'tipo')
+          obj[key+'_peluca'] = categories[key]  
+        else  
+          obj[key] = categories[key]  
+      }
 
     filtProducts(obj)
     show()
@@ -67,7 +75,7 @@ const Filtros = ({ show }) => {
   //Funcion que limpia los filtros seleccionados
   const clearFilters = () => {
     setCategories(initialState)
-    resetProducts()
+    fetchProductos(catgry)
   }
 
   //Elimina el mensaje en 3 segundos si es mostrado

@@ -25,14 +25,14 @@ const App = () => {
             <Layout>
               <Switch>
                 <Route exact path='/'><Inicio /></Route>
-                <Route
+                {/* <Route
                   exact
                   path='/catalogo/:category'
                   render={() => <Catalogo key={Math.random().toString()}
-                  />}></Route>
-                {/* <Route exact path='/catalogo/:category'><Catalogo /></Route> */}
+                  />}></Route> */}
+                <Route exact path='/catalogo/:category'><Catalogo /></Route>
                 <Route exact path='/carrito'><Carrito /></Route>
-                <Route exact path='/pelucas/:id'><Detalles /></Route>
+                <Route exact path='/peluca/:id'><Detalles /></Route>
                 <Route exact path='/registro'><Registro /></Route>
                 <Route exact path='/sesion'><Sesion /></Route>
                 <Route exact path='/*'>

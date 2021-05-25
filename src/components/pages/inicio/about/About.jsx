@@ -8,7 +8,7 @@ const About = () => {
 
       <figure className={styles.imagen}>
         <img 
-          src={require('../../../../img/logos/logo.jpg').default} 
+          src='http://127.0.0.1:5000/resources/img/logos/logo.jpg' 
           alt="petite obsession logo" 
         />
       </figure>

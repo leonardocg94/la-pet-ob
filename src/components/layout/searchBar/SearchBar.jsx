@@ -18,7 +18,7 @@ const SearchBar = ({ show, setShow }) => {
   const pContext = useContext(contextProductos)
   const cContext = useContext(contextCarrito)
   const { noItems } = cContext
-  const { searchProducts } = pContext
+  const { searchProducts, setSearch } = pContext
 
   //manejador de cambio en el input de busqueda
   const searchHandler = e => { setSearchval(e.target.value) }
@@ -31,9 +31,9 @@ const SearchBar = ({ show, setShow }) => {
     const auxVal = searchVal.toLocaleLowerCase()
     searchProducts(auxVal)
     setSearchval('')
+    setSearch(auxVal)
     if(!location.pathname.includes('/catalogo'))
-      history.push('/catalogo/Pelucas')
-    // history.push('/catalogo/pelucas')
+      history.push('/catalogo/peluca')
   }
 
   //redireccionamiento al carrito al clickear el icono de carrito

@@ -424,7 +424,7 @@ export const dbproductos = [
 export const dbcategories = [
   {
     nombre: 'color',
-    categories: ['rojo', 'azul', 'verde', 'gris', 'rubio', 'castaño', 'rosa', 'morado', 'negro']
+    categories: ['rojo', 'azul', 'verde', 'gris', 'rubio', 'castaño', 'rosa', 'morado', 'negro', 'anaranjado']
   },
   {
     nombre: 'tamaño',

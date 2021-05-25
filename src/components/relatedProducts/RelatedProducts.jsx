@@ -11,47 +11,37 @@ import Spinner from '../spinner/Spinner'
 const RelatedProducts = () => {
   //Uso del contexto de los productos
   const pContext = useContext(contextProductos)
-  const { productos, noAllItems } = pContext
+  const { productos } = pContext
 
   //Estado de carga del componente
-  const [loading, setLoading] = useState(true)
-
-
+  const [loading, setloading] = useState(true)
+  const [relatedItems, setrelatedItems] = useState([])
 
   //Uso del objeto de ubicacion
   const location = useLocation()
 
-  //Funcion que genera un numero aleatorio dentro del rango de indice de los productos
-  const getRandomNumber = (max, min) => {
-    const randomNumber = Math.ceil(Math.random() * (max - min) + min)
-    return randomNumber
-  }
-
-  //Funcion que carga los items generados aleatoriamente
-  const loadItems = () => {
-    const relatedItems = []
-    for (let i = 0; i < 4; i++)
-      relatedItems.push(productos[
-        getRandomNumber(productos.length - 1, 0)
-      ])
-    return relatedItems
-  }
-
   //Uso de use memo para que los productos relacionados no se cambien a menos que cambiemos de ruta
-  const relatedItems = useMemo(
-    () => loadItems(),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [location.pathname, loading]
-  )
+  // const relatedItems = useMemo(
+  //   () => loadItems(),
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  //   [location.pathname, loading]
+  // )
 
-  //recarga el componente cuando los productos cambian y solo carga si los productos estan completos
   useEffect(() => {
-    setLoading(true)
-    if (productos.length === noAllItems) {
-      setLoading(false)
+    const fetchRelatedItems = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/producto/random?limit=4')
+        const data = await response.json()
+        setrelatedItems(data)
+      } catch (error) {
+        console.log(error)
+      }
     }
+    fetchRelatedItems()
+    setloading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productos])
+  }, [])
+
 
   //Variable del contenido condicional del componente 
   let content

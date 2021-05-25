@@ -6,9 +6,6 @@ import Message from '../../../message/Message'
 
 //Componente que muestra la informacion de un producto pasado como props
 const Info = ({ productoSeleccionado }) => {
-  //destructuracion del producto seleccionado y sus caracteristicas
-  const { nombre, precio, caracteristicas } = productoSeleccionado
-  const { material, tipo, descripcion, tamaño, color, peinado } = caracteristicas
 
   //estado que maneja el despliegue de un mensaje al agregar un producto al carrito
   const [show, setShow] = useState(false)
@@ -16,6 +13,8 @@ const Info = ({ productoSeleccionado }) => {
   //Uso del contexto de carrito y su metodo agregar item
   const cContext = useContext(contextCarrito)
   const { addItem } = cContext
+
+  const { nombre, precio, descripcion, material, tamaño, tipo_peluca, color } = productoSeleccionado
 
   //si un mensaje es desplegado, este mensaje es borrado a los 3 segundos
   useEffect(() => {
@@ -28,7 +27,7 @@ const Info = ({ productoSeleccionado }) => {
     }
     return () => {
       mounted = false
-    }  
+    }
   }, [show])
 
   //manejador que agrega un producto al carrito
@@ -43,23 +42,22 @@ const Info = ({ productoSeleccionado }) => {
   }
 
   //Variable que contiene al mensaje de forma condicional
-  const message = show 
-  ? <Message texto='Producto Agregado' tipo='success' /> 
-  : null 
+  const message = show
+    ? <Message texto='Producto Agregado' tipo='success' />
+    : null
 
   return (
     <div className={styles.info}>
 
       {message}
 
-      <h3 className={styles.nombre} >{nombre.replaceAll('-',' ')}</h3>
+      <h3 className={styles.nombre} >{nombre.replaceAll('-', ' ')}</h3>
       <p className={styles.precio} >${precio}</p>
       <p className={styles.descripcion}>{descripcion}</p>
       <p>- {material}</p>
-      <p>- {tipo}</p>
+      <p>- {tipo_peluca}</p>
       <p>- {tamaño}cm</p>
       <p>- {color.charAt(0).toUpperCase() + color.slice(1)}</p>
-      <p>- {peinado.charAt(0).toUpperCase() + peinado.slice(1)}</p>
 
       <div className={styles.btnContainer}>
         <Button

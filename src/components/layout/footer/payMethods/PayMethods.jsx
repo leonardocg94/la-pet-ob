@@ -11,11 +11,11 @@ const PayMethods = () => {
       />
 
       <img
-        src={require('../../../../img/paymethods/mastercard.png').default} alt="Master Card Logo"
+        src='http://127.0.0.1:5000/resources/img/paymethods/mastercard.png' alt="Master Card Logo"
       />
 
       <img
-        src={require('../../../../img/paymethods/visa.png').default}
+        src='http://127.0.0.1:5000/resources/img/paymethods/visa.png'
         alt='Visa Logo'
       />
 

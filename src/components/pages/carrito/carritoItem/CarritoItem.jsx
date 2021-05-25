@@ -4,7 +4,7 @@ import contextCarrito from '../../../../context/carrito/contextCarrito'
 import styles from './carritoItem.module.scss'
 
 //Componente item del carrito, recibe toda la información del producto en el carrito
-const CarritoItem = ({ id, cantidad, nombre, precio, tipo }) => {
+const CarritoItem = ({ id, cantidad, nombre, precio, tipo, imagen }) => {
   //contexto del carrito y atributos incrementar cantidad del item, disminuir cantidad del item y borrar item
   const cContext = useContext(contextCarrito)
   const { incrementItem, delItem, decrementItem } = cContext
@@ -13,7 +13,7 @@ const CarritoItem = ({ id, cantidad, nombre, precio, tipo }) => {
     <div className={styles.carritoItem}>
       
       <figure className={styles.image}>
-        <img src={require(`../../../../img/${tipo}/${id}_${nombre}/1.jpg`).default} alt={`${nombre}`}/>
+        <img src={`${imagen}${nombre}/1.jpg`} alt={`${nombre}`}/>
       </figure>
 
       <div className={styles.info}>

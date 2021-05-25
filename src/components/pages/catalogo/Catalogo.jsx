@@ -13,7 +13,7 @@ import LoadComp from '../../loadComp/LoadComp'
 const Catalogo = () => {
   //useo del contexto de productos y el atributo de productos filtrados 
   const pContext = useContext(contextProductos)
-  const { productos, resetProducts } = pContext
+  const { productos, fetchProductos, search, setSearch } = pContext
 
   //Variable que contiene el tpo de catalogo en el que estamos
   const category = useParams().category
@@ -43,29 +43,35 @@ const Catalogo = () => {
   //funcion para mostrar los productos en pantalla de 8 en 8
   const getProductos = () => { return catgProducts.slice(0, next) }
 
-
-  //Cuando cambian los productos en general se reinicia la paginacion
+  //cada vez que cambia la categoria se cargan los productos a mostrar excepto si vamos al catalogo por una busqueda
   useEffect(() => {
-    setCatgproducts([...productos])
-    setNext(prodPerPage)
+    if (!search)
+      fetchProductos(category)
+
     setLoading(false)
     return () => {
       setLoading(true)
     }
-  }, [productos])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [category])
 
-  //reinicia los productos al salir del catalogo
+  //Cuando cambian los productos en general se reinicia la paginacion y los productos a mostrar
   useEffect(() => {
+    setCatgproducts([...productos])
+    setNext(prodPerPage)
+    setLoading(false)
+    setSearch(false)
     return () => {
-      resetProducts()
+      setLoading(true)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [productos])
 
+  //si la categoria es diferente a estas opciones mostramos un mensaje de error
   if (
-    category !== 'Pelucas' &&
-    category !== 'Accesorios' &&
-    category !== 'Lenceria'
+    category !== 'peluca' &&
+    category !== 'accesorio' &&
+    category !== 'lenceria'
   )
     return <NotFound texto='Categoria no encontrada' />
 
@@ -93,7 +99,7 @@ const Catalogo = () => {
       : <ContenedorProductos productos={getProductos()} />
 
     //Variable que muestra condicionalmente el boton de cargarmas
-    const btnLoadMore = next <= catgProducts.length
+    const btnLoadMore = next < catgProducts.length
       ?
       <button
         onClick={() => setNext(next + prodPerPage)}

@@ -3,7 +3,7 @@ import styles from './producto.module.scss'
 import Button from '../button/Button'
 
 //Componente que representa un producto, recibiendo todos sus datos
-const Producto = ({ id, tipo, nombre, precio }) => {
+const Producto = ({ id, tipo, nombre, precio, imagen }) => {
   //Estado que maneja si la card de un producto esta volteada o no
   const [flip, setFlip] = useState(false)
   //Manejador del volteo de la card de los productos
@@ -14,9 +14,6 @@ const Producto = ({ id, tipo, nombre, precio }) => {
 
   //Funcion que detiene la propagacion de eventos del boton detalles
   const detailsHandler = e => { e.stopPropagation() }
-
-  //Variable que contiene la importacion de la imagen del producto
-  const imagen = require(`../../img/${tipo}/${id}_${nombre}/1.jpg`).default
 
   //Variables de los estilos condicionales de el frontside y backside de las cards
   let frontClasses
@@ -29,27 +26,28 @@ const Producto = ({ id, tipo, nombre, precio }) => {
     backClasses = [styles.cardSide, styles.cardSideBack].join(' ')
   }
 
+
   return (
     <article onClick={flipHandler} className={styles.producto}>
 
       <div className={frontClasses}>
         <div className={styles.frontContent}>
-          <img src={imagen} alt={nombre}/>
+          <img src={`${imagen}/${nombre}/1.jpg`} alt={nombre} />
         </div>
       </div>
 
       <div className={backClasses}>
         <div className={styles.backContent}>
-          
+
           <h3>{nombre.replaceAll('-', ' ')}</h3>
 
           <p>{`$${precio}`}</p>
 
           <div className={styles.buttonContainer}>
-            <Button 
-              route={`/${tipo}/${id}`} 
-              click={detailsHandler} 
-              text='DETALLES' 
+            <Button
+              route={`/${tipo}/${id}`}
+              click={detailsHandler}
+              text='DETALLES'
             />
           </div>
 

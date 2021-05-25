@@ -20,18 +20,6 @@ const Detalles = () => {
   const pContext = useContext(contextProductos)
   const { selectedProduct, selectProduct } = pContext
 
-  //Cuando el id es cambiado se reselecciona el producto en el contexto de productos
-  useEffect(() => {
-    selectProduct(refId)
-    setTimeout(() => {
-      setLoading(false)
-    }, 500);
-    return () => {
-      setLoading(true)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [refId])
-
   //se selecciona el producto al renderizar el y se deselecciona al salir del componente detalles
   useEffect(() => {
     return () => {
@@ -39,6 +27,16 @@ const Detalles = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  //Cuando el id es cambiado se reselecciona el producto en el contexto de productos
+  useEffect(() => {
+    selectProduct(refId)
+    setLoading(false)
+    return () => {
+      setLoading(true)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [refId])
 
   //Contenido condicional del componente
   let content

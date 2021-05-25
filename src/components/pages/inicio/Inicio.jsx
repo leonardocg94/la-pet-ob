@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './inicio.module.scss'
-import contextProductos from '../../../context/productos/contextProductos'
 import SectionTitle from '../../sectionTitle/SectionTitle'
 import Ventajas from './ventajas/Ventajas'
 import About from './about/About'
@@ -13,24 +12,26 @@ import Spinner from '../../spinner/Spinner'
 //Componente principal de inicio
 const Inicio = () => {
 
-  //Uso del contexto de productos y su atributo productos
-  const pContext = useContext(contextProductos)
-  const { productos, noAllItems } = pContext
-
   //Estado para manejar la carga del componente
   const [loading, setLoading] = useState(true)
   //Estado para almacenar los productos recientes
-  const [recentItems, setrecentItems] = useState()
+  const [recentItems, setrecentItems] = useState([])
 
   //Carga los productos mas nuevos asegurandose de que hay productos en el estado global aun despues de hacer una busqueda sin resultados
   useEffect(() => {
-    setLoading(true)
-    if (productos.length === noAllItems) {
-      setrecentItems(productos.slice(0, 9))
-      setLoading(false)
+    const fetchRecientes = async () => {
+      try {
+        const response = await fetch('http://127.0.0.1:5000/producto/recientes')
+        const data = await response.json()
+        setrecentItems(data)
+      } catch (error) {
+        console.log(error)
+      }
     }
+    fetchRecientes()
+    setLoading(false)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [productos])
+  }, [])
 
   let content
   if (!loading) {
@@ -64,7 +65,7 @@ const Inicio = () => {
       <section className={styles.inicio}>
 
         <div className={styles.banner}>
-          <img src={require('../../../img/banner/banner.jpg').default} alt="banner" />
+          <img src={`http://127.0.0.1:5000/resources/img/banner/banner.jpg`} alt="banner" />
         </div>
 
         <SectionTitle title='Bienvenido!' />
