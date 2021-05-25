@@ -8,7 +8,7 @@ const About = () => {
 
       <figure className={styles.imagen}>
         <img 
-          src='http://127.0.0.1:5000/resources/img/logos/logo.jpg' 
+          src={process.env.REACT_APP_BK_HOST+'/resources/img/logos/logo.jpg'} 
           alt="petite obsession logo" 
         />
       </figure>

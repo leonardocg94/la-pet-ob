@@ -23,7 +23,7 @@ const StateProductos = ({ children }) => {
   //fetch productos
   const fetchProductos = async category => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/producto/listar/' + category.toLowerCase())
+      const response = await fetch(process.env.REACT_APP_BK_HOST + '/producto/listar/' + category.toLowerCase())
       const data = await response.json()
       dispatch({
         type: BUSCAR_PRODUCTOS,
@@ -37,14 +37,21 @@ const StateProductos = ({ children }) => {
   //Selecciona un producto y carga sus imagenes para mostrarlo en detalle
   const selectProduct = async proid => {
     try {
-      const response = await fetch("http://127.0.0.1:5000/producto/seleccionar/" + proid)
+      const response = await fetch(process.env.REACT_APP_BK_HOST+"/producto/seleccionar/" + proid)
       const data = await response.json()
-      console.log(data)
+      const imgSty = {
+        height: '100%',
+        verticalAlign: 'top',
+        objectFit: 'cover',
+        margin: '0 auto',
+        display: 'block',
+        borderRadius: '3px'
+      }
       const imgs = []
       for (let i = 1; i < 5; i++)
         imgs.push({
           id: i,
-          item: <img src={`${data.imagen}/${data.nombre}/${i}.jpg`} alt={`${data.nombre}_${i}`} />
+          item: <img style={imgSty} src={`${data.imagen}/${data.nombre}/${i}.jpg`} alt={`${data.nombre}_${i}`} />
         })
 
       dispatch({
@@ -59,7 +66,7 @@ const StateProductos = ({ children }) => {
   //Filtra los productos por busqueda
   const searchProducts = async str => {
     try {
-      const response = await fetch('http://127.0.0.1:5000/producto/buscar?search=' + str)
+      const response = await fetch(process.env.REACT_APP_BK_HOST+'/producto/buscar?search=' + str)
       const data = await response.json()
       dispatch({
         type: BUSCAR_PRODUCTOS,
@@ -84,7 +91,7 @@ const StateProductos = ({ children }) => {
     if (obj.tamaño)
       obj.tamaño = obj.tamaño.match(/[0-9]/g).join('')
 
-    const url = "http://127.0.0.1:5000/producto/filtrar?"
+    const url = process.env.REACT_APP_BK_HOST+"/producto/filtrar?"
     let params = ''
     Object.keys(obj).forEach((p, i) => {
       if (i === 0)
@@ -92,7 +99,6 @@ const StateProductos = ({ children }) => {
       else
         params += `&${p}=${obj[p]}`
     })
-    console.log(url + params)
     try {
       const response = await fetch(url + params)
       const data = await response.json()

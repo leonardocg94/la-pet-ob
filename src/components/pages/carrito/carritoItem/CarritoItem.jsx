@@ -8,12 +8,12 @@ const CarritoItem = ({ id, cantidad, nombre, precio, tipo, imagen }) => {
   //contexto del carrito y atributos incrementar cantidad del item, disminuir cantidad del item y borrar item
   const cContext = useContext(contextCarrito)
   const { incrementItem, delItem, decrementItem } = cContext
-
+  
   return (
     <div className={styles.carritoItem}>
       
       <figure className={styles.image}>
-        <img src={`${imagen}${nombre}/1.jpg`} alt={`${nombre}`}/>
+        <img src={`${imagen}/${nombre}/1.jpg`} alt={`${nombre}`}/>
       </figure>
 
       <div className={styles.info}>

@@ -21,7 +21,7 @@ const Inicio = () => {
   useEffect(() => {
     const fetchRecientes = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:5000/producto/recientes')
+        const response = await fetch(process.env.REACT_APP_BK_HOST+'/producto/recientes')
         const data = await response.json()
         setrecentItems(data)
       } catch (error) {
@@ -50,14 +50,13 @@ const Inicio = () => {
     }
 
     //Lista de items para el slider
-    const recentProducts = recentItems.map(pro => {
+    const recentProducts = recentItems.map((pro, i) => {
       return {
-        id: pro.id,
-        item: (
+        id: i,
+        item: 
           <div style={{height: '100%'}}>
             <Producto {...pro} />
           </div>
-        )
       }
     })
 
@@ -65,7 +64,7 @@ const Inicio = () => {
       <section className={styles.inicio}>
 
         <div className={styles.banner}>
-          <img src={`http://127.0.0.1:5000/resources/img/banner/banner.jpg`} alt="banner" />
+          <img src={process.env.REACT_APP_BK_HOST+`/resources/img/banner/banner.jpg`} alt="banner" />
         </div>
 
         <SectionTitle title='Bienvenido!' />

@@ -14,7 +14,7 @@ const Categorias = () => {
         className={styles.category}
       >
         <img
-          src='http://127.0.0.1:5000/resources/img/categorias/pelucas.jpg'
+          src={process.env.REACT_APP_BK_HOST+'/resources/img/categorias/pelucas.jpg'}
           alt="pelucas"
         />
 
@@ -26,7 +26,7 @@ const Categorias = () => {
         className={styles.category}
       >
         <img
-          src='http://127.0.0.1:5000/resources/img/categorias/accesorios.jpg'
+          src={process.env.REACT_APP_BK_HOST+'/resources/img/categorias/accesorios.jpg'}
           alt="accesorios"
         />
 
@@ -38,7 +38,7 @@ const Categorias = () => {
         className={styles.category}
       >
         <img
-          src='http://127.0.0.1:5000/resources/img/categorias/lenceria.jpg'
+          src={process.env.REACT_APP_BK_HOST+'/resources/img/categorias/lenceria.jpg'}
           alt="lenceria"
         />
 

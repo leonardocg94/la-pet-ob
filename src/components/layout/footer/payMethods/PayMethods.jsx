@@ -11,11 +11,11 @@ const PayMethods = () => {
       />
 
       <img
-        src='http://127.0.0.1:5000/resources/img/paymethods/mastercard.png' alt="Master Card Logo"
+        src={process.env.REACT_APP_BK_HOST+'/resources/img/paymethods/mastercard.png'} alt="Master Card Logo"
       />
 
       <img
-        src='http://127.0.0.1:5000/resources/img/paymethods/visa.png'
+        src={process.env.REACT_APP_BK_HOST+'/resources/img/paymethods/visa.png'}
         alt='Visa Logo'
       />
 

@@ -19,7 +19,7 @@ const Catalogo = () => {
   const category = useParams().category
 
   //Variable que muestra los productos por pagina mostrados por el catalogo
-  const prodPerPage = 8
+  const prodPerPage = 10
 
   //Productos locales en el catalogo
   const [catgProducts, setCatgproducts] = useState([])
@@ -113,7 +113,6 @@ const Catalogo = () => {
       <section className={styles.catalogo}>
 
         <SectionTitle2 titulo={`Catalogo de ${category}`} />
-
         <div className={styles.positioning}>
 
           <div className={filtrosClasses}>
