@@ -42,9 +42,19 @@
     }
     .usefulLinks {
       width: 30%;
+      .link {
+        &:not(:last-child) {
+          margin-bottom: 1.2rem;
+        }
+      }
     }
     .socials {
       width: 30%;
+      .link {
+        &:not(:last-child) {
+          margin-bottom: 1.2rem;
+        }
+      }
     }
   }
 }
