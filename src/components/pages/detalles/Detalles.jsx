@@ -22,11 +22,9 @@ const Detalles = () => {
 
   //Cuando el id es cambiado se reselecciona el producto en el contexto de productos
   useEffect(() => {
+    setLoading(true)
     selectProduct(refId)
     setLoading(false)
-    return () => {
-      setLoading(true)
-    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refId])
 
