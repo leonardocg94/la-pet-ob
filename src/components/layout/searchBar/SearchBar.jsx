@@ -53,7 +53,7 @@ const SearchBar = ({ show, setShow }) => {
 
       <form onSubmit={submitHandler} className={styles.leftSide}>
 
-        <button type='submit' className={styles.searchIcon}>
+        <button aria-label='Search button' type='submit' className={styles.searchIcon}>
           <i className="fas fa-search"></i>
         </button>
 

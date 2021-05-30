@@ -41,7 +41,7 @@ const Aside = () => {
           <h1>La Petite Obsession</h1>
         </Link>
 
-        <button onClick={showMenu} className={styles.btnMenu}>
+        <button aria-label='Main menu' onClick={showMenu} className={styles.btnMenu}>
           <span className={iconClasses.join(' ')}></span>
         </button>
       </div>
